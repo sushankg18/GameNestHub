@@ -29,6 +29,10 @@ const CatalogGames = () => {
                     RecReq={selectedGame.recommended_requirements}
                     trailer={selectedGame.trailer}
                     screenshots={selectedGame.screenshots}
+                    gdrive={selectedGame.download_links.gdrive}
+                    mega={selectedGame.download_links.mega}
+                    torrent={selectedGame.download_links.torrent}
+                    directly={selectedGame.download_links.directly}
                 />
             ) : (
                 <Error />

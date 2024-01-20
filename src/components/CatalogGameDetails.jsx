@@ -1,7 +1,13 @@
-import { Box, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Flex, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.css';
+import { IoMdCloudDownload } from "react-icons/io";
+import { FaGoogleDrive } from "react-icons/fa";
+import { SiUtorrent } from "react-icons/si";
+import { FaDownload } from "react-icons/fa6";
 
-const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, screenshots, genre, developer, platform, multiplayer, version, size, desc, MiniReq, RecReq }) => {
+const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, screenshots, genre, developer, platform, multiplayer, version, size, desc, MiniReq, RecReq, gdrive, mega, directly, torrent }) => {
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
@@ -17,7 +23,7 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                         <Text>Size : {size}</Text>
                     </VStack>
                 </HStack>
-                <Box w={'27rem'} >
+                <Box w={'28rem'} >
                     <video width={'100%'} style={{ borderRadius: "10px" }} autoPlay muted loop src={trailer} />
                 </Box>
             </HStack>
@@ -55,50 +61,114 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
             <Box padding={'1rem 2rem'} >
 
                 <Heading fontSize={'1.5rem'} color={'#8C52FF'}>DESCRIPTION -</Heading>
-                {
+                {desc && desc.length > 0 && (
                     desc.map((i, index) => (
-                        <Box>
+                        <Box key={index}>
                             <Text fontSize={'1.1rem'}>{i}</Text>
                             <br></br>
                         </Box>
                     ))
-                }
+                )}
             </Box>
 
-            <Box padding={'0 2rem'}>
-
-                <HStack w={'100%'} >
-                    <VStack alignItems={'flex-start'} w={'50%'}>
-                        <Heading color={'#8C52FF'}>MINIMUM REQUIREMENTS</Heading>
-                        {
-                            MiniReq.map((i, index) => (
-                                <Text fontWeight={'bold'}>{i}</Text>
+            <HStack padding={'1rem 2rem'} gap={'2rem'}>
+                {MiniReq && MiniReq.length > 0 && (
+                    <HStack w={'100%'} >
+                        <VStack alignItems={'flex-start'} >
+                            <Heading color={'#8C52FF'}>MINIMUM REQUIREMENTS</Heading>
+                            {MiniReq.map((i, index) => (
+                                <li key={index} fontWeight={'bold'}>{i}</li>
                             ))}
-                    </VStack>
+                        </VStack>
+                    </HStack>
+                )}
 
-                    <VStack alignItems={'flex-start'} w={'50%'}>
-                        <Heading color={'#8C52FF'}>RECOMENDED REQUIREMENTS</Heading>
-                        {
-                            RecReq.map((i, index) => (
-                                <Text fontWeight={'bold'}>{i}</Text>
+                {RecReq && RecReq.length > 0 && (
+                    <HStack w={'100%'} >
+                        <VStack alignItems={'flex-start'} >
+                            <Heading color={'#8C52FF'}>RECOMMENDED REQUIREMENTS</Heading>
+                            {RecReq.map((i, index) => (
+                                <li key={index} fontWeight={'bold'}>{i}</li>
                             ))}
-                    </VStack>
-                </HStack>
+                        </VStack>
+                    </HStack>
+                )}
+            </HStack>
 
-            </Box>
+            <HStack alignItems={'center'} gap={'2rem'} p={'2rem'}>
+                <VStack w={'50%'}>
+                    <Heading fontSize={'2rem'}>SCREENSHOTS</Heading>
+                    <Carousel
+                        autoPlay
+                        infiniteLoop
+                        interval={2000}
+                        showStatus={false}
+                        showThumbs={false}
+                        showArrows={false}
+                        width={'100%'}
+                    >
+                        {screenshots.map((i) => (
+                            <Image objectFit={'cover'} src={i} />
+                        ))}
+                    </Carousel>
+                </VStack>
 
-            {/* 
+                <VStack w={'50%'}>
+                    <Heading>DOWNLOAD LINKS</Heading>
+                    <HStack>
+                        <a href={gdrive} target='_blank'>
+                            <Button style={downloadLinks} bgColor={'#E8E8E8'} _hover={{ bgColor: "rgb(210,210,210)" }}>
+                                <Flex align={'center'} gap={'.7rem'}>
+                                    <FaGoogleDrive fontSize={'1.2rem'} />
+                                    Gdrive
+                                </Flex>
+                            </Button>
+                        </a>
 
-            <Box>
-                {
-                 screenshots.map((i,index)=>(
-                    <Box>
-                        <Image w={'20rem'} src={i} />
-                    </Box> 
-                    ))}
-            </Box> */}
+                        <a href={torrent} target='_blank'>
+                            <Button style={downloadLinks} bgColor={'#59BA41'} color={'white'} _hover={{ bgColor: "#1AA91C" }}>
+                                <Flex align={'center'} gap={'.7rem'}>
+                                    <SiUtorrent fontSize={'1.2rem'} />
+                                    Torrent
+                                </Flex>
+                            </Button>
+                        </a>
+
+                        <a href={mega} target='_blank'>
+                            <Button style={downloadLinks} bgColor={'rgb(255,68,0)'} color={'white'} _hover={{ bgColor: "#D93A00" }}>
+                                <Flex align={'center'} gap={'.7rem'}>
+                                    <IoMdCloudDownload fontSize={'1.3rem'} />
+                                    Mega
+                                </Flex>
+                            </Button>
+                        </a>
+
+                        <a href={directly} target='_blank'>
+                            <Button style={downloadLinks} bgColor={"rgb(100,100,100)"} color={'white'} _hover={{ bgColor: "rgb(81,81,81)" }}>
+                                <Flex align={'center'} gap={'.7rem'}>
+                                    <FaDownload fontSize={'1rem'} />
+                                    Directly
+                                </Flex>
+                            </Button>
+                        </a>
+                    </HStack>
+                </VStack>
+            </HStack>
+
+
         </Box>
     );
 };
 
 export default CatalogGameDetails;
+
+const downloadLinks = {
+    padding: '1rem 2rem',
+    border: "none",
+    borderRadius: '.8rem',
+    width: "10rem",
+    fontSize: "1rem",
+    transition: '.1s all ease-in-out',
+    cursor: "pointer",
+    fontWeight: "bold",
+}

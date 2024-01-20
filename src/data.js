@@ -95,7 +95,6 @@ const data = [
       "Sound Card: DirectX 9.0c Compliant Card, Windows-Compatible Sound Card",
       "HDD Space: 22GB",
       "Input: Mouse & Keyboard, Controller (recommended)",
-      "",
     ],
   },
 
