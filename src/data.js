@@ -11,8 +11,9 @@ const data = [
     size: "61 GB",
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2017/09/gta-v-poster.jpg",
-      bg_large: "https://wallpapercave.com/wp/wp1809630.jpg",
+      bg_large: "https://c4.wallpaperflare.com/wallpaper/1017/397/309/michael-grand-theft-auto-v-franklin-trevor-wallpaper-preview.jpg",
     },
+    trailer : "https://media.rawg.io/media/stories/4a7/4a78913e6ee817ca1e34c7df8169eca4.mp4",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2021/04/gta-v-screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2021/04/gta-v-screenshot-02.jpg",
@@ -24,8 +25,7 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2021/04/gta-v-screenshot-08.jpg",
     ],
     download_links: {
-      gdrive:
-        "https://drive.google.com/file/d/1cXdUi8D_RAfZ3eKvSo9qw_8BYKqOacpE/view",
+      gdrive:"https://drive.google.com/file/d/1cXdUi8D_RAfZ3eKvSo9qw_8BYKqOacpE/view",
       torrent: "https://se7en.ws/torrents/gtav_latest.torrent",
       mega: "https://mega.nz/file/TI8kmA5T#nDa78GKC0b933PfDJf7Me0yo6RzuF4T9HRz4OQLSuI4",
       directly: "https://se7en.ws/files/7l_gtav_setup.exe",
@@ -61,13 +61,13 @@ const data = [
     genre: " Action, adventure",
     platform: "PC (Windows)",
     multiplayer: "included",
-    version:
-      "1.2.0.43 (Includes episodes “The Lost and Damned” and “The Ballad of Gay Tony”)",
+    version:"1.2.0.43 (Includes episodes “The Lost and Damned” and “The Ballad of Gay Tony”)",
     size: "12.7 GB",
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2022/10/gta-iv-cover.png",
       bg_large: "https://wallpaperset.com/w/full/1/e/c/230031.jpg",
     },
+    trailer : "https://media.rawg.io/media/stories/d6e/d6e9068e5fb35421f00728309550df0a.mp4",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2022/10/gta-iv-screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2022/10/gta-iv-screenshot-02.jpg",
@@ -78,8 +78,7 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2022/10/gta-iv-screenshot-08.jpg",
     ],
     download_links: {
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xaXNoRHc4ZFhyRnAzb2V5Ukx0cXFzeTdsYnJFTWdQMmkvdmlldz91c3A9c2hhcmVfbGluaw==",
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xaXNoRHc4ZFhyRnAzb2V5Ukx0cXFzeTdsYnJFTWdQMmkvdmlldz91c3A9c2hhcmVfbGluaw==",
       torrent: "https://se7en.ws/torrents/gtaiv_latest.torrent",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvd29veFFCb2IjM0FMaDd3UnR3SWZES1RLakc0VEJCdU03ZGRBeFhmWXJkLWs4cEY0NlY3RQ==",
       directly: "https://se7en.ws/files/7l_gtaiv_setup.exe",
@@ -114,6 +113,7 @@ const data = [
       poster: "https://se7en.ws/wp-content/uploads/2022/10/forzah5-cover.png",
       bg_large: "https://images3.alphacoders.com/118/1180539.jpg",
     },
+    trailer : "https://media.rawg.io/media/stories/300/300b15941c8f2c8805952a346b2abfdb.mp4",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2022/10/forza-horizon-5-screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2022/10/forza-horizon-5-screenshot-02.jpg",
@@ -129,8 +129,7 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2022/10/forza-horizon-5-screenshot-12.jpg",
     ],
     download_links: {
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xSGUwMUxEa0ZIcFIxWmdLWW9mNzRWSWt0WTFhMkV2NjIvdmlldz91c3A9c2hhcmVfbGluaw==",
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xSGUwMUxEa0ZIcFIxWmdLWW9mNzRWSWt0WTFhMkV2NjIvdmlldz91c3A9c2hhcmVfbGluaw==",
       torrent: "https://se7en.ws/torrents/forzah5_latest.torrent",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZDh3RXlKWlMjT1NFX29ULS1FU3pfSV9UaV96dWFESEZ4MDkya0xvMTZSZlQtTlVxZVJkWQ==",
       directly: "https://se7en.ws/files/7l_forzah5_setup.exe",
@@ -164,13 +163,12 @@ const data = [
     platform: "PC (Windows)",
     multiplayer: "Present in test mode",
     version: "2.1 from 12/5/2023 (Phantom Liberty DLC included)",
-    size: "",
+    size: "68.5 GB",
     images: {
-      poster:
-        "https://se7en.ws/wp-content/uploads/2023/09/cyberpunk-2077-cover.png",
-      bg_large:
-        "https://c4.wallpaperflare.com/wallpaper/3/908/60/cyberpunk-2077-video-game-characters-hd-wallpaper-preview.jpg",
+      poster:"https://se7en.ws/wp-content/uploads/2023/09/cyberpunk-2077-cover.png",
+      bg_large:"https://wallpapercg.com/media/ts_orig/16391.webp",
     },
+    trailer : "https://media.rawg.io/media/stories/db4/db4bd7f2af197dc5f2ad3d9d91302e37.mp4",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2021/04/cyberpunk-2077-screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2021/04/cyberpunk-2077-screenshot-02.jpg",
@@ -182,8 +180,7 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2021/04/cyberpunk-2077-screenshot-08.jpg",
     ],
     download_links: {
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xQ2p5NXdUM19HRWRyUE5lcjA4YVdheEtyMklFYWdGbjAvdmlldz91c3A9c2hhcmluZw==",
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xQ2p5NXdUM19HRWRyUE5lcjA4YVdheEtyMklFYWdGbjAvdmlldz91c3A9c2hhcmluZw==",
       torrent: "https://se7en.ws/torrents/cyberpunk2077_latest.torrent",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvVTlSMmpBZ0QjTEswdkZabmExREMtU0RIdjJvZHoybk9kenlaaDU0eGlTamxrQzRWRWQ1TQ==",
       directly: "https://se7en.ws/files/7l_cyberpunk2077_setup.exe",
@@ -221,9 +218,9 @@ const data = [
     size: "59 GB",
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2019/02/fortnite-poster.jpg",
-      bg_large:
-        "https://wallpapers.com/images/hd/fortnite-background-34h5tua0czqu7u9t.jpg",
+      bg_large:"https://wallpapers.com/images/hd/fortnite-background-34h5tua0czqu7u9t.jpg",
     },
+    trailer : "https://media.rawg.io/media/stories/65f/65ff9214af64ca0c89abac55d80ed7ab.mp4",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2019/02/fortnite-sreenshot-01.png",
       "https://se7en.ws/wp-content/uploads/2019/02/fortnite-sreenshot-02.png",
@@ -231,11 +228,9 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2019/02/fortnite-sreenshot-04.png",
     ],
     download_links: {
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOHJkY0VZR0hSWUpOd0VTNkNuVWZnRDBqVnRlU0dOQzIvdmlldz91c3A9c2hhcmluZw==",
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOHJkY0VZR0hSWUpOd0VTNkNuVWZnRDBqVnRlU0dOQzIvdmlldz91c3A9c2hhcmluZw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvUDRSeFFBcmEjX2hJTXp6M3lWbU5VQUEzYUIxQk04bXRmc3Q1a2dYUVMwZGo4dVE3ZzFVMA==",
-      directly:
-        "https://se7en.ws/away/aHR0cHM6Ly93d3cuZXBpY2dhbWVzLmNvbS9mb3J0bml0ZS9kb3dubG9hZA==",
+      directly:"https://se7en.ws/away/aHR0cHM6Ly93d3cuZXBpY2dhbWVzLmNvbS9mb3J0bml0ZS9kb3dubG9hZA==",
     },
     description: [
       "One of the most popular examples of the 'royal battle' genre can rightly be Fortnite, which came out a few months after the resounding success of PUBG. Despite the cartoon graphics and not the best-developed shooting physics, this project earned a huge number of fans in just a year of existence. Now it is one of the most popular games on many streaming platforms. Do you want to join the millions of fans of this game? All you need is to download Fortnite from our site and install the client.",
@@ -265,11 +260,13 @@ const data = [
     platform: "PC (Windows)",
     multiplayer: "Included",
     version: "1.39.7.8 (build from 12/7/2023)",
+    size : " 3.4 MB (installer)",
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2023/03/cs2-cover.png",
       bg_large:
         "https://www.desktopbackground.org/download/o/2010/08/12/63140_counter-strike-source-wallpapers-wallpaper_1920x1080_h.jpg",
     },
+    trailer :" ",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2023/03/cs2-de_dust2_screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2023/03/cs2-de_dust2_screenshot-02.jpg",
@@ -281,8 +278,7 @@ const data = [
       "https://se7en.ws/wp-content/uploads/2023/03/cs2-de_dust2_screenshot-08.jpg",
     ],
     download_links: {
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUEwMjFTcmRjMTlxVTE5dWFXTndUOXVfaXFjQTIxX0pHP3VzcD1zaGFyZV9saW5r",
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2RyaXZlL2ZvbGRlcnMvMUEwMjFTcmRjMTlxVTE5dWFXTndUOXVfaXFjQTIxX0pHP3VzcD1zaGFyZV9saW5r",
       torrent: "https://se7en.ws/torrents/cs2_latest.torrent",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvUXg0UjBEU0EjS3ltd0lmVVhlR2NuWF82S1FJWVVBamREaFJDVElDeVRwdmJqWVVTTE5nMA==",
       directly: "https://se7en.ws/files/7l_cs2_setup.exe",
@@ -316,6 +312,8 @@ const data = [
     platform: "PC (Windows)",
     multiplayer: "Included (Deathmatch)",
     version: "build 8491853 from 11/17/2023 – with all episodes (Non-Steam)",
+    size :"4.21 GB (install files)",
+    trailer : "https://media.rawg.io/media/stories/61f/61ff4e702e32afa2ad607e3d71d80db0.mp4",
     description: [
       "Half-Life 2” – is a next chapter of the cult “Half-Life” story, which saw the light 6 years after the original was released. Players will again have to control the unchanging Gordon Freeman, who regains consciousness on Earth, and realizes that he is in the near future.    ",
       "All power in this future belongs to an alien government calling itself the Alliance. This Alliance drove all the people on the planet into cities, forcing them to obey. Gordon has to fix this. And although his path is not short, and the goals change quite often, this only gives the game a special originality, making the plot even more interesting.",
@@ -328,9 +326,8 @@ const data = [
       "Free disk space: 7 GB",
     ],
     download_links: {
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOURocXlBdTc3Rmh0dHptZ2JLc0Y2aDhCQms4d3ZfMTMvdmlldz91c3A9c2hhcmluZw==",
       torrent: "https://se7en.ws/torrents/hl2_latest.torrent",
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOURocXlBdTc3Rmh0dHptZ2JLc0Y2aDhCQms4d3ZfMTMvdmlldz91c3A9c2hhcmluZw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvM1ZrRVJRNksjSEJZLW5ZS2FjRHlHV2NZVW1sNDQ4OU1FQjV3aUFGZVFqUVFjVVBzaVZCaw==",
       directly: "https://se7en.ws/files/7l_hl2_setup.exe",
     },
@@ -347,8 +344,7 @@ const data = [
     images: {
       poster:
         "https://se7en.ws/wp-content/uploads/2020/10/half-life-2-cover.jpg",
-      bg_large:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwall.alphacoders.com%2Fbig.php%3Fi%3D616245&psig=AOvVaw2LhwHIIOfm7H5TjbS73lOH&ust=1705691841809000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNiCiJHT54MDFQAAAAAdAAAAABAD",
+      bg_large:"https://c4.wallpaperflare.com/wallpaper/451/122/360/half-life-2-combine-citadel-city-17-wallpaper-preview.jpg",
     },
   },
 
@@ -363,6 +359,8 @@ const data = [
     voice_language: "English for all languages",
     multiplayer: "Included",
     version: "1.0.1436.28",
+    size : "103 GB (setup files)",
+    trailer : "https://media.rawg.io/media/stories/cd6/cd62fd7cded52a72d11b39b188237540.mp4",
     description: [
       "Red Dead Redemption 2 — the brainchild of the famous company Rockstar Games, which gave the world such a masterpiece of the gaming industry as GTA. This time, the developers have completely immersed themselves in the spirit of the western, depicting the fictional states of America in the 19th-20th centuries in the game Red Dead Redemption 2.",
       "The game events of RDR 2 will tell about the especially dangerous gang of Dutch Van der Linde, operating in those years. The player controls one of the main characters, Arthur Morgan, and after the story and before the epilogue, John Marston.",
@@ -375,9 +373,8 @@ const data = [
       "150 GB",
     ],
     download_links: {
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTF9ucFowcTNQaE1TZjYtcGVrSW81cWtMWTZyX1Y3dXMvdmlldz91c3A9c2hhcmVfbGluaw==",
       torrent: "https://se7en.ws/torrents/rdr2_latest.torrent",
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xTF9ucFowcTNQaE1TZjYtcGVrSW81cWtMWTZyX1Y3dXMvdmlldz91c3A9c2hhcmVfbGluaw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvVmhZUXpSRFMjcTRXdzhWUHdfUlJ5U2o5NWRuUWVqelNycXh2S19JN2FoQkNOamEtcXBwYw==",
       directly: "https://se7en.ws/files/7l_rdr2_setup.exe",
     },
@@ -393,7 +390,7 @@ const data = [
     ],
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2022/10/rdr2-cover.png",
-      bg_image:
+      bg_large:
         "https://www.chromethemer.com/download/hd-wallpapers/rdr2-3840x2160.jpg",
     },
   },
@@ -409,6 +406,8 @@ const data = [
     voice_language: "English, French, German, Italian, Russian and others",
     multiplayer: "Included",
     version: "2.2.2.9 (The Last Stand) from 9/1/2023",
+    size : "7.32 GB (install files)",
+    trailer : "https://media.rawg.io/media/stories/641/6410df150314b7903fb651393711847f.mp4",
     description: [
       "Left 4 Dead 2 — telling us the story of survivors group who didn’t have time to evacuate from a city filled with infected residents. Four heroes have to clear their way, going through the crowds of the living dead. As before, the player is given control of one of the four characters, and the bots help in the passage of a series of cards.",
       "The second part of the Left 4 Dead franchise combines the best ideas of the first game also has good even by today’s standards graphics and excellent optimization while it offers cool gameplay. Want to try the game? You can download Left 4 Dead 2 with all the add-ons from our website.",
@@ -430,9 +429,8 @@ const data = [
       "The sound device compatible with DirectX 9.0c",
     ],
     download_links: {
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xM1B4TzlQc2NNamVjdXY1UmxySEhSbjVoampNRnRTYUovdmlldz91c3A9c2hhcmluZw==",
       torrent: "https://se7en.ws/torrents/l4d2_latest.torrent",
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xM1B4TzlQc2NNamVjdXY1UmxySEhSbjVoampNRnRTYUovdmlldz91c3A9c2hhcmluZw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvakZ0a1JRN0sjVURMbTMxdUNtOHdaam9CTG1mRi1YdENaeDQ3VmlYN0E4WUplZVRjaVJZVQ==",
       directly: "https://se7en.ws/files/7l_left4dead2_setup.exe",
     },
@@ -451,7 +449,7 @@ const data = [
     images: {
       poster:
         "https://se7en.ws/wp-content/uploads/2020/01/left-4-dead-2-cover.png",
-      bg_image: "https://wallpapercave.com/wp/wp3509481.jpg",
+        bg_large: "https://wallpapercave.com/wp/wp3509481.jpg",
     },
   },
 
@@ -465,6 +463,8 @@ const data = [
     interface_language: "English, French, German, Italian, Russian and others",
     multiplayer: "Available",
     version: "1.49.3.9s from 15/1/2024",
+    size : "9.54 GB (installation files)",
+    trailer : "https://steamcdn-a.akamaihd.net/steam/apps/256676315/movie_max.mp4",
     description: [
       "Simulators are a genre of games that allows us to feel ourselves in the role of a racer, shooter, hunter. But this is all trite, and, at times, has nothing to do with life. Want to play the game of life? Then hurry up to download American Truck Simulator.",
       "The project will teach you how to be a trucker. There is no casualness like in standard racing simulators. American Truck is a combination of strategy and economics. The game will teach you strategic thinking and show you the basics of heavy haulage. The key component is driving, the first person view can help you feel the game.",
@@ -484,9 +484,8 @@ const data = [
       "20 GB",
     ],
     download_links: {
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xQ2RzakFBeGRFbTNIYXlBdElCaDBCNHR0RzItSk9PbjEvdmlldz91c3A9c2hhcmluZw==",
       torrent: "https://se7en.ws/torrents/ats_latest.torrent",
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xQ2RzakFBeGRFbTNIYXlBdElCaDBCNHR0RzItSk9PbjEvdmlldz91c3A9c2hhcmluZw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvM2RzQ0RiamEjX3pURWhVZ1RWN2JEN18wRmlEZTVJUk14ZTlUTVRwNzBUUnh5bjQ4X0ptZw==",
       directly: "https://se7en.ws/files/7l_ats_setup.exe",
     },
@@ -502,8 +501,7 @@ const data = [
     ],
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2021/07/ats-cover-495px.jpg",
-      bg_image:
-        "https://c4.wallpaperflare.com/wallpaper/518/846/489/video-game-american-truck-simulator-wallpaper-preview.jpg",
+      bg_large:"https://c4.wallpaperflare.com/wallpaper/518/846/489/video-game-american-truck-simulator-wallpaper-preview.jpg",
     },
   },
 
@@ -518,6 +516,8 @@ const data = [
     voice_language: "English, French, German, Italian, Russian and others",
     multiplayer: "Included (Non-Steam)",
     version: "2.0.0.1 UP8 (from 31.01.2022)",
+    size  :"4.9 GB (installation files)",
+    trailer : "https://media.rawg.io/media/stories/671/67196dea179367b70212bdaed88ba451.mp4",
     description: [
       "Portal 2 – is the long-awaited sequel to the game that has won the hearts of many gamers. The unchanging developer Valve Corporation has created a new story, the plot takes place many, many years after the events in the original “Portal”. A red-haired girl named Chell regains consciousness in the bowels of the same research center. Almost immediately, the structure begins to collapse.",
       "At the beginning, Portal 2 does not cause much enthusiasm for the players, because it resembles the first part, but once you move forward a little, then the game changes beyond recognition. There are a lot of changes, but the developer is in no hurry to dump them all at once, but introduces gradually, teaching the player to think in completely different categories. The levels are thought out perfectly: tricky enough to arouse interest, and the desire to strain the convolutions.",
@@ -530,9 +530,8 @@ const data = [
       "8 GB",
     ],
     download_links: {
+      gdrive:"https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOVlGZ0w1SFpqVGZHb2N4NVdzU19ISURvUEFQOVlFSkQvdmlldz91c3A9c2hhcmluZw==",
       torrent: "https://se7en.ws/torrents/portal2_latest.torrent",
-      gdrive:
-        "https://se7en.ws/away/aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xOVlGZ0w1SFpqVGZHb2N4NVdzU19ISURvUEFQOVlFSkQvdmlldz91c3A9c2hhcmluZw==",
       mega: "https://se7en.ws/away/aHR0cHM6Ly9tZWdhLm56L2ZpbGUvZU5rRWtRelkjRVVHVHV2YlhDYWE5bHFsdkttRURrcERZZlFLRW5DZE1LTmw0VWZJZjk1dw==",
       directly: "https://se7en.ws/files/7l_portal2_setup.exe",
     },
@@ -551,7 +550,7 @@ const data = [
     ],
     images: {
       poster: "https://se7en.ws/wp-content/uploads/2020/10/portal-2-cover.jpg",
-      bg_image:
+      bg_large:
         "https://c4.wallpaperflare.com/wallpaper/181/468/46/portal-game-glados-portal-2-wallpaper-preview.jpg",
     },
   },
