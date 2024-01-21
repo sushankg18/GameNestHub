@@ -22,7 +22,7 @@ const Catalog = () => {
                                     alt='Fluffybuns the destroyer'
                                     mr='12px'
                                 />
-                                <Text color={'black'} fontWeight={'bold'}>{item.title}</Text>
+                                <Text color={'black'} textDecor={'none'} fontWeight={'bold'}>{item.title}</Text>
                             </MenuItem>
                         </Link>
                     ))}

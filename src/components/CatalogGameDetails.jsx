@@ -11,93 +11,98 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
-        <Box minH={'90vh'} position="relative" style={{ backgroundImage: `linear-gradient(${overlayColor}, ${overlayColor}), url(${bgIMG})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <Box minH={'90vh'} color={'white'} w={'100vw'} overflow={'hidden'} position="relative" style={{ backgroundImage: `linear-gradient(${overlayColor}, ${overlayColor}), url(${bgIMG})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
 
-            <HStack justifyContent={'space-between'} padding={'1rem 2rem'}>
-                <HStack alignItems={'flex-start'} >
-                    <Image src={poster} w={'12rem'} />
-                    <VStack alignItems={'flex-start'}>
-                        <Heading fontSize={'4rem'} color={'#8C52FF'}>{title}</Heading>
-                        <Text fontSize={'1.1rem'} fontWeight={'bold'}>Released Date : {releaseDate}</Text>
-                        <Text fontSize={'1.1rem'} fontWeight={'bold'}>Genre : {genre}</Text>
-                        <Text>Size : {size}</Text>
+            <HStack flexDir={['column', '', '', 'row']} gap={'2rem'} justifyContent={'space-between'} padding={['.5rem', '', '', '1rem 2rem']}>
+                <HStack flexDir={['column', '', '', 'row']} alignItems={'flex-start'} w={'100%'} >
+                    <Image border={'1px solid white'} alignSelf={'center'} src={poster} w={['9rem', '', '', '12rem']} />
+                    <VStack alignItems={'flex-start'} w={'100%'}>
+                        <Heading fontSize={['1.8rem', '', '', '4rem']} color={'#8C52FF'}>{title}</Heading>
+                        <Text fontSize={['1rem', '', '', '1.1rem']} fontWeight={'bold'}>Released Date : {releaseDate}</Text>
+                        <Text fontSize={['1rem', '', '', '1.1rem']} fontWeight={'bold'}>Genre : {genre}</Text>
+                        <Text fontSize={['1rem', '', '', '1.1rem']} fontWeight={'bold'}>Size : {size}</Text>
                     </VStack>
                 </HStack>
-                <Box w={'28rem'} >
-                    <video width={'100%'} style={{ borderRadius: "10px" }} autoPlay muted loop src={trailer} />
-                </Box>
+                <VStack>
+                    <Heading alignSelf={'flex-start'} fontSize={'1rem'}>Trailer : </Heading>
+                    <Box w={['', '', '', '28rem']} display={['block', '', '', 'block']} >
+                        <video width={'100%'} style={{ borderRadius: "10px" }} autoPlay muted loop src={trailer} />
+                    </Box>
+                </VStack>
             </HStack>
 
 
 
-            <Box w={'100%'} p={'2rem'}>
+            <Box w={'100%'} p={['.7rem', '', '', '2rem']} overflow={'hidden'}>
 
-                <VStack alignItems={'flex-start'} w={'30rem'} height={'12rem'} gap={'2rem'} >
+                <VStack alignItems={'flex-start'} w={['fit-content', '', '', '30rem']} minH={'fit-content'} height={['8rem', '', '', '12rem']} gap={['0', '', '', '2rem']} >
                     <HStack gap={'2rem'} w={'100%'} height={'50%'}>
                         <VStack alignItems={'flex-start'} w={'50%'} height={'100%'}>
-                            <Heading>Platorm</Heading>
+                            <Heading fontSize={['1.1rem', '', '', '1.7rem']}>Platorm</Heading>
                             <Text>{platform}</Text>
                         </VStack>
                         <VStack alignItems={'flex-start'} w={'50%'} height={'100%'}>
-                            <Heading>Developer</Heading>
+                            <Heading fontSize={['1.1rem', '', '', '1.7rem']}>Developer</Heading>
                             <Text>{developer}</Text>
                         </VStack>
                     </HStack>
 
                     <HStack gap={'2rem'} w={'100%'} height={'50%'}>
                         <VStack alignItems={'flex-start'} w={'50%'} height={'100%'}>
-                            <Heading>Version</Heading>
+                            <Heading fontSize={['1.1rem', '', '', '1.7rem']}>Version</Heading>
                             <Text>{version}</Text>
                         </VStack>
                         <VStack alignItems={'flex-start'} w={'50%'} height={'100%'}>
-                            <Heading>Multiplayer</Heading>
+                            <Heading fontSize={['1.1rem', '', '', '1.7rem']}>Multiplayer</Heading>
                             <Text>{multiplayer}</Text>
                         </VStack>
                     </HStack>
                 </VStack>
 
+
+                <HStack flexDir={['column','','','row']} padding={['2rem .5rem','','','1rem 2rem']} gap={'2rem'}>
+                    {MiniReq && MiniReq.length > 0 && (
+                        <HStack w={'100%'} >
+                            <VStack alignItems={'flex-start'} >
+                                <Heading color={'#8C52FF'} fontSize={['1.1rem','','','1.7rem']}>MINIMUM REQUIREMENTS</Heading>
+                                {MiniReq.map((i, index) => (
+                                    <li key={index} fontWeight={'bold'}>{i}</li>
+                                ))}
+                            </VStack>
+                        </HStack>
+                    )}
+
+                    {RecReq && RecReq.length > 0 && (
+                        <HStack w={'100%'} >
+                            <VStack alignItems={'flex-start'} >
+                                <Heading color={'#8C52FF'} fontSize={['1.1rem','','','1.7rem']}>RECOMMENDED REQUIREMENTS</Heading>
+                                {RecReq.map((i, index) => (
+                                    <li key={index} fontWeight={'bold'}>{i}</li>
+                                ))}
+                            </VStack>
+                        </HStack>
+                    )}
+                </HStack>
+
             </Box>
 
-            <Box padding={'1rem 2rem'} >
+            <Box padding={['2rem .5rem','','','1rem 2rem']} >
 
-                <Heading fontSize={'1.5rem'} color={'#8C52FF'}>DESCRIPTION -</Heading>
+                <Heading fontSize={['1.3rem','','','1.5rem']} color={'#8C52FF'}>DESCRIPTION :</Heading>
                 {desc && desc.length > 0 && (
                     desc.map((i, index) => (
                         <Box key={index}>
-                            <Text fontSize={'1.1rem'}>{i}</Text>
+                            <Text fontSize={['1rem','','','1.1rem']}>{i}</Text>
                             <br></br>
                         </Box>
                     ))
                 )}
             </Box>
 
-            <HStack padding={'1rem 2rem'} gap={'2rem'}>
-                {MiniReq && MiniReq.length > 0 && (
-                    <HStack w={'100%'} >
-                        <VStack alignItems={'flex-start'} >
-                            <Heading color={'#8C52FF'}>MINIMUM REQUIREMENTS</Heading>
-                            {MiniReq.map((i, index) => (
-                                <li key={index} fontWeight={'bold'}>{i}</li>
-                            ))}
-                        </VStack>
-                    </HStack>
-                )}
 
-                {RecReq && RecReq.length > 0 && (
-                    <HStack w={'100%'} >
-                        <VStack alignItems={'flex-start'} >
-                            <Heading color={'#8C52FF'}>RECOMMENDED REQUIREMENTS</Heading>
-                            {RecReq.map((i, index) => (
-                                <li key={index} fontWeight={'bold'}>{i}</li>
-                            ))}
-                        </VStack>
-                    </HStack>
-                )}
-            </HStack>
-
-            <HStack alignItems={'center'} gap={'2rem'} p={'2rem'}>
-                <VStack w={'50%'}>
-                    <Heading fontSize={'2rem'}>SCREENSHOTS</Heading>
+            <HStack flexDir={['column','','','row']} alignItems={'center'} gap={'2rem'} p={'2rem'}>
+                <VStack w={['','','','50%']}>
+                    <Heading fontSize={['1.3rem','','','2rem']} color={'#8C52FF'}>SCREENSHOTS</Heading>
                     <Carousel
                         autoPlay
                         infiniteLoop

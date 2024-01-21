@@ -14,7 +14,7 @@ const Loader = () => {
           rotate: [0, 360],
         }}
       />
-      <Heading _selection={{bgColor : "yellow", color : "#000"}}>LOADING PLEASE WAIT.......</Heading>
+      <Heading _selection={{bgColor : "yellow", color : "#000"}} color={'white'}>LOADING PLEASE WAIT.......</Heading>
     </Box>
   );
 };
