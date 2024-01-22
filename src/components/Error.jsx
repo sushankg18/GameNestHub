@@ -7,8 +7,8 @@ const Error = ({message}) => {
     <Box bg="rgb(18,18,18)" color={'white'} w={'full'} h={'90vh'} display={'flex'} gap={'.8rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
       <BiSolidError fontSize={'3rem'} />
       <VStack>
-        <Heading fontSize={'1.8rem'}>{message}</Heading>
-        <Heading fontSize={'1.8rem'}>Retry?😎</Heading>
+        <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >{message}</Heading>
+        <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >Retry?😎</Heading>
       </VStack>
     </Box>
   )
