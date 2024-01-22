@@ -1,4 +1,4 @@
-import { Box, Checkbox, Center, HStack, Heading, Image, Input, Text, VStack, InputGroup, InputLeftElement, Button, AlertTitle, Stack } from '@chakra-ui/react'
+import { Box, Checkbox, Center, HStack, Heading, Image, Input, Text, VStack, InputGroup, InputLeftElement, Button,  Stack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import LoginImg from '../assets/loginPage.png'
 import signupBG from '../assets/temp.jpg'
@@ -74,5 +74,4 @@ const Login = () => {
         </Center >
     )
 }
-
 export default Login
