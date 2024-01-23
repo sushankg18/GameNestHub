@@ -1,31 +1,33 @@
-import { Box, Checkbox, Center, HStack, Heading, Image, Input, Text, VStack, InputGroup, InputLeftElement, Button,  Stack } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import LoginImg from '../assets/loginPage.png'
-import signupBG from '../assets/temp.jpg'
+import { Box, Button, Center, HStack, Heading, Image, Input, VStack, InputGroup, InputLeftElement, Checkbox, Stack, Text } from '@chakra-ui/react';
+import React, { useState, useContext } from 'react';
+import LoginImg from '../assets/loginPage.png';
+import signupBG from '../assets/temp.jpg';
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import firebase from '../firebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
+import { NoteContext } from '../Context/NoteState';
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [pass, setPass] = useState('')
-    const [isUserLoggedIn,setIsUserLoggedIn] = useState(false)
+    const { setLoginStatus ,setAuthenticatedUser } = useContext(NoteContext);
+
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
 
     const Navigate = useNavigate();
-
     const submit = async (e) => {
         e.preventDefault();
 
         try {
-            const user = await firebase.auth().signInWithEmailAndPassword(email, pass)
+            const user = await firebase.auth().signInWithEmailAndPassword(email, pass);
             if (user) {
-                alert('SINGNED IN SUCCESSFULLY✅`')
-                Navigate('/')
-                setIsUserLoggedIn(true);
+                alert('SIGNED IN SUCCESSFULLY✅');
+                Navigate('/userprofile');
+                setLoginStatus(true);
+                setAuthenticatedUser({ name: user.displayName });
             }
         } catch (error) {
-            alert(error)
+            alert(error);
         }
     }
 
@@ -34,13 +36,11 @@ const Login = () => {
             <Box fontFamily={'Titillium Web'} border={'1px solid white'} bgColor={'white'} color={'#9A67FF'} w={'50%'} height={'80vh'} borderRadius={'1rem'}>
                 <HStack w={'100%'} alignItems={'center'} height={'100%'}>
                     <HStack w={'50%'} h={'100%'} justifyContent={'center'}>
-                        <Image w={'80%'} objectFit={'contain'} src={LoginImg} />
+                        <Image userSelect={'none'} w={'80%'} objectFit={'contain'} src={LoginImg} />
                     </HStack>
-
                     <Box h={'100%'} border={'1px solid '} />
 
                     <VStack w={'50%'} alignItems={'center'} justifyContent={'center'} gap={'1rem'} h={'100%'} >
-                            
                         <Heading py={'2rem'}>Login</Heading>
                         <InputGroup borderBottom={'1px solid blue'} w={'70%'}>
                             <InputLeftElement pointerEvents='none'>
@@ -72,6 +72,7 @@ const Login = () => {
                 </HStack>
             </Box>
         </Center >
-    )
+    );
 }
-export default Login
+
+export default Login;

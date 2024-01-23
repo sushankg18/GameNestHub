@@ -1,5 +1,5 @@
-import { Box, Center, HStack, Heading, Image, Input, Text, VStack, InputGroup, InputLeftElement, Button, isStyleProp } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Box, Center, HStack, Heading, Image, Input, Text, VStack, InputGroup, InputLeftElement, Button, } from '@chakra-ui/react'
+import React, { useState, useContext } from 'react'
 import LoginImg from '../assets/loginPage.png'
 import signupBG from '../assets/temp.jpg'
 import { FaUser } from "react-icons/fa";
@@ -9,6 +9,8 @@ import firebase from '../firebaseConfig';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
+
+
     const [username, setUsername] = useState('')
     const [fullname, setFullName] = useState('')
     const [email, setEmail] = useState('')
@@ -20,7 +22,11 @@ const Signup = () => {
         try {
             const user = await firebase.auth().createUserWithEmailAndPassword(email, pass)
             if (user) {
-                alert('Account created Successfully ✅`')
+                alert('Account created Successfully ✅`');
+
+                await user.updateProfile({
+                    displayName: username,
+                  });
             }
         } catch (error) {
             alert(error)
