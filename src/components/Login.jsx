@@ -46,7 +46,7 @@ const Login = () => {
                             <InputLeftElement pointerEvents='none'>
                                 <FaUser color='gray.300' />
                             </InputLeftElement>
-                            <Input type='tel' placeholder='Username or Email ' onChange={(e) => { setEmail(e.target.value) }} value={email} border={'none'} py={'.5rem'} variant={'unstyled'} />
+                            <Input type='email' placeholder='Username or Email ' onChange={(e) => { setEmail(e.target.value) }} value={email} border={'none'} py={'.5rem'} variant={'unstyled'} />
                         </InputGroup>
 
                         <InputGroup borderBottom={'1px solid blue'} w={'70%'}>

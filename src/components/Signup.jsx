@@ -49,14 +49,14 @@ const Signup = () => {
                             <InputLeftElement pointerEvents='none'>
                                 <FaUser color='gray.300' />
                             </InputLeftElement>
-                            <Input type='tel' placeholder='Username' border={'none'} value={username} py={'.5rem'} variant={'unstyled'} onChange={(e) => { setUsername(e.target.value) }} />
+                            <Input type='text' placeholder='Username' border={'none'} value={username} py={'.5rem'} variant={'unstyled'} onChange={(e) => { setUsername(e.target.value) }} />
                         </InputGroup>
 
                         <InputGroup borderBottom={'1px solid blue'} w={'70%'}>
                             <InputLeftElement pointerEvents='none'>
                                 <MdDriveFileRenameOutline color='gray.300' />
                             </InputLeftElement>
-                            <Input type='tel' placeholder='Full name' border={'none'} value={fullname} py={'.5rem'} variant={'unstyled'} onChange={(e) => { setFullName(e.target.value) }} />
+                            <Input type='text' placeholder='Full name' border={'none'} value={fullname} py={'.5rem'} variant={'unstyled'} onChange={(e) => { setFullName(e.target.value) }} />
                         </InputGroup>
 
                         <InputGroup borderBottom={'1px solid blue'} w={'70%'}>
