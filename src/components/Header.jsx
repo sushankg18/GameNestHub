@@ -8,11 +8,6 @@ import Login from './Login';
 
 const Header = () => {
     const { LoginStatus , logout} = useContext(NoteContext);
-
-    useEffect(() => {
-        console.log("Header : ", LoginStatus);
-    }, []);
-
     const [searchTerm, setSearchTerm] = useState('')
     const handleLogOut = () =>{
         if(LoginStatus){

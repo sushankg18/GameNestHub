@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import UserProfile from "./components/UserProfile";
 import ForgetPass from "./components/ForgetPass";
 import { NoteState } from "./Context/NoteState";
+import GameDetails from "./components/GameDetails";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/forgetpassword" element={<ForgetPass />} />
+          <Route path="/games/:id" element={<GameDetails />}/>
         </Routes>
       </Router>
     </NoteState>

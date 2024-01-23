@@ -19,7 +19,6 @@ const Catalog = () => {
                                     boxSize='2rem'
                                     borderRadius='full'
                                     src={item.images.poster}
-                                    alt='Fluffybuns the destroyer'
                                     mr='12px'
                                 />
                                 <Text color={'black'} textDecor={'none'} fontWeight={'bold'}>{item.title}</Text>
