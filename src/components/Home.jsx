@@ -5,7 +5,9 @@ import Loader from './Loader';
 import Error from './Error';
 import { Link } from 'react-router-dom';
 import shuffle from 'lodash/shuffle';
+import { BiPurchaseTagAlt } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa6";
+
 const Home = () => {
   const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
@@ -24,8 +26,8 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      try { 
-        const response = await axios.get(`${URL}games?page_size=20&page=${page}&key=${API_KEY}`);
+      try {
+        const response = await axios.get(`${URL}games?page_size=39&page=${page}&key=${API_KEY}`);
         const games = response.data.results;
 
         const shuffledGames = shuffle(games);
@@ -58,32 +60,27 @@ const Home = () => {
         <Heading fontFamily={'Titillium Web'} fontSize={'2rem'} _selection={selection} >POPULAR AND TRENDING</Heading>
       </Center>
 
-      <Box display={'flex'} p={"1.5rem 0"} flexWrap={'wrap'} gap={'1rem'} justifyContent={'center'}>
+      <Box display={'flex'} p={"1.5rem 0"} gap={'1rem'} flexWrap={'wrap'} justifyContent={'center'}>
         {loading ? (
           <Loader />
         ) : (
           data.map((item, index) => (
             <Link key={index} to={`/games/${item.id}`}>
-              <Box cursor={'pointer'} border={'1px solid #6A6869'} key={index} borderRadius={'.5rem'} display={'flex'} flexDir={'column'} gap={'.5rem'} overflow={'hidden'} w={['100%', '20rem']} height={'19rem'} >
-                <Box w={'100%'} height={'65%'} cursor={'pointer'} overflow={'hidden'} >
-                  <Image width={'100%'} objectFit={'fill'} h={'100%'} userSelect={'none'} src={item.background_image} alt={item.name} transition={'.2s all ease-in-out'} _hover={{ transform: 'scale(1.2)' }} />
+              <Box w={'28rem'} borderRadius={'.5rem'} gap={'.7rem'} h={'11rem'} minw={'fit-content'} display={'flex'} color={'white'} bgColor={'rgb(30, 30, 30)'} p={'.4rem'}>
+                <Box h={'100%'} w={'40%'}>
+                  <Image w={'100%'} height={'100%'} borderRadius={'.5rem'} objectFit={'cover'} src={item.background_image} />
                 </Box>
-                <HStack justifyContent={'space-between'} padding={'.3rem 1rem'}>
-                  <VStack alignItems={'flex-start'} >
-                    <Text _selection={selection} noOfLines={'1'} fontWeight={'bold'} cursor={'pointer'} fontSize={'1.2rem'} >{item.name}</Text>
-                    <Text _selection={selection}>Released: {item.released}</Text>
-                    <Text _selection={selection}>Genre : {item.genres[0].name} </Text>
+                <VStack w={'60%'} justifyContent={'space-between'}>
+                  <VStack alignItems={'flex-start'} w={'100%'} gap={'.1rem'}>
+                    <Text fontWeight={'bold'} fontSize={'1.2rem'} color={'#9A67FF'} noOfLines={'1'}>{item.name}</Text>
+                    <Text>Released :  {item.released}</Text>
+                    <Text>Genre : {item.genres[0].name} </Text>
                   </VStack>
-                  <HStack alignSelf={'flex-start'} >
-                    <Tooltip label='Favourite'>
-                      <FaRegHeart
-                        onClick={() => handleHeartClick(index)}
-                        style={{ cursor: 'pointer', color: clickedItems[index] ? 'pink' : 'white' }}
-                        fontSize={'1.3rem'}
-                      />
-                    </Tooltip>
+                  <HStack gap={'.3rem'} alignItems={'flex-start'} w={'100%'} >
+                    <Text style={buttons}>Buy <BiPurchaseTagAlt /> </Text>
+                    <Text style={buttons}>Favourite <FaRegHeart /></Text>
                   </HStack>
-                </HStack>
+                </VStack>
               </Box>
             </Link>
           ))
@@ -121,7 +118,20 @@ const selection = {
   bgColor: "#9A67FF",
   color: "#fff"
 }
-
+const buttons = {
+  padding: ".1rem 1rem",
+  backgroundColor: "transparent",
+  border: "1px solid black",
+  display: "flex",
+  alignItems: "center",
+  gap: ".6rem",
+  borderRadius: ".5rem"
+}
 
 // for getting developerteam
 // https://api.rawg.io/api/games/3498/development-team?key=b529d03181f044c39b0a7a0722e82612
+
+// https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg
+
+{/* <Text _selection={selection}>Released: {item.released}</Text>
+<Text _selection={selection}>Genre : {item.genres[0].name} </Text> */}

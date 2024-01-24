@@ -8,7 +8,7 @@ const Error = ({message}) => {
       <BiSolidError fontSize={'3rem'} />
       <VStack>
         <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >{message}</Heading>
-        <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >Retry?😎</Heading>
+        <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >Retry?</Heading>
       </VStack>
     </Box>
   )
