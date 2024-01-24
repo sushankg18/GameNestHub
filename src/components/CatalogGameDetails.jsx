@@ -11,7 +11,17 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
-        <Box minH={'90vh'} color={'white'} w={'100vw'} overflow={'hidden'} position="relative" style={{ backgroundImage: `linear-gradient(${overlayColor}, ${overlayColor}), url(${bgIMG})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <Box minH={'90vh'} color={'white'} w={'100vw'} overflow={'hidden'} position="relative">
+            <Box
+                position={'fixed'}
+                top={'0'}
+                zIndex={'-1'}
+                w="100%"
+                h="100%"
+                background={`radial-gradient(ellipse at center, rgba(0,0,0,.6) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
+                backgroundSize="cover"
+                backgroundPosition="center"
+            />
 
             <HStack flexDir={['column', '', '', 'row']} gap={'2rem'} justifyContent={'space-between'} padding={['.5rem', '', '', '1rem 2rem']}>
                 <HStack flexDir={['column', '', '', 'row']} alignItems={'flex-start'} w={'100%'} >
@@ -60,11 +70,11 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                 </VStack>
 
 
-                <HStack flexDir={['column','','','row']} padding={['2rem .5rem','','','1rem 2rem']} gap={'2rem'}>
+                <HStack flexDir={['column', '', '', 'row']} padding={['2rem .5rem', '', '', '1rem 2rem']} gap={'2rem'}>
                     {MiniReq && MiniReq.length > 0 && (
                         <HStack w={'100%'} >
                             <VStack alignItems={'flex-start'} >
-                                <Heading color={'#8C52FF'} fontSize={['1.1rem','','','1.7rem']}>MINIMUM REQUIREMENTS</Heading>
+                                <Heading color={'#8C52FF'} fontSize={['1.1rem', '', '', '1.7rem']}>MINIMUM REQUIREMENTS</Heading>
                                 {MiniReq.map((i, index) => (
                                     <li key={index} fontWeight={'bold'}>{i}</li>
                                 ))}
@@ -75,7 +85,7 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                     {RecReq && RecReq.length > 0 && (
                         <HStack w={'100%'} >
                             <VStack alignItems={'flex-start'} >
-                                <Heading color={'#8C52FF'} fontSize={['1.1rem','','','1.7rem']}>RECOMMENDED REQUIREMENTS</Heading>
+                                <Heading color={'#8C52FF'} fontSize={['1.1rem', '', '', '1.7rem']}>RECOMMENDED REQUIREMENTS</Heading>
                                 {RecReq.map((i, index) => (
                                     <li key={index} fontWeight={'bold'}>{i}</li>
                                 ))}
@@ -86,13 +96,13 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
 
             </Box>
 
-            <Box padding={['2rem .5rem','','','1rem 2rem']} >
+            <Box padding={['2rem .5rem', '', '', '1rem 2rem']} w={'50%'} >
 
-                <Heading fontSize={['1.3rem','','','1.5rem']} color={'#8C52FF'}>DESCRIPTION :</Heading>
+                <Heading fontSize={['1.3rem', '', '', '1.5rem']} color={'#8C52FF'}>DESCRIPTION :</Heading>
                 {desc && desc.length > 0 && (
                     desc.map((i, index) => (
                         <Box key={index}>
-                            <Text fontSize={['1rem','','','1.1rem']}>{i}</Text>
+                            <Text fontSize={['1rem', '', '', '1.1rem']}>{i}</Text>
                             <br></br>
                         </Box>
                     ))
@@ -100,9 +110,9 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
             </Box>
 
 
-            <HStack flexDir={['column','','','row']} alignItems={'center'} gap={'2rem'} p={'2rem'}>
-                <VStack w={['','','','50%']}>
-                    <Heading fontSize={['1.3rem','','','2rem']} color={'#8C52FF'}>SCREENSHOTS</Heading>
+            <HStack flexDir={['column', '', '', 'row']} alignItems={'center'} gap={'2rem'} p={'2rem'}>
+                <VStack w={['', '', '', '50%']}>
+                    <Heading fontSize={['1.3rem', '', '', '2rem']} color={'#8C52FF'}>SCREENSHOTS</Heading>
                     <Carousel
                         autoPlay
                         infiniteLoop
@@ -118,9 +128,9 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                     </Carousel>
                 </VStack>
 
-                <VStack w={'50%'}>
-                    <Heading>DOWNLOAD LINKS</Heading>
-                    <HStack>
+                <VStack w={'50%'} gap={'5rem'} >
+                    <Heading color={'#8C52FF'}>DOWNLOAD LINKS</Heading>
+                    <VStack gap={'2rem'}>
                         <a href={gdrive} target='_blank'>
                             <Button style={downloadLinks} bgColor={'#E8E8E8'} _hover={{ bgColor: "rgb(210,210,210)" }}>
                                 <Flex align={'center'} gap={'.7rem'}>
@@ -156,7 +166,7 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                                 </Flex>
                             </Button>
                         </a>
-                    </HStack>
+                    </VStack>
                 </VStack>
             </HStack>
 

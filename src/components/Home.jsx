@@ -119,13 +119,15 @@ const selection = {
   color: "#fff"
 }
 const buttons = {
-  padding: ".1rem 1rem",
-  backgroundColor: "transparent",
+  padding: ".3rem 1rem",
+  fontWeight : "bold",
   border: "1px solid black",
   display: "flex",
   alignItems: "center",
   gap: ".6rem",
-  borderRadius: ".5rem"
+  borderRadius: ".5rem",
+  color : "#9A67FF",
+  backgroundColor : "white"
 }
 
 // for getting developerteam
