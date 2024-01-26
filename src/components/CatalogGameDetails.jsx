@@ -18,9 +18,10 @@ const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, sc
                 zIndex={'-1'}
                 w="100%"
                 h="100%"
-                background={`radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
+                background={`radial-gradient(ellipse at center, rgba(0,0,0,.6) 0%, rgba(0,0,0,0.1) 100%), url(${bgIMG})`}
                 backgroundSize="cover"
                 backgroundPosition="center"
+                
             />
 
             <HStack flexDir={['column', '', '', 'row']} gap={'2rem'} justifyContent={'space-between'} padding={['.5rem', '', '', '1rem 2rem']}>

@@ -13,7 +13,7 @@ const GameDetails = () => {
 
   const { id } = useParams();
 
-  const URL = "https://api.rawg.io/api/";
+  const URL = "https://api.rawg.io/apis/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const GameDetails = () => {
               zIndex={'-1'}
               w="100%"
               h="100%"
-              background={`radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%), url(${item.background_image})`}
+              background={`radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, rgba(0,0,0,0.9) 100%), url(${item.background_image})`}
               backgroundSize="cover"
               backgroundPosition="center"
             />
