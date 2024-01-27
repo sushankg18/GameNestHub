@@ -71,6 +71,7 @@ const Home = () => {
       minH={"90vh"}
       color={"white"}
       fontFamily={"Titillium Web"}
+      overflowX={'hidden'}
     >
       <Center py={"1.5rem"}>
         <Heading
@@ -142,6 +143,66 @@ const Home = () => {
         )}
       </Box>
       <GenreSection />
+
+      <Box
+        display={"flex"}
+        p={"1.5rem 0"}
+        gap={"1rem"}
+        flexWrap={"wrap"}
+        justifyContent={"center"}
+      >
+        {loading ? (
+          <Loader />
+        ) : (
+          data.map((item, index) => (
+            <Link key={index} to={`/games/${item.id}`}>
+              <Box
+                w={"28rem"}
+                borderRadius={".5rem"}
+                gap={".7rem"}
+                h={"11rem"}
+                minw={"fit-content"}
+                display={"flex"}
+                color={"white"}
+                bgColor={"rgb(30, 30, 30)"}
+                p={".4rem"}
+              >
+                <Box h={"100%"} w={"40%"}>
+                  <Image
+                    w={"100%"}
+                    height={"100%"}
+                    borderRadius={".5rem"}
+                    objectFit={"cover"}
+                    src={item.background_image}
+                  />
+                </Box>
+                <VStack w={"60%"} justifyContent={"space-between"}>
+                  <VStack alignItems={"flex-start"} w={"100%"} gap={".1rem"}>
+                    <Text
+                      fontWeight={"bold"}
+                      fontSize={"1.2rem"}
+                      color={"#9A67FF"}
+                      noOfLines={"1"}
+                    >
+                      {item.name}
+                    </Text>
+                    <Text>Released : {item.released}</Text>
+                    <Text>Genre : {item.genres[0].name} </Text>
+                  </VStack>
+                  <HStack gap={".3rem"} alignItems={"flex-start"} w={"100%"}>
+                    <Text style={buttons}>
+                      Buy <BiPurchaseTagAlt />{" "}
+                    </Text>
+                    <Text style={buttons}>
+                      Favourite <FaRegHeart />
+                    </Text>
+                  </HStack>
+                </VStack>
+              </Box>
+            </Link>
+          ))
+        )}
+      </Box>
       <HStack
         overflowX={"auto"}
         justifyContent={"center"}
