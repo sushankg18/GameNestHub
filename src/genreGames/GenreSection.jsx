@@ -1,11 +1,17 @@
-import { Box, Center, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Center, HStack, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
 import genreData from "./GenreSectionData";
 const GenreSection = () => {
   return (
     <>
-      <Heading px={"6%"} fontFamily={"Titillium Web"} _selection={selection}>Explore by Genre</Heading>
+      <Heading
+        fontSize={"1.5rem"}
+        px={"6%"}
+        fontFamily={"Titillium Web"}
+        _selection={selection}
+      >
+        Explore by Genre
+      </Heading>
       <Center>
         <Box
           w={"88vw"}
@@ -16,11 +22,11 @@ const GenreSection = () => {
           sx={{
             "&::-webkit-scrollbar": {
               height: "10px",
-              cursor: "pointer",
             },
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: "#9A67FF",
               borderRadius: "10px",
+              cursor: "pointer",
             },
             "&::-webkit-scrollbar-track": {
               backgroundColor: "transparent",
@@ -33,11 +39,12 @@ const GenreSection = () => {
           <HStack w={"fit-content"} gap={"1.5rem"}>
             {genreData.map((i) => (
               <Box
-                w={"20rem"}
+                w={"17rem"}
                 position={"relative"}
-                h={"20rem"}
+                h={"17rem"}
                 border={"1px solid #18181C"}
                 cursor={"pointer"}
+                overflow={'hidden'}
               >
                 <Box
                   position={"absolute"}
@@ -46,8 +53,11 @@ const GenreSection = () => {
                   h="100%"
                   background={`radial-gradient(ellipse at center, rgba(0,0,0,.2) 0%, rgba(0,0,0,0.9) 100%), url(${i.bgimg})`}
                   backgroundSize="cover"
+                  transition={'.2s all ease-in-out'}
                   backgroundPosition="center"
-                  scale={"1.2"}
+                  _hover={{
+                    transform: "scale(1.1)",
+                  }}
                 />
                 <Text
                   zIndex={2}
@@ -58,7 +68,7 @@ const GenreSection = () => {
                   transform="translate(-50%, -50%)"
                   fontWeight={"bold"}
                   fontSize={"1.6rem"}
-                  userSelect={'none'}
+                  userSelect={"none"}
                 >
                   {i.name}
                 </Text>
@@ -72,7 +82,6 @@ const GenreSection = () => {
 };
 
 export default GenreSection;
-
 
 const selection = {
   bgColor: "#9A67FF",

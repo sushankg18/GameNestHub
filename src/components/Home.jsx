@@ -19,8 +19,9 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa6";
 import GenreSection from "../genreGames/GenreSection";
 
+
 const Home = () => {
-  const URL = "https://api.rawg.io/apis/";
+  const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
 
   const [data, setData] = useState([]);
@@ -86,7 +87,7 @@ const Home = () => {
       <Box
         display={"flex"}
         p={"1.5rem 0"}
-        gap={"1rem"}
+        gap={"2rem"}
         flexWrap={"wrap"}
         justifyContent={"center"}
       >
@@ -104,15 +105,18 @@ const Home = () => {
                 display={"flex"}
                 color={"white"}
                 bgColor={"rgb(30, 30, 30)"}
-                p={".4rem"}
+                p={"1rem"}
               >
-                <Box h={"100%"} w={"40%"}>
+                <Box h={"100%"} w={"40%"} overflow={'hidden'}>
                   <Image
                     w={"100%"}
                     height={"100%"}
                     borderRadius={".5rem"}
                     objectFit={"cover"}
+                    userSelect={'none'}
                     src={item.background_image}
+                    transition={'.1s all ease-in-out'}
+                    _hover={{transform : 'scale(1.1)'}}
                   />
                 </Box>
                 <VStack w={"60%"} justifyContent={"space-between"}>
@@ -125,14 +129,14 @@ const Home = () => {
                     >
                       {item.name}
                     </Text>
-                    <Text>Released : {item.released}</Text>
-                    <Text>Genre : {item.genres[0].name} </Text>
+                    <Text _selection={selection}>Released : {item.released}</Text>
+                    <Text _selection={selection}>Genre : {item.genres[0].name} </Text>
                   </VStack>
                   <HStack gap={".3rem"} alignItems={"flex-start"} w={"100%"}>
-                    <Text style={buttons}>
+                    <Text style={buttons} userSelect={'none'}>
                       Buy <BiPurchaseTagAlt />{" "}
                     </Text>
-                    <Text style={buttons}>
+                    <Text style={buttons} userSelect={'none'}>
                       Favourite <FaRegHeart />
                     </Text>
                   </HStack>
@@ -146,7 +150,7 @@ const Home = () => {
 
       <Box
         display={"flex"}
-        p={"1.5rem 0"}
+        p={"7rem 0"}
         gap={"1rem"}
         flexWrap={"wrap"}
         justifyContent={"center"}
@@ -249,13 +253,3 @@ const buttons = {
   color: "#9A67FF",
   backgroundColor: "white",
 };
-
-// for getting developerteam
-// https://api.rawg.io/api/games/3498/development-team?key=b529d03181f044c39b0a7a0722e82612
-
-// https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg
-
-{
-  /* <Text _selection={selection}>Released: {item.released}</Text>
-<Text _selection={selection}>Genre : {item.genres[0].name} </Text> */
-}

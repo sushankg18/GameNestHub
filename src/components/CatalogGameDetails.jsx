@@ -7,7 +7,7 @@ import { FaGoogleDrive } from "react-icons/fa";
 import { SiUtorrent } from "react-icons/si";
 import { FaDownload } from "react-icons/fa6";
 
-const CatalogGameDetails = ({ id, title, poster, bgIMG, trailer, releaseDate, screenshots, genre, developer, platform, multiplayer, version, size, desc, MiniReq, RecReq, gdrive, mega, directly, torrent }) => {
+const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screenshots, genre, developer, platform, multiplayer, version, size, desc, MiniReq, RecReq, gdrive, mega, directly, torrent }) => {
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
