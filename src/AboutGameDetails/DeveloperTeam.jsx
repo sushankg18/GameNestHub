@@ -37,14 +37,16 @@ const DeveloperTeam = ({ bgIMG, name, photo }) => {
           }}
         />
         <Box w={"7rem"} h={"7rem"} overflow={"hidden"}>
-          <Image
-            w={"100%"}
-            h={"100%"}
-            border={"none"}
-            borderRadius={"100%"}
-            objectFit={"cover"}
-            src={photo}
-          />
+          {photo ? (
+            <Image
+              w={"100%"}
+              h={"100%"}
+              border={"none"}
+              borderRadius={"100%"}
+              objectFit={"cover"}
+              src={photo}
+            />
+          )  : null}
         </Box>
         <Text
           zIndex={2}
