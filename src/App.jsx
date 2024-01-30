@@ -10,9 +10,9 @@ import UserProfile from "./components/UserProfile";
 import ForgetPass from "./components/ForgetPass";
 import { NoteState } from "./Context/NoteState";
 import GameDetails from "./components/GameDetails";
+import Action from "./genreGames/Action";
 
 function App() {
-
 
   return (
     <NoteState>
@@ -26,6 +26,7 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/forgetpassword" element={<ForgetPass />} />
           <Route path="/games/:id" element={<GameDetails />}/>
+          <Route path="/genre/action" element={<Action />}/>
         </Routes>
       </Router>
     </NoteState>
@@ -33,3 +34,6 @@ function App() {
 }
 
 export default App;
+
+
+// `${URL}games?genres=2&page_size=40&key=${API_KEY}&page=${page}`
