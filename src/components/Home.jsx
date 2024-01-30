@@ -43,7 +43,7 @@ const Home = () => {
           `${URL}games?page_size=39&page=${page}&key=${API_KEY}`
         );
         const games = response.data.results;
-
+          console.log(games)
         const shuffledGames = shuffle(games);
 
         setData(shuffledGames);
@@ -95,7 +95,7 @@ const Home = () => {
           <Loader />
         ) : (
           data.map((item, index) => (
-            <Link key={index} to={`/games/${item.id}`}>
+            <Link key={index} to={`/games/${item.slug}`}>
               <Box
                 w={"28rem"}
                 borderRadius={".5rem"}
