@@ -26,7 +26,7 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/forgetpassword" element={<ForgetPass />} />
           <Route path="/games/:id" element={<GameDetails />}/>
-          <Route path="/genre/action" element={<Action />}/>
+          <Route path="/genre/:id" element={<Action />}/>
         </Routes>
       </Router>
     </NoteState>
@@ -35,5 +35,3 @@ function App() {
 
 export default App;
 
-
-// `${URL}games?genres=2&page_size=40&key=${API_KEY}&page=${page}`

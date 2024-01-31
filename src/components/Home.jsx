@@ -43,13 +43,12 @@ const Home = () => {
           `${URL}games?page_size=39&page=${page}&key=${API_KEY}`
         );
         const games = response.data.results;
-          console.log(games)
         const shuffledGames = shuffle(games);
 
         setData(shuffledGames);
       } catch (error) {
         setError(true);
-        console.error("Error fetching data:", error);
+        setLoading(false);
       } finally {
         setLoading(false);
       }

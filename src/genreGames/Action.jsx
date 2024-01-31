@@ -9,20 +9,17 @@ import {
   Image,
   Text,
   Center,
-  Tooltip,
 } from "@chakra-ui/react";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
-import { Link } from "react-router-dom";
-import shuffle from "lodash/shuffle";
+import { Link, useParams } from "react-router-dom";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa6";
-import GenreSection from "../genreGames/GenreSection";
 
 const Action = () => {
   const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
-
+  const { id }  = useParams();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -39,14 +36,14 @@ const Action = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${URL}games?genres=4&page_size=39&key=${API_KEY}&page=${page}`
+          `${URL}games?genres=${id}&page_size=39&key=${API_KEY}&page=${page}`
         );
         const games = response.data.results;
 
         setData(games);
       } catch (error) {
         setError(true);
-        console.error("Error fetching data:", error);
+        setLoading(false);
       } finally {
         setLoading(false);
       }
@@ -54,14 +51,10 @@ const Action = () => {
 
     fetchData();
   }, [page, API_KEY]);
-  const handleHeartClick = (index) => {
-    const newClickedItems = [...clickedItems];
-    newClickedItems[index] = !newClickedItems[index];
-    setClickedItems(newClickedItems);
-  };
-  // if (error) {
-  //   return <Error message={'Data went on vacation without leaving a note 😭. '} />;
-  // }
+
+  if (error) {
+    return <Error message={'Data went on vacation without leaving a note 😭. '} />;
+  }
 
   return (
     <Box
@@ -77,7 +70,7 @@ const Action = () => {
           fontSize={"2rem"}
           userSelect={"none"}
         >
-          <span style={{ color: "#9A67FF" }}> ACTION</span> GAMES
+          <span style={{ color: "#9A67FF" }}> {id.toUpperCase()}</span> GAMES
         </Heading>
       </Center>
 
@@ -102,13 +95,13 @@ const Action = () => {
                 display={"flex"}
                 color={"white"}
                 bgColor={"rgb(30, 30, 30)"}
-                p={"1rem"}
+                p={".4rem"}
               >
-                <Box h={"100%"} w={"40%"} overflow={"hidden"}>
+                <Box h={"100%"} w={"40%"} overflow={"hidden"}borderRadius={".5rem"}>
                   <Image
                     w={"100%"}
                     height={"100%"}
-                    borderRadius={".5rem"}
+                    
                     objectFit={"cover"}
                     userSelect={"none"}
                     src={item.background_image}
