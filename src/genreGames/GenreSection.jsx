@@ -27,7 +27,7 @@ const GenreSection = () => {
     fetchData()
   }, [API_KEY]);
   return (
-    <>
+    <Box w={'100%'} >
       <Heading
         fontSize={"1.5rem"}
         px={"6%"}
@@ -36,7 +36,7 @@ const GenreSection = () => {
       >
         Explore by Genre
       </Heading>
-      <Center>
+      <Center px={'3rem'}>
         <Box
           w={"88vw"}
           h={"fit-content"}
@@ -103,7 +103,7 @@ const GenreSection = () => {
           </HStack>
         </Box>
       </Center>
-    </>
+    </Box>
   );
 };
 

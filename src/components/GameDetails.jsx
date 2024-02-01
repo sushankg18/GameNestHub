@@ -6,6 +6,7 @@ import Error from "./Error";
 import {
   Box,
   Button,
+  Flex,
   HStack,
   Heading,
   Image,
@@ -73,12 +74,12 @@ const GameDetails = () => {
   }
 
   return (
-    <Box color={"white"} w={"100vw"}  minH={"90vh"} position={"relative"} p={'2rem 3rem'}>
+    <Box color={"white"} w={"80%"}  minH={"90vh"} position={"relative"} p={'2rem 3rem'}>
       {loading ? (
         <Loader />
       ) : (
         game.map((item, index) => (
-          <>
+          <Flex flexDir={'column'}>
             <Box
               position={"fixed"}
               top={"0"}
@@ -90,11 +91,11 @@ const GameDetails = () => {
               backgroundSize="cover"
               backgroundPosition="center"
             />
-            <VStack alignItems={"flex-start"}>
+            <HStack alignItems={"flex-start"}>
               <Heading color={"#9A67FF"}>{item.name}</Heading>
               <p style={{ width: "50%" }}>{item.description_raw}</p>
               <p>{item.released}</p>
-            </VStack>
+            </HStack>
             <HStack flexWrap={"wrap"} width={"50%"} gap={".2rem"}>
               {item.tags.map((i) => (
                 <Text textDecor={"underline"} cursor={"pointer"}>
@@ -129,7 +130,7 @@ const GameDetails = () => {
                <GameSeries bgIMG={i.background_image} name={i.name} />
               ))}
             </HStack>
-          </>
+          </Flex>
         ))
       )}
     </Box>

@@ -70,6 +70,7 @@ const Action = () => {
   return (
     <Box
       bgColor={"#121212"}
+      w={'80%'}
       minH={"90vh"}
       color={"white"}
       fontFamily={"Titillium Web"}

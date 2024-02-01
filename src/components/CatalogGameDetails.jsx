@@ -11,7 +11,7 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
-        <Box minH={'90vh'} color={'white'} w={'100vw'} overflow={'hidden'} position="relative">
+        <Box minH={'90vh'} color={'white'}  overflow={'hidden'} position="relative">
             <Box
                 position={'fixed'}
                 top={'0'}

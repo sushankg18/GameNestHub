@@ -1,12 +1,40 @@
-import { Box, Heading } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Heading, VStack } from "@chakra-ui/react";
+import React from "react";
 
 const Sidebar = () => {
   return (
-    <Box w={'20%'}bgColor={"#121212"}  pt={'4rem'} position={'fixed'} top={'0'} h={'100vh'} borderRight={'1px solid white'}>
-      <Heading>hsdfjdhsfjdsh</Heading>
-    </Box>
-  )
-}
+    <Box
+      minW={"20%"}
+      position={"sticky"}
+      top={'10vh'}
+      h={"90vh"}
+      overflowY={'auto'}
+    >
+      <VStack height={'fit-content'} py={'2rem'}>
+        <Heading>SUSHANK</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
 
-export default Sidebar
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        <Heading>hsdfjdhsfjdsh</Heading>
+        
+      </VStack>
+    </Box>
+  );
+};
+
+export default Sidebar;
