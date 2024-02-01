@@ -18,7 +18,7 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
                 zIndex={'-1'}
                 w="100%"
                 h="100%"
-                background={`radial-gradient(ellipse at center, rgba(0,0,0,.6) 0%, rgba(0,0,0,0.1) 100%), url(${bgIMG})`}
+                background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.8) 100%), url(${bgIMG})`}
                 backgroundSize="cover"
                 backgroundPosition="center"
                 

@@ -73,7 +73,7 @@ const GameDetails = () => {
   }
 
   return (
-    <Box color={"white"} w={"100vw"} minH={"90vh"} position={"relative"} p={'2rem 3rem'}>
+    <Box color={"white"} w={"100vw"}  minH={"90vh"} position={"relative"} p={'2rem 3rem'}>
       {loading ? (
         <Loader />
       ) : (

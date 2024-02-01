@@ -15,7 +15,7 @@ const Header = () => {
         }
     }
     return (
-        <HStack height={'10vh'} padding={'.8rem 2rem'} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
+        <HStack height={'10vh'} padding={'.8rem 2rem'} w={'100vw'}  justifyContent={'space-between'} bgColor={'#18181C'}>
             <HStack w={'60%'} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['4rem', '6rem']} borderRadius={'5px'} />

@@ -11,7 +11,13 @@ body {
   height: 100vh;
   overflow-x: hidden;
 }
-
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(154, 153, 255);
+  /* background-color: #9A67FF; */
+}
 .loader {
   position: relative;
   width: 164px;
