@@ -21,7 +21,6 @@ import Stores from "../AboutGameDetails/Stores";
 import DeveloperTeam from "../AboutGameDetails/DeveloperTeam";
 import GameSeries from "../AboutGameDetails/GameSeries";
 import Screenshots from "../AboutGameDetails/Screenshots";
-
 const GameDetails = () => {
   const [game, setGame] = useState([]);
   const [gameScreenshots, setGameScreenshots] = useState([]);
@@ -30,7 +29,7 @@ const GameDetails = () => {
   const [developTeam, setDevelopTeam] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+  const [showFullDescription, setShowFullDescription] = useState(false);
   const { id } = useParams();
 
   const URL = "https://api.rawg.io/api/";
@@ -47,6 +46,7 @@ const GameDetails = () => {
         const development_team = await axios.get(
           `${URL}games/${id}/development-team?key=${API_KEY}`
         );
+        // https://api.rawg.io/api/games/{id}/movies
         const game_series = await axios.get(
           `${URL}games/${id}/game-series?key=${API_KEY}`
         );
@@ -69,67 +69,130 @@ const GameDetails = () => {
     fetchGameData();
   }, [id]);
 
+  const handleReadMoreClick = () => {
+    setShowFullDescription(true);
+  };
+  const handleReadLess = () => {
+    setShowFullDescription(false);
+  };
+
   if (error) {
     return <Error message={"Error while fetching Game data 😭"} />;
   }
 
   return (
-    <Box color={"white"} w={"80%"}  minH={"90vh"} position={"relative"} p={'2rem 3rem'}>
+    <Box
+      color={"white"}
+      w={"80%"}
+      minH={"90vh"}
+      position={"relative"}
+      p={"2rem 3rem"}
+    >
       {loading ? (
         <Loader />
       ) : (
         game.map((item, index) => (
-          <Flex flexDir={'column'}>
+          <Flex flexDir={"column"} gap={"2rem"}>
             <Box
               position={"fixed"}
               top={"0"}
-              left={'0'}
+              left={"0"}
               zIndex={"-1"}
               w="100%"
               h="100%"
-              background={`radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, rgba(0,0,0,0.9) 100%), url(${item.background_image})`}
+              background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${item.background_image})`}
               backgroundSize="cover"
               backgroundPosition="center"
             />
-            <HStack alignItems={"flex-start"}>
-              <Heading color={"#9A67FF"}>{item.name}</Heading>
-              <p style={{ width: "50%" }}>{item.description_raw}</p>
-              <p>{item.released}</p>
-            </HStack>
-            <HStack flexWrap={"wrap"} width={"50%"} gap={".2rem"}>
-              {item.tags.map((i) => (
-                <Text textDecor={"underline"} cursor={"pointer"}>
-                  {i.name}
-                </Text>
-              ))}
-            </HStack>
 
-            <HStack>
-              {gameScreenshots.map((screenshot, index) => (
-               <Screenshots screenshot={screenshot.image} index={index}/>
-              ))}
-            </HStack>
-
-            {platform.map((i) => (
-              <Stores store_id={i.store_id} url={i.url}/>
-            ))}
-            <Link to={item.website} target="_blank" rel="">
-              <Heading>website</Heading>
-            </Link>
-            <Box sx={style}>
-              <HStack w={"fit-content"} gap={"1.5rem"}>
-                {developTeam.map((i) => (
-                  <DeveloperTeam bgIMG={i.image_background} photo={i.image} name={i.name} />
-                ))}
+            {/* MAIN */}
+            <Box w={"100%"} height={"fit-content"}>
+              <Heading pb={"2rem"} color={"#8C52FF"} fontSize={"xxx-large"}>
+                {item.name}
+              </Heading>
+              <HStack h={"100%"} height={"20rem"}>
+                <VStack
+                  w={"15%"}
+                  overflowY={"auto"}
+                  sx={scrollbarStyles}
+                  gap={"1rem"}
+                  px={".3rem"}
+                  h={"100%"}
+                >
+                  {gameScreenshots.map((i, idx) => (
+                    <Box w={"100%"}>
+                      <Image
+                        w={"100%"}
+                        cursor={"pointer"}
+                        objectFit={"contain"}
+                        src={i.image}
+                      />
+                    </Box>
+                  ))}
+                </VStack>
+                <Image src={item.background_image} w={"50%"} />
+                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"}>
+                  <Text fontSize={"x-large"} fontWeight={"bold"}>
+                    {item.name}
+                  </Text>
+                  <Text>Release Date : {item.release} </Text>
+                  <Text>Average Playtime : {item.playtime} Hours</Text>
+                  <Text key={index}>
+                    Genre: {item.genres.map((genre) => genre.name).join(", ")}
+                  </Text>
+                  <Text>
+                    <Link to={item.website} target="_blank">
+                      Official Website
+                    </Link>
+                  </Text>
+                </Box>
               </HStack>
             </Box>
+            {/* MAIN-END*/}
 
+            {/* DESCRIPTION-AREA */}
+            <Box w={"100%"}>
+              <Heading fontSize={"x-large"}>Description :</Heading>
+              <Text>
+                {showFullDescription
+                  ? item.description_raw
+                  : `${item.description_raw.slice(0, 450)}...`}
+                {!showFullDescription ? (
+                  <Button
+                    onClick={handleReadMoreClick}
+                    color={"white"}
+                    backgroundColor="#9A67FF"
+                    size="xs"
+                  >
+                    Show More
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleReadLess}
+                    backgroundColor="#9A67FF"
+                    color={"white"}
+                    size="xs"
+                  >
+                    Show Less
+                  </Button>
+                )}
+              </Text>
+            </Box>
+            {/* DESCRIPTION-AREA ENDED*/}
 
-            <HStack>
-              {gameSeries.map((i) => (
-               <GameSeries bgIMG={i.background_image} name={i.name} />
-              ))}
-            </HStack>
+            {/* STORES-AREA */}
+            <Flex>
+              <Box w={"50%"} border={"1px solid white"}></Box>
+              <Box w={"50%"} border={"1px solid white"}>
+                <Heading fontSize={"large"}>Where to buy ?</Heading>
+                <Flex gap={'2.5rem'} flexWrap={'wrap'} w={'60%'} border={'1px solid red'}>
+                  {platform.map((i, idx) => (
+                    <Stores store_id={i.store_id} url={i.url} />
+                  ))}
+                </Flex>
+              </Box>
+            </Flex>
+            {/* STORES-AREA ENDED */}
           </Flex>
         ))
       )}
@@ -137,13 +200,12 @@ const GameDetails = () => {
   );
 };
 
-
 const scrollbarStyles = {
   "&::-webkit-scrollbar": {
-    height: "10px",
+    width: "1px",
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#9A67FF",
+    backgroundColor: "transparent",
     borderRadius: "10px",
     cursor: "pointer",
   },
@@ -153,15 +215,6 @@ const scrollbarStyles = {
   "&::webkit-scrollbar-thumb:hover": {
     backgroundColor: "black",
   },
-};
-
-const style = {
-  width: "88vw",
-  height: "fit-content",
-  padding: "1rem 0",
-  overflowX: "scroll",
-  scrollBehavior: "smooth",
-  ...scrollbarStyles,
 };
 
 export default GameDetails;

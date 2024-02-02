@@ -12,8 +12,7 @@ import { NoteState } from "./Context/NoteState";
 import GameDetails from "./components/GameDetails";
 import Action from "./genreGames/Action";
 import Sidebar from "./components/Sidebar";
-import { Flex } from "@chakra-ui/react";
-
+import { Box, Flex } from "@chakra-ui/react";
 function App() {
   return (
     <NoteState>
@@ -21,6 +20,14 @@ function App() {
         <Header />
         <Flex>
           <Sidebar />
+          <Box
+            position={'fixed'}
+            width={'100vw'}
+            height={'90vh'}
+            top={'10vh'}
+            bgColor={'#121212'}
+            zIndex={'-3'}          
+          />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={"/catalog/:id"} element={<CatalogGames />} />

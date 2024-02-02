@@ -20,8 +20,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Sidebar from "./Sidebar";
-import GenreSection from "../genreGames/GenreSection";
-
+import SmallLoader from '../components/SmallLoader'
 const Home = () => {
   const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
@@ -29,25 +28,26 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [smLoader, setSMLoader] = useState(false)
   const [error, setError] = useState(false);
   const [clickedItems, setClickedItems] = useState([]);
-  const changePage = (page) => {
-    setPage(page);
-  };
 
-  const btns = new Array(15).fill(1);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      setLoading(true)
       try {
         const response = await axios.get(
-          `${URL}games?page_size=39&page=${page}&key=${API_KEY}`
+          `${URL}games?page_size=9&page=${page}&key=${API_KEY}`
         );
         const games = response.data.results;
-        const shuffledGames = shuffle(games);
-
-        setData(shuffledGames);
+        if (page === 1) {
+          setData(games);
+        } else {
+          setData((prev) => [...prev, ...games]);
+        }
       } catch (error) {
         setError(true);
         setLoading(false);
@@ -58,11 +58,22 @@ const Home = () => {
 
     fetchData();
   }, [page, API_KEY]);
-  const handleHeartClick = (index) => {
-    const newClickedItems = [...clickedItems];
-    newClickedItems[index] = !newClickedItems[index];
-    setClickedItems(newClickedItems);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      setSMLoader(true)
+      setPage((prev) => prev + 1);
+    }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   if (error) {
     return (
       <Error message={"Data went on vacation without leaving a note 😭. "} />
@@ -78,13 +89,14 @@ const Home = () => {
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
     >
-      <Center py={"1.5rem"}>
+      <Center>
         <Heading
           fontFamily={"Titillium Web"}
-          fontSize={"2rem"}
-          _selection={selection}
+          fontSize={"2.5rem"}
+          userSelect={"none"}
+          p={"1.5rem 4rem"}
         >
-          POPULAR AND TRENDING
+          <span style={{ color: "#9A67FF" }}> POPULAR </span>
         </Heading>
       </Center>
 
@@ -155,19 +167,11 @@ const Home = () => {
               </Box>
             </Link>
           ))
-        )}
+          )}
       </Box>
-      <GenreSection />
-
-      <HStack
-        overflowX={"auto"}
-        justifyContent={"center"}
-        w={"full"}
-        p={"1rem"}
-      >
-        <Button leftIcon={<FaArrowLeftLong />}>Prev</Button>
-        <Button rightIcon={<FaArrowRightLong />}>Next</Button>
-      </HStack>
+          {
+          smLoader ?<SmallLoader /> : null
+        }
     </Box>
   );
 };
