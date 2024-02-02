@@ -19,7 +19,7 @@ body {
   background-color: rgb(154, 153, 255);
 }
 ::-webkit-scrollbar-track{
-  background-color: #121212;
+  background-color: transparent;
 
 }
 .loader {

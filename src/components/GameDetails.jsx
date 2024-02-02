@@ -6,10 +6,12 @@ import Error from "./Error";
 import {
   Box,
   Button,
+  Center,
   Flex,
   HStack,
   Heading,
   Image,
+  Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -130,7 +132,14 @@ const GameDetails = () => {
                     </Box>
                   ))}
                 </VStack>
-                <Image src={item.background_image} w={"50%"} />
+                <Box w={"50%"} h={"100%"}>
+                  <Image
+                    src={item.background_image}
+                    w={"100%"}
+                    h={"100%"}
+                    objectFit={"fill"}
+                  />
+                </Box>
                 <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"}>
                   <Text fontSize={"x-large"} fontWeight={"bold"}>
                     {item.name}
@@ -152,7 +161,9 @@ const GameDetails = () => {
 
             {/* DESCRIPTION-AREA */}
             <Box w={"100%"}>
-              <Heading fontSize={"x-large"}>Description :</Heading>
+              <Heading fontSize={"x-large"} color={"#8C52FF"} pb={"1rem"}>
+                ABOUT
+              </Heading>
               <Text>
                 {showFullDescription
                   ? item.description_raw
@@ -180,19 +191,119 @@ const GameDetails = () => {
             </Box>
             {/* DESCRIPTION-AREA ENDED*/}
 
-            {/* STORES-AREA */}
-            <Flex>
-              <Box w={"50%"} border={"1px solid white"}></Box>
-              <Box w={"50%"} border={"1px solid white"}>
-                <Heading fontSize={"large"}>Where to buy ?</Heading>
-                <Flex gap={'2.5rem'} flexWrap={'wrap'} w={'60%'} border={'1px solid red'}>
+            {/* STORES-AREA and OTHER INFORMATION */}
+            <Flex minH={"15rem"}>
+              <Box w={"60%"}>
+                <Box w={"90%"}>
+                  <Flex
+                    w={"100%"}
+                    height={"50%"}
+                    justifyContent={"space-between"}
+                    mb={"1rem"}
+                  >
+                    <Stack w={"45%"}>
+                      <Text
+                        fontSize={"large"}
+                        color={"#9A67FF"}
+                        fontWeight={"bold"}
+                      >
+                        Platforms
+                      </Text>
+                      <Flex flexWrap={"wrap"} gap={".2rem"}>
+                        {item.platforms.map((i) => (
+                          <Text textDecor={"underline"} cursor={"pointer"}>
+                            {i.platform.name},
+                          </Text>
+                        ))}
+                      </Flex>
+                    </Stack>
+                    <Stack w={"45%"}>
+                      <Text
+                        fontSize={"large"}
+                        color={"#9A67FF"}
+                        fontWeight={"bold"}
+                      >
+                        Metascore
+                      </Text>
+                      <Text
+                        w={"fit-content"}
+                        color={"green"}
+                        fontWeight={"bold"}
+                      >
+                        {item.metacritic}
+                      </Text>
+                    </Stack>
+                  </Flex>
+                  <Flex
+                    w={"100%"}
+                    height={"50%"}
+                    justifyContent={"space-between"}
+                  >
+                    <Stack w={"45%"}>
+                      <Text
+                        fontSize={"large"}
+                        color={"#9A67FF"}
+                        fontWeight={"bold"}
+                      >
+                        Developer
+                      </Text>
+                      {item.developers.map((i) => (
+                        <Text>{i.name}</Text>
+                      ))}
+                    </Stack>
+                    <Stack w={"45%"}>
+                      <Text
+                        fontSize={"large"}
+                        color={"#9A67FF"}
+                        fontWeight={"bold"}
+                      >
+                        Publisher
+                      </Text>
+                      {item.publishers.map((i) => (
+                        <Text>{i.name}</Text>
+                      ))}
+                    </Stack>
+                  </Flex>
+                </Box>
+              </Box>
+              <Box w={"40%"}>
+                <Center py={"1rem"}>
+                  <Heading fontSize={"x-large"} color={"#8C52FF"}>
+                    Where to buy ?
+                  </Heading>
+                </Center>
+                <Box
+                  display={"flex"}
+                  flexWrap={"wrap"}
+                  justifyContent={"space-evenly"}
+                  gap={"1rem"}
+                >
                   {platform.map((i, idx) => (
                     <Stores store_id={i.store_id} url={i.url} />
                   ))}
-                </Flex>
+                </Box>
               </Box>
             </Flex>
-            {/* STORES-AREA ENDED */}
+            {/* STORES-AREA and OTHER INFORMATION ENDED */}
+            <Stack w={"50%"} h={"fit-content"}>
+              <Text fontSize={"large"} color={"#9A67FF"} fontWeight={"bold"}>
+                Tags
+              </Text>
+              <Flex flexWrap={"wrap"} gap={".4rem"}>
+                {item.tags.map((i) => (
+                  <Text textDecor={"underline"} cursor={"pointer"}>
+                    {i.name}
+                  </Text>
+                ))}
+              </Flex>
+            </Stack>
+
+            <Stack w={'50%'}>
+              <Text fontSize={"large"} color={"#9A67FF"} fontWeight={"bold"}>
+                System requirements for pc
+              </Text>
+              <Requirements requirements={item.platforms[0].requirements} />
+            </Stack>
           </Flex>
         ))
       )}
@@ -200,6 +311,35 @@ const GameDetails = () => {
   );
 };
 
+
+
+const Requirements = ({ requirements }) => {
+  const { minimum, recommended } = requirements || {};
+
+  return (
+    <Box>
+      <Heading fontSize="x-large" mt={4}>
+        Requirements:
+      </Heading>
+      {minimum && (
+        <Box>
+          <Heading fontSize="large" mt={2}>
+            Minimum:
+          </Heading>
+          <Text whiteSpace="pre-line">{minimum}</Text>
+        </Box>
+      )}
+      {recommended && (
+        <Box>
+          <Heading fontSize="large" mt={2}>
+            Recommended:
+          </Heading>
+          <Text whiteSpace="pre-line">{recommended}</Text>
+        </Box>
+      )}
+    </Box>
+  );
+};
 const scrollbarStyles = {
   "&::-webkit-scrollbar": {
     width: "1px",
