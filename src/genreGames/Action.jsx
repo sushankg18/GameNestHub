@@ -29,6 +29,7 @@ const Action = () => {
   const [error, setError] = useState(false);
   const [click, setClick] = useState([]);
   const [smLoader, setSMLoader] = useState(false);
+  const [randomImage , setRandomImage] = useState([])
 
   const changePage = (page) => {
     setPage(page);
@@ -65,6 +66,21 @@ const Action = () => {
     fetchData();
   }, [page, API_KEY]);
 
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(`${URL}games?genres=${id}&page_size=9&key=${API_KEY}&page=${page}`) 
+        const RandomGame = data.data.results
+        const RandomData = RandomGame[Math.floor(Math.random()*RandomGame.length)];
+        setRandomImage(RandomData.background_image)
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+    fetchData();
+  },[])
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=
@@ -89,13 +105,27 @@ const Action = () => {
 
   return (
     <Box
-      bgColor={"#121212"}
       w={"80%"}
       minH={"90vh"}
       color={"white"}
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
     >
+      <Box
+          position={"fixed"}
+          top={"0"}
+          left={'0'}
+          w="100%"
+          h="100%"
+          zIndex={"-1"}
+          background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${randomImage})`}
+          backgroundSize="cover"
+          transition={".2s all ease-in-out"}
+          backgroundPosition="center"
+          _hover={{
+            transform: "scale(1.1)",
+          }}
+        />
       <Center>
         <Heading
           fontFamily={"Titillium Web"}

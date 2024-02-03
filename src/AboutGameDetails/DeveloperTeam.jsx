@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Button,
+  Center,
   HStack,
   Heading,
   Image,
@@ -10,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 const DeveloperTeam = ({ bgIMG, name, photo }) => {
   return (
-    <>
+    <HStack>
       <Box
         w={"17rem"}
         position={"relative"}
@@ -21,6 +22,9 @@ const DeveloperTeam = ({ bgIMG, name, photo }) => {
         display={"flex"}
         flexDir={"column"}
         alignItems={"center"}
+        justifyContent={'center'}
+        gap={'1rem'}
+        mr={'1rem'}
       >
         <Box
           position={"absolute"}
@@ -28,7 +32,7 @@ const DeveloperTeam = ({ bgIMG, name, photo }) => {
           w="100%"
           h="100%"
           zIndex={"-1"}
-          background={`radial-gradient(ellipse at center, rgba(0,0,0,.2) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
+          background={`radial-gradient(ellipse at center, rgba(0,0,0,.5) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
           backgroundSize="cover"
           transition={".2s all ease-in-out"}
           backgroundPosition="center"
@@ -46,20 +50,25 @@ const DeveloperTeam = ({ bgIMG, name, photo }) => {
               objectFit={"cover"}
               src={photo}
             />
-          )  : null}
+          ) : null}
         </Box>
-        <Text
-          zIndex={2}
-          color="white"
-          fontWeight={"bold"}
-          fontSize={"1.6rem"}
-          userSelect={"none"}
-        >
-          {name}
-        </Text>
+
+          <Text
+            zIndex={2}
+            color="white"
+            fontWeight={"bold"}
+            fontSize={"1.3rem"}
+            userSelect={"none"}
+            w={'100%'}
+            display={'flex'}
+            justifyContent={'center'}
+          >
+            {name}
+          </Text>
       </Box>
-    </>
+    </HStack>
   );
 };
+
 
 export default DeveloperTeam;

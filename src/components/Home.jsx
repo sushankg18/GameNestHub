@@ -31,21 +31,21 @@ const Home = () => {
   const [smLoader, setSMLoader] = useState(false)
   const [error, setError] = useState(false);
   const [clickedItems, setClickedItems] = useState([]);
-
+  const [randomImage , setRandomImage] = useState([])
 
 
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true)
       try {
         const response = await axios.get(
           `${URL}games?page_size=9&page=${page}&key=${API_KEY}`
         );
-        const games = response.data.results;
         document.title = "Game Nest Hub"
+        const games = response.data.results;
         if (page === 1) {
           setData(games);
+         
         } else {
           setData((prev) => [...prev, ...games]);
         }
@@ -60,6 +60,20 @@ const Home = () => {
     fetchData();
   }, [page, API_KEY]);
 
+  useEffect(()=>{
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(`${URL}games?page_size=40&page=${page}&key=${API_KEY}`) 
+        const RandomGame = data.data.results
+        const RandomData = RandomGame[Math.floor(Math.random()*RandomGame.length)];
+        setRandomImage(RandomData.background_image)
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+    fetchData();
+  },[])
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop + 1 >=
@@ -84,18 +98,34 @@ const Home = () => {
   return (
     <Box
       w={"80%"}
-      bgColor={"#121212"}
+      // bgColor={"#121212"}
       minH={"90vh"}
       color={"white"}
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
+      position={'relative'}
     >
+      <Box
+          position={"fixed"}
+          top={"0"}
+          left={'0'}
+          w="100%"
+          h="100%"
+          zIndex={"-1"}
+          background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${randomImage})`}
+          backgroundSize="cover"
+          transition={".2s all ease-in-out"}
+          backgroundPosition="center"
+          _hover={{
+            transform: "scale(1.1)",
+          }}
+        />
       <Center>
         <Heading
           fontFamily={"Titillium Web"}
           fontSize={"2.5rem"}
           userSelect={"none"}
-          p={"1.5rem 4rem"}
+          p={"1rem 4rem"}
         >
           <span style={{ color: "#9A67FF" }}> POPULAR </span>
         </Heading>
@@ -103,7 +133,7 @@ const Home = () => {
 
       <Box
         display={"flex"}
-        p={"1.5rem 0"}
+        p={"1rem 0"}
         flexWrap={"wrap"}
         gap={"1.5rem"}
         alignItems={"flex-start"}

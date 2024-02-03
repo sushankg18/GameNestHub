@@ -22,7 +22,6 @@ import { FaSteam } from "react-icons/fa";
 import Stores from "../AboutGameDetails/Stores";
 import DeveloperTeam from "../AboutGameDetails/DeveloperTeam";
 import GameSeries from "../AboutGameDetails/GameSeries";
-import Screenshots from "../AboutGameDetails/Screenshots";
 const GameDetails = () => {
   const [game, setGame] = useState([]);
   const [gameScreenshots, setGameScreenshots] = useState([]);
@@ -174,7 +173,7 @@ const GameDetails = () => {
                   </Box>
                 )}
 
-            {/* SCREENSHOTS AREA ENDS*/}
+                {/* SCREENSHOTS AREA ENDS*/}
 
                 <Box w={"50%"} h={"100%"}>
                   <Image
@@ -184,11 +183,11 @@ const GameDetails = () => {
                     objectFit={"fill"}
                   />
                 </Box>
-                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"} border={'1px solid white'}>
+                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"}>
                   <Text fontSize={"x-large"} fontWeight={"bold"}>
                     {item.name}
                   </Text>
-                  <Text>Release Date : {item.release} </Text>
+                  <Text>Release Date : {item.released} </Text>
                   <Text>Average Playtime : {item.playtime} Hours</Text>
                   <Text key={index}>
                     Genre: {item.genres.map((genre) => genre.name).join(", ")}
@@ -343,11 +342,31 @@ const GameDetails = () => {
             </Stack>
 
             <Stack w={'50%'}>
-              <Text fontSize={"large"} color={"#9A67FF"} fontWeight={"bold"}>
-                System requirements for pc
-              </Text>
+
               <Requirements requirements={item.platforms[0].requirements} />
+
             </Stack>
+            <Box>
+              <Heading color={'#9A67FF'} fontSize={'x-large'}>{item.name} Created by:</Heading>
+              <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal} >
+                {
+                  developTeam.map((i, idx) => (
+                    <DeveloperTeam name={i.name} photo={i.image} bgIMG={i.image_background} />
+                  ))
+                }
+              </HStack>
+            </Box>
+
+            <Box>
+              <Heading color={'#9A67FF'} fontSize={'x-large'}>Game of the Series :</Heading>
+              <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal}>
+                {
+                  gameSeries.map((i, idx) => (
+                    <GameSeries name={i.name} bgIMG={i.background_image} slug={i.slug} index={idx} />
+                  ))
+                }
+              </HStack>
+            </Box>
           </Flex>
         ))
       )}
@@ -359,34 +378,78 @@ const GameDetails = () => {
 
 const Requirements = ({ requirements }) => {
   const { minimum, recommended } = requirements || {};
+  const [showFullRequirements, setShowFullRequirements] = useState(false);
+
+  const handleReadMoreClick = () => {
+    setShowFullRequirements(true);
+  };
+
+  const handleReadLessClick = () => {
+    setShowFullRequirements(false);
+  };
 
   return (
     <Box>
-      {minimum && (
+      {(minimum || recommended) && (
+
         <Box>
-          <Heading fontSize="large" mt={2}>
+          <Text fontSize={"x-large"} color={"#9A67FF"} fontWeight={"bold"}>
+            System requirements for pc
+          </Text>
+          <Text fontSize="large" mt={2} fontWeight={'bold'}>
             Minimum:
-          </Heading>
-          <Text whiteSpace="pre-line">{minimum}</Text>
-        </Box>
-      )}
-      {recommended && (
-        <Box>
-          <Heading fontSize="large" mt={2}>
-            Recommended:
-          </Heading>
-          <Text whiteSpace="pre-line">{recommended}</Text>
+          </Text>
+          <Text whiteSpace="pre-line">
+            {showFullRequirements ? minimum : `${minimum?.slice(0, 250)}...`}
+          </Text>
+
+          {recommended && (
+            <div>
+              <Text fontSize="large" mt={2} fontWeight={'bold'}>
+                Recommended:
+              </Text>
+              <Text whiteSpace="pre-line">
+                {showFullRequirements ? recommended : `${recommended?.slice(0, 250)}...`}
+              </Text>
+            </div>
+          )}
+
+          {(minimum || recommended) && (
+            <Button onClick={showFullRequirements ? handleReadLessClick : handleReadMoreClick} color={"white"} backgroundColor="#9A67FF" size="xs">
+              {showFullRequirements ? "Read Less" : "Read More"}
+            </Button>
+          )}
         </Box>
       )}
     </Box>
   );
 };
+
+
+
 const scrollbarStyles = {
   "&::-webkit-scrollbar": {
     width: "1px",
   },
   "&::-webkit-scrollbar-thumb": {
     backgroundColor: "transparent",
+    borderRadius: "10px",
+    cursor: "pointer",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "transparent",
+  },
+  "&::webkit-scrollbar-thumb:hover": {
+    backgroundColor: "black",
+  },
+};
+
+const scrollbarStylesHorizontal = {
+  "&::-webkit-scrollbar": {
+    height: "6px",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "#9A67FF",
     borderRadius: "10px",
     cursor: "pointer",
   },
