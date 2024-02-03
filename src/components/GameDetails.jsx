@@ -15,10 +15,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { FaPlaystation } from "react-icons/fa";
-import { SiEpicgames } from "react-icons/si";
-import { FaXbox } from "react-icons/fa";
-import { FaSteam } from "react-icons/fa";
+
 import Stores from "../AboutGameDetails/Stores";
 import DeveloperTeam from "../AboutGameDetails/DeveloperTeam";
 import GameSeries from "../AboutGameDetails/GameSeries";
@@ -160,16 +157,17 @@ const GameDetails = () => {
                     zIndex="999"
                     display="flex"
                     justifyContent="center"
-                    alignItems="center"
+                    alignItems={'center'}
+                    onClick={closeModal}
+                    cursor="pointer"
                   >
                     <Image
                       src={selectedScreenshot}
                       width="80%"
                       height="80%"
                       objectFit="contain"
-                      onClick={closeModal}
-                      cursor="pointer"
                     />
+
                   </Box>
                 )}
 

@@ -5,6 +5,7 @@ import Logo from '../assets/GameNestHub_Logo.png'
 import { Link } from 'react-router-dom';
 import { NoteContext } from '../Context/NoteState';
 import Login from './Login';
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
     const { LoginStatus, logout } = useContext(NoteContext);
@@ -36,12 +37,13 @@ const Header = () => {
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['4rem', '6rem']} borderRadius={'5px'} />
                 </Link>
                 <Box position={'relative'}>
-                    <Box width={'30rem'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={'2.3rem'}>
+                    <Box width={'30rem'} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={'2.3rem'}>
+                        <FaSearch />
                         <input
                             onChange={(e) => { setSearchTerm(e.target.value); }}
                             value={searchTerm}
                             placeholder='Search for any game'
-                            style={{ width: "100%", padding: "0 2rem", fontWeight: "bold", outline: "none", border: "none" }}
+                            style={{ width: "100%", padding: "0 1rem", fontWeight: "bold", outline: "none", border: "none" }}
                         />
                     </Box>
                     {
