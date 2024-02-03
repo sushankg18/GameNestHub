@@ -43,6 +43,7 @@ const Home = () => {
           `${URL}games?page_size=9&page=${page}&key=${API_KEY}`
         );
         const games = response.data.results;
+        document.title = "Game Nest Hub"
         if (page === 1) {
           setData(games);
         } else {

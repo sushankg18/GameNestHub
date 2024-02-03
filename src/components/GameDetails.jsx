@@ -32,6 +32,10 @@ const GameDetails = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [title, setTitle] = useState('')
+  const [selectedScreenshot, setSelectedScreenshot] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { id } = useParams();
 
   const URL = "https://api.rawg.io/api/";
@@ -62,20 +66,35 @@ const GameDetails = () => {
         setDevelopTeam(development_team.data.results);
         setGameSeries(game_series.data.results);
         setPlatform(platforms.data.results);
+        setTitle(res.data.name)
+        document.title = title
+
       } catch (error) {
+
         setError(true);
         setLoading(false);
       }
     };
 
     fetchGameData();
-  }, [id]);
+  }, [id, title]);
 
   const handleReadMoreClick = () => {
     setShowFullDescription(true);
   };
   const handleReadLess = () => {
     setShowFullDescription(false);
+  };
+
+
+  const openModal = (imageUrl) => {
+    setSelectedScreenshot(imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedScreenshot(null);
+    setIsModalOpen(false);
   };
 
   if (error) {
@@ -108,30 +127,55 @@ const GameDetails = () => {
             />
 
             {/* MAIN */}
+
+
+
+            {/* SCREENSHOTS AREA  */}
             <Box w={"100%"} height={"fit-content"}>
               <Heading pb={"2rem"} color={"#8C52FF"} fontSize={"xxx-large"}>
                 {item.name}
               </Heading>
               <HStack h={"100%"} height={"20rem"}>
-                <VStack
-                  w={"15%"}
-                  overflowY={"auto"}
-                  sx={scrollbarStyles}
-                  gap={"1rem"}
-                  px={".3rem"}
-                  h={"100%"}
-                >
+                <VStack w={"15%"} overflowY={"auto"} sx={scrollbarStyles} gap={"1rem"} px={".3rem"} h={"100%"}>
                   {gameScreenshots.map((i, idx) => (
-                    <Box w={"100%"}>
+                    <Box key={idx} w={"100%"} onClick={() => openModal(i.image)}>
                       <Image
                         w={"100%"}
                         cursor={"pointer"}
                         objectFit={"contain"}
                         src={i.image}
+                        alt={`Screenshot ${idx + 1}`}
                       />
                     </Box>
                   ))}
                 </VStack>
+
+                {isModalOpen && (
+                  <Box
+                    position="fixed"
+                    top="0"
+                    left="0"
+                    width="100%"
+                    height="100%"
+                    backgroundColor="rgba(0, 0, 0, 0.8)"
+                    zIndex="999"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Image
+                      src={selectedScreenshot}
+                      width="80%"
+                      height="80%"
+                      objectFit="contain"
+                      onClick={closeModal}
+                      cursor="pointer"
+                    />
+                  </Box>
+                )}
+
+            {/* SCREENSHOTS AREA ENDS*/}
+
                 <Box w={"50%"} h={"100%"}>
                   <Image
                     src={item.background_image}
@@ -140,7 +184,7 @@ const GameDetails = () => {
                     objectFit={"fill"}
                   />
                 </Box>
-                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"}>
+                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"} border={'1px solid white'}>
                   <Text fontSize={"x-large"} fontWeight={"bold"}>
                     {item.name}
                   </Text>
@@ -192,7 +236,7 @@ const GameDetails = () => {
             {/* DESCRIPTION-AREA ENDED*/}
 
             {/* STORES-AREA and OTHER INFORMATION */}
-            <Flex minH={"15rem"}>
+            <Flex minH={"fit-content"}>
               <Box w={"60%"}>
                 <Box w={"90%"}>
                   <Flex
@@ -318,9 +362,6 @@ const Requirements = ({ requirements }) => {
 
   return (
     <Box>
-      <Heading fontSize="x-large" mt={4}>
-        Requirements:
-      </Heading>
       {minimum && (
         <Box>
           <Heading fontSize="large" mt={2}>

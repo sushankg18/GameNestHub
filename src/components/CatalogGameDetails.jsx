@@ -13,15 +13,15 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
     return (
         <Box minH={'90vh'} color={'white'}  overflow={'hidden'} position="relative">
             <Box
-                position={'fixed'}
-                top={'0'}
-                zIndex={'-1'}
-                w="100%"
-                h="100%"
-                background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.8) 100%), url(${bgIMG})`}
-                backgroundSize="cover"
-                backgroundPosition="center"
-                
+              position={"fixed"}
+              top={"0"}
+              left={"0"}
+              zIndex={"-1"}
+              w="100%"
+              h="100%"
+              background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
+              backgroundSize="cover"
+              backgroundPosition="center"
             />
 
             <HStack flexDir={['column', '', '', 'row']} gap={'2rem'} justifyContent={'space-between'} padding={['.5rem', '', '', '1rem 2rem']}>

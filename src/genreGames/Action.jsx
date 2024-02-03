@@ -48,7 +48,7 @@ const Action = () => {
           ...i,
           releasedFormatted: formatDate(i.released),
         }));
-
+        console.log(games)
         if (page === 1) {
           setData(games);
         } else {
