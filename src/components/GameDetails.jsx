@@ -347,26 +347,33 @@ const GameDetails = () => {
 
             </Stack>
             <Box>
-              <Heading color={'#9A67FF'} fontSize={'x-large'}>{item.name} Created by:</Heading>
-              <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal} >
-                {
-                  developTeam.map((i, idx) => (
-                    <DeveloperTeam name={i.name} photo={i.image} bgIMG={i.image_background} />
-                  ))
-                }
-              </HStack>
+              {developTeam.length > 0 && (
+                <>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'}>{item.name} Created by:</Heading>
+                  <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal} >
+
+                    {developTeam.map((i, idx) => (
+                      <DeveloperTeam name={i.name} photo={i.image} bgIMG={i.image_background} />
+                    ))}
+                  </HStack>
+                </>
+              )
+              }
             </Box>
 
             <Box>
-              <Heading color={'#9A67FF'} fontSize={'x-large'}>Game of the Series :</Heading>
-              <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal}>
-                {
-                  gameSeries.map((i, idx) => (
-                    <GameSeries name={i.name} bgIMG={i.background_image} slug={i.slug} index={idx} />
-                  ))
-                }
-              </HStack>
+              {gameSeries.length > 0 && (
+                <>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'}>Game of the Series :</Heading>
+                  <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal}>
+                    {gameSeries.map((i, idx) => (
+                      <GameSeries bgIMG={i.background_image} name={i.name} slug={i.slug} idx={idx} />
+                    ))}
+                  </HStack>
+                </>
+              )}
             </Box>
+
           </Flex>
         ))
       )}

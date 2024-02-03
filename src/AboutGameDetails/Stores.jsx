@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Center, Heading } from "@chakra-ui/react";
 import { FaPlaystation } from "react-icons/fa";
 import { SiEpicgames } from "react-icons/si";
 import { FaXbox } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaSteam } from "react-icons/fa";
 const Stores = ({ store_id, url }) => {
   return (
     <>
+      
       {store_id === 3 ? (
         <Link to={url} target="_blank">
           <Button
