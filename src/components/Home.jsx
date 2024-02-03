@@ -97,7 +97,7 @@ const Home = () => {
 
   return (
     <Box
-      w={"80%"}
+      w={['100%',"80%"]}
       // bgColor={"#121212"}
       minH={"90vh"}
       color={"white"}

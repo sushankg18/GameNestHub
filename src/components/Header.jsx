@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { NoteContext } from '../Context/NoteState';
 import Login from './Login';
 import { FaSearch } from "react-icons/fa";
+import { TfiMenuAlt } from "react-icons/tfi";
 
 const Header = () => {
     const { LoginStatus, logout } = useContext(NoteContext);
@@ -21,7 +22,7 @@ const Header = () => {
     useEffect(() => {
         if (searchTerm !== "") {
             try {
-                fetch(`${URL}games?key=${API_KEY}&search=${searchTerm}`).then(
+                fetch(`${URL}games?page_size=9&key=${API_KEY}&search=${searchTerm}`).then(
                     res => res.json()).then(data => setSearchData(data.results))
             } catch (error) {
                 console.log(error)
@@ -31,13 +32,13 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack minH={'10vh'} position={'sticky'} zIndex={'99'} top={'0'} padding={'.8rem 2rem'} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
-            <HStack w={'60%'} justifyContent={'space-between'} >
+        <HStack minH={'10vh'} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem .5rem','.8rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
+            <HStack w={['100%','','','60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['4rem', '6rem']} borderRadius={'5px'} />
                 </Link>
                 <Box position={'relative'}>
-                    <Box width={'30rem'} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={'2.3rem'}>
+                    <Box width={['14rem','','','30rem']} fontSize={'.8rem'} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={['1.5rem','2.3rem']}>
                         <FaSearch />
                         <input
                             onChange={(e) => { setSearchTerm(e.target.value); }}
@@ -47,16 +48,16 @@ const Header = () => {
                         />
                     </Box>
                     {
-                        searchTerm.length > 0 ? (<Box position={'absolute'} overflowY={'scroll'} display={'flex'} flexDir={'column'} gap={'1rem'} width={'30rem'} height={'fit-content'} top={'3rem'} bgColor={'black'} color={'white'}>
+                        searchTerm.length > 0 ? (<Box position={'absolute'} py={'1rem'} overflowY={'scroll'} display={'flex'} flexDir={'column'} gap={'1rem'} width={['14rem','30rem']} height={'fit-content'} borderRadius={'1rem'} top={'2.7rem'} bgColor={'black'} color={'white'}>
                             {
                                 searchData.map((data, index) => {
                                     return (
                                         <Link key={index} to={`/games/${data.slug}`} onClick={()=>{setSearchTerm('')}}>
-                                            <Flex gap={'3rem'} alignItems={'center'} p={'.2rem 2rem'}>
-                                                <Box w={'5rem'} h={'3rem'}>
-                                                    <Image w={'100% '}objectFit={'cover'} h={'100%'} src={data.background_image} />
+                                            <Flex gap={'2rem'} alignItems={'center'} p={'.2rem 2rem'} borderBottom={'1px solid #18181C'}>
+                                                <Box w={['3rem','5rem']} h={['1.5rem','3rem']}>
+                                                    <Image w={'100% '}objectFit={'contain'} h={'100%'} src={data.background_image} />
                                                 </Box>
-                                                <Text>{data.name}</Text>
+                                                <Text fontWeight={'bold'} fontSize={['.8rem','1.2rem']} noOfLines={'1'}>{data.name}</Text>
                                             </Flex>
                                         </Link>
                                     )
@@ -64,6 +65,9 @@ const Header = () => {
                             }
                         </Box>) : null
                     }
+                </Box>
+                <Box display={['block','none']}>
+                <TfiMenuAlt color='white'/>
                 </Box>
             </HStack>
             <HStack w={'25%'} display={['none', '', '', 'flex']} justifyContent={'space-between'}>

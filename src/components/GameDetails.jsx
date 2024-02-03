@@ -19,6 +19,8 @@ import {
 import Stores from "../AboutGameDetails/Stores";
 import DeveloperTeam from "../AboutGameDetails/DeveloperTeam";
 import GameSeries from "../AboutGameDetails/GameSeries";
+import { LuExternalLink } from "react-icons/lu";
+
 const GameDetails = () => {
   const [game, setGame] = useState([]);
   const [gameScreenshots, setGameScreenshots] = useState([]);
@@ -48,7 +50,6 @@ const GameDetails = () => {
         const development_team = await axios.get(
           `${URL}games/${id}/development-team?key=${API_KEY}`
         );
-        // https://api.rawg.io/api/games/{id}/movies
         const game_series = await axios.get(
           `${URL}games/${id}/game-series?key=${API_KEY}`
         );
@@ -100,10 +101,10 @@ const GameDetails = () => {
   return (
     <Box
       color={"white"}
-      w={"80%"}
+      w={['100%', "80%"]}
       minH={"90vh"}
       position={"relative"}
-      p={"2rem 3rem"}
+      p={['1rem', "2rem 3rem"]}
     >
       {loading ? (
         <Loader />
@@ -128,13 +129,13 @@ const GameDetails = () => {
 
             {/* SCREENSHOTS AREA  */}
             <Box w={"100%"} height={"fit-content"}>
-              <Heading pb={"2rem"} color={"#8C52FF"} fontSize={"xxx-large"}>
+              <Heading pb={['1rem', "2rem"]} color={"#8C52FF"} fontSize={['x-large', "xxx-large"]}>
                 {item.name}
               </Heading>
-              <HStack h={"100%"} height={"20rem"}>
-                <VStack w={"15%"} overflowY={"auto"} sx={scrollbarStyles} gap={"1rem"} px={".3rem"} h={"100%"}>
+              <HStack gap={'1rem'} h={"100%"} height={['fit-content', "20rem"]}>
+                <VStack w={"15%"} display={['none', 'block']} overflowY={"auto"} sx={scrollbarStyles} px={".3rem"} h={"100%"}>
                   {gameScreenshots.map((i, idx) => (
-                    <Box key={idx} w={"100%"} onClick={() => openModal(i.image)}>
+                    <Box key={idx} marginBottom={'1rem '} w={"100%"} onClick={() => openModal(i.image)}>
                       <Image
                         w={"100%"}
                         cursor={"pointer"}
@@ -173,7 +174,7 @@ const GameDetails = () => {
 
                 {/* SCREENSHOTS AREA ENDS*/}
 
-                <Box w={"50%"} h={"100%"}>
+                <Box w={['100%', "50%"]} h={"100%"}>
                   <Image
                     src={item.background_image}
                     w={"100%"}
@@ -181,20 +182,41 @@ const GameDetails = () => {
                     objectFit={"fill"}
                   />
                 </Box>
-                <Box display={"flex"} flexDir={"column"} w={"35%"} h={"100%"}>
+                {/* SCREENSHOTS FOR SMALL SCREEN */}
+                <HStack w={"100%"} display={['flex', 'none']} overflowX={"auto"} sx={scrollbarStylesHorizontal} gap={"1rem"} p={".3rem 0rem"} h={"100%"}>
+                  <HStack>
+
+                    {gameScreenshots.map((i, idx) => (
+                      <Box key={idx} w={"8rem"} h={'5rem'} onClick={() => openModal(i.image)}>
+                        <Image
+                          w={"100%"}
+                          h={'100%'}
+                          cursor={"pointer"}
+                          objectFit={"cover"}
+                          src={i.image}
+                          alt={`Screenshot ${idx + 1}`}
+                        />
+                      </Box>
+                    ))}
+                  </HStack>
+                </HStack>
+                {/* SCREENSHOTS FOR SMALL SCREEN ENDS*/}
+
+                <Box display={"flex"} flexDir={"column"} w={['100%', "35%"]} h={"100%"}>
                   <Text fontSize={"x-large"} fontWeight={"bold"}>
                     {item.name}
                   </Text>
-                  <Text>Release Date : {item.released} </Text>
-                  <Text>Average Playtime : {item.playtime} Hours</Text>
+                  <Text> <span style={{ fontWeight: "bold" }}> Release Date</span> : {item.released} </Text>
+                  <Text> <span style={{ fontWeight: "bold" }}>Average Playtime </span>: {item.playtime} Hours</Text>
                   <Text key={index}>
-                    Genre: {item.genres.map((genre) => genre.name).join(", ")}
+                    <span style={{ fontWeight: "bold" }}>Genre:</span> {item.genres.map((genre) => genre.name).join(", ")}
                   </Text>
-                  <Text>
-                    <Link to={item.website} target="_blank">
-                      Official Website
-                    </Link>
-                  </Text>
+                  <Link to={item.website} target="_blank">
+                    <Text display={'flex'} gap={'.3rem'} alignItems={'center'} >
+                      <span style={{ fontWeight: "bold" }}>Official Website</span>
+                      <LuExternalLink />
+                    </Text>
+                  </Link>
                 </Box>
               </HStack>
             </Box>
@@ -233,8 +255,8 @@ const GameDetails = () => {
             {/* DESCRIPTION-AREA ENDED*/}
 
             {/* STORES-AREA and OTHER INFORMATION */}
-            <Flex minH={"fit-content"}>
-              <Box w={"60%"}>
+            <Flex minH={"fit-content"} flexDir={['column','row']}>
+              <Box w={["100%",'60%']}>
                 <Box w={"90%"}>
                   <Flex
                     w={"100%"}
@@ -307,7 +329,7 @@ const GameDetails = () => {
                   </Flex>
                 </Box>
               </Box>
-              <Box w={"40%"}>
+              <Box w={["100%",'40%']}>
                 <Center py={"1rem"}>
                   <Heading fontSize={"x-large"} color={"#8C52FF"}>
                     Where to buy ?
@@ -326,7 +348,7 @@ const GameDetails = () => {
               </Box>
             </Flex>
             {/* STORES-AREA and OTHER INFORMATION ENDED */}
-            <Stack w={"50%"} h={"fit-content"}>
+            <Stack w={["100%",'50%']} h={"fit-content"}>
               <Text fontSize={"large"} color={"#9A67FF"} fontWeight={"bold"}>
                 Tags
               </Text>
@@ -339,7 +361,7 @@ const GameDetails = () => {
               </Flex>
             </Stack>
 
-            <Stack w={'50%'}>
+            <Stack w={['100%','50%']}>
 
               <Requirements requirements={item.platforms[0].requirements} />
 

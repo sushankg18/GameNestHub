@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { BiLibrary } from "react-icons/bi";
 import { CiGift } from "react-icons/ci";
@@ -26,10 +26,12 @@ import { IoCodeSlash } from "react-icons/io5";
 import { SiLeanpub } from "react-icons/si";
 import { FaPlaystation } from "react-icons/fa";
 import { TfiAndroid } from "react-icons/tfi";
+import { Link } from "react-router-dom";
+import profile from '../assets/profile.jpeg';
 
 const Sidebar = () => {
   return (
-    <Box minW={"20%"} bgColor={'transparent'} position={"sticky"} top={"10vh"}
+    <Box display={['none','block']} minW={"20%"} bgColor={'transparent'} position={"sticky"} top={"10vh"}
       h={"90vh"}
       overflowY={"auto"}
       color={"white"}
@@ -41,13 +43,19 @@ const Sidebar = () => {
         p={"2rem 4rem"}
       >
         <Text fontSize={"larger"} fontWeight={"bold"}>
-          HOME
+          <Link to={'/'}>
+            HOME
+          </Link>
         </Text>
         <Text fontSize={"larger"} fontWeight={"bold"}>
-          REVIEWS
+          <Link to={'/userprofile'}>
+            <Flex gap={'.4rem'}>
+              <Image src={profile} borderRadius={'50%'} w={'2rem'} h={'2rem'} /> SUSHANK
+            </Flex>
+          </Link>
         </Text>
         <Text fontSize={"larger"} fontWeight={"bold"}>
-          SUSHANK..
+          FOLLOWINGS
         </Text>
         <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <CiGift /> Wishlist</Text>
         <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <BiLibrary /> My library</Text>
@@ -62,7 +70,7 @@ const Sidebar = () => {
         <Text fontSize={"larger"} fontWeight={"bold"}>
           BROWSE BY
         </Text>
-        <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"}  fontWeight={'bold'}>Platforms</Text>
+        <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} fontWeight={'bold'}>Platforms</Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaWindows /> PC</Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaPlaystation /> Playstation 4</Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaXbox /> Xbox One</Text>
@@ -72,13 +80,13 @@ const Sidebar = () => {
         <Text fontSize={"larger"} fontWeight={"bold"}>
           BROWSE BY
         </Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <GiConsoleController /> Stores</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <MdLocalGroceryStore />  Stores</Text>
         <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <FaFolderOpen /> Collections</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>Genre</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>Creators</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>Tags</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>Developer</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>Publisher</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><BiSolidCategory />Genre</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><FaUser />Creators</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><FaHashtag />Tags</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>< IoCodeSlash /> Developer</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><SiLeanpub />Publisher</Text>
         <Text fontSize={"larger"}>Action</Text>
         <Text fontSize={"larger"}>Strategy</Text>
       </VStack>
