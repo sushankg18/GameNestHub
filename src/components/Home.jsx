@@ -98,8 +98,7 @@ const Home = () => {
   return (
     <Box
       w={['100%',"80%"]}
-      // bgColor={"#121212"}
-      minH={"90vh"}
+      minH={['93vh',"90vh"]}
       color={"white"}
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
@@ -123,9 +122,9 @@ const Home = () => {
       <Center>
         <Heading
           fontFamily={"Titillium Web"}
-          fontSize={"2.5rem"}
+          fontSize={['1.7rem',"2.5rem"]}
           userSelect={"none"}
-          p={"1rem 4rem"}
+          p={['0rem',"1rem 4rem"]}
         >
           <span style={{ color: "#9A67FF" }}> POPULAR </span>
         </Heading>

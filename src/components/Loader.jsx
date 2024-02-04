@@ -3,7 +3,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <Box w={'full'} height={'88vh'} display={'flex'} gap={'1rem'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
+    <Box w={'full'} minH={['93vh',"90vh"]} display={'flex'} gap={'1rem'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
       <span class="loader"></span>
     </Box>
   );

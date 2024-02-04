@@ -23,8 +23,8 @@ function App() {
           <Box
             position={'fixed'}
             width={'100vw'}
-            height={'90vh'}
-            top={'10vh'}
+            height={['93vh','90vh']}
+            top={['7vh','10vh']}
             bgColor={'#121212'}
             zIndex={'-3'}          
           />

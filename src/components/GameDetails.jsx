@@ -102,7 +102,7 @@ const GameDetails = () => {
     <Box
       color={"white"}
       w={['100%', "80%"]}
-      minH={"90vh"}
+      minH={['93vh',"90vh"]}
       position={"relative"}
       p={['1rem', "2rem 3rem"]}
     >
@@ -128,11 +128,11 @@ const GameDetails = () => {
 
 
             {/* SCREENSHOTS AREA  */}
-            <Box w={"100%"} height={"fit-content"}>
-              <Heading pb={['1rem', "2rem"]} color={"#8C52FF"} fontSize={['x-large', "xxx-large"]}>
+            <Box w={"100%"} fontFamily={"Titillium Web"} height={"fit-content"}>
+              <Heading pb={['1rem', "2rem"]} fontFamily={"Titillium Web"} color={"#8C52FF"} fontSize={['x-large', "xxx-large"]}>
                 {item.name}
               </Heading>
-              <HStack gap={'1rem'} h={"100%"} height={['fit-content', "20rem"]}>
+              <Flex flexDir={['column','row']} gap={'1rem'} h={"100%"} height={['fit-content', "20rem"]}>
                 <VStack w={"15%"} display={['none', 'block']} overflowY={"auto"} sx={scrollbarStyles} px={".3rem"} h={"100%"}>
                   {gameScreenshots.map((i, idx) => (
                     <Box key={idx} marginBottom={'1rem '} w={"100%"} onClick={() => openModal(i.image)}>
@@ -218,13 +218,13 @@ const GameDetails = () => {
                     </Text>
                   </Link>
                 </Box>
-              </HStack>
+              </Flex>
             </Box>
             {/* MAIN-END*/}
 
             {/* DESCRIPTION-AREA */}
             <Box w={"100%"}>
-              <Heading fontSize={"x-large"} color={"#8C52FF"} pb={"1rem"}>
+              <Heading fontFamily={"Titillium Web"} fontSize={"x-large"} color={"#8C52FF"} pb={"1rem"}>
                 ABOUT
               </Heading>
               <Text>
@@ -331,7 +331,7 @@ const GameDetails = () => {
               </Box>
               <Box w={["100%",'40%']}>
                 <Center py={"1rem"}>
-                  <Heading fontSize={"x-large"} color={"#8C52FF"}>
+                  <Heading  fontFamily={"Titillium Web"}fontSize={"x-large"} color={"#8C52FF"}>
                     Where to buy ?
                   </Heading>
                 </Center>
@@ -369,7 +369,7 @@ const GameDetails = () => {
             <Box>
               {developTeam.length > 0 && (
                 <>
-                  <Heading color={'#9A67FF'} fontSize={'x-large'}>{item.name} Created by:</Heading>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'}fontFamily={"Titillium Web"}>{item.name} Created by:</Heading>
                   <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal} >
 
                     {developTeam.map((i, idx) => (
@@ -384,7 +384,7 @@ const GameDetails = () => {
             <Box>
               {gameSeries.length > 0 && (
                 <>
-                  <Heading color={'#9A67FF'} fontSize={'x-large'}>Game of the Series :</Heading>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'}fontFamily={"Titillium Web"}>Game of the Series :</Heading>
                   <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal}>
                     {gameSeries.map((i, idx) => (
                       <GameSeries bgIMG={i.background_image} name={i.name} slug={i.slug} idx={idx} />

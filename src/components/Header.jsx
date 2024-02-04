@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { NoteContext } from '../Context/NoteState';
 import Login from './Login';
 import { FaSearch } from "react-icons/fa";
-import { TfiMenuAlt } from "react-icons/tfi";
+import { GiHamburgerMenu } from "react-icons/gi";
+
 
 const Header = () => {
     const { LoginStatus, logout } = useContext(NoteContext);
@@ -32,13 +33,13 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack minH={'10vh'} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem .5rem','.8rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
+        <HStack minH={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.5rem 1rem','.8rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
             <HStack w={['100%','','','60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
-                    <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['4rem', '6rem']} borderRadius={'5px'} />
+                    <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['3rem', '6rem']} borderRadius={'5px'} />
                 </Link>
                 <Box position={'relative'}>
-                    <Box width={['14rem','','','30rem']} fontSize={'.8rem'} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={['1.5rem','2.3rem']}>
+                    <Box width={['14rem','','','30rem']} fontSize={['.8rem','1.1rem']} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={['1.5rem','2.3rem']}>
                         <FaSearch />
                         <input
                             onChange={(e) => { setSearchTerm(e.target.value); }}
@@ -53,11 +54,11 @@ const Header = () => {
                                 searchData.map((data, index) => {
                                     return (
                                         <Link key={index} to={`/games/${data.slug}`} onClick={()=>{setSearchTerm('')}}>
-                                            <Flex gap={'2rem'} alignItems={'center'} p={'.2rem 2rem'} borderBottom={'1px solid #18181C'}>
-                                                <Box w={['3rem','5rem']} h={['1.5rem','3rem']}>
-                                                    <Image w={'100% '}objectFit={'contain'} h={'100%'} src={data.background_image} />
+                                            <Flex gap={['1rem','2rem']} alignItems={'center'} p={['.2rem .5rem','.2rem 2rem']} borderBottom={'1px solid #18181C'}>
+                                                <Box w={['20%','5rem']} h={['1.5rem','3rem']}>
+                                                    <Image w={'100% '}objectFit={'cover'} h={'100%'} src={data.background_image} />
                                                 </Box>
-                                                <Text fontWeight={'bold'} fontSize={['.8rem','1.2rem']} noOfLines={'1'}>{data.name}</Text>
+                                                <Text w={'80%'} fontWeight={'bold'} fontSize={['.8rem','1.1rem']} noOfLines={'1'}>{data.name}</Text>
                                             </Flex>
                                         </Link>
                                     )
@@ -67,7 +68,7 @@ const Header = () => {
                     }
                 </Box>
                 <Box display={['block','none']}>
-                <TfiMenuAlt color='white'/>
+                <GiHamburgerMenu color='white'/>
                 </Box>
             </HStack>
             <HStack w={'25%'} display={['none', '', '', 'flex']} justifyContent={'space-between'}>
