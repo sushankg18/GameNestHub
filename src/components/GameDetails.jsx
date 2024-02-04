@@ -43,12 +43,20 @@ const GameDetails = () => {
 
   const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
+  const formatDate = (rawDate) => {
+    const options = { month: "short", day: "numeric", year: "numeric" };
+    return new Date(rawDate).toLocaleDateString("en-US", options);
+  };
 
   useEffect(() => {
     const fetchGameData = async () => {
       setLoading(true);
       try {
         const res = await axios.get(`${URL}games/${id}?key=${API_KEY}`);
+        const formattedGameData = {
+          ...res.data,
+          releasedFormatted: formatDate(res.data.released),
+        };
         const screenshots = await axios.get(
           `${URL}games/${id}/screenshots?key=${API_KEY}`
         );
@@ -63,7 +71,7 @@ const GameDetails = () => {
         );
 
         setLoading(false);
-        setGame([res.data]);
+        setGame([formattedGameData]);
         setGameScreenshots(screenshots.data.results);
         setDevelopTeam(development_team.data.results);
         setGameSeries(game_series.data.results);
@@ -106,7 +114,7 @@ const GameDetails = () => {
   return (
     <Box
       color={"white"}
-      w={['100vw', "80%"]}
+      w={['100%', "80%"]}
       minH={['93vh', "90vh"]}
       position={"relative"}
       p={['1rem', "2rem 3rem"]}
@@ -223,7 +231,7 @@ const GameDetails = () => {
                       </React.Fragment>
                     ))}
                   </HStack>
-                  <Text fontSize={'1.1rem'}> <span style={{ fontWeight: "bold" }}> Release Date</span> : {item.released} </Text>
+                  <Text fontSize={'1.1rem'}> <span style={{ fontWeight: "bold" }}> Release Date</span> : {item.releasedFormatted} </Text>
                   <Text fontSize={'1.1rem'}> <span style={{ fontWeight: "bold" }}>Average Playtime </span>: {item.playtime} Hours</Text>
                   <Text fontSize={'1.1rem'} key={index}>
                     <span style={{ fontWeight: "bold" }}>Genre:</span> {item.genres.map((genre) => genre.name).join(", ")}

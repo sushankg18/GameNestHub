@@ -33,7 +33,7 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack minH={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.5rem 1rem','.8rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
+        <HStack minH={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem','.8rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'#18181C'}>
             <HStack w={['100%','','','60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['3rem', '6rem']} borderRadius={'5px'} />
@@ -55,8 +55,11 @@ const Header = () => {
                                     return (
                                         <Link key={index} to={`/games/${data.slug}`} onClick={()=>{setSearchTerm('')}}>
                                             <Flex gap={['1rem','2rem']} alignItems={'center'} p={['.2rem .5rem','.2rem 2rem']} borderBottom={'1px solid #18181C'}>
-                                                <Box w={['20%','5rem']} h={['1.5rem','3rem']}>
+                                                <Box w={['20%','5rem']} h={['1.5rem','3rem']}>{
+                                                    data.background_image ?
                                                     <Image w={'100% '}objectFit={'cover'} h={'100%'} src={data.background_image} />
+                                                    : null
+                                                }
                                                 </Box>
                                                 <Text w={'80%'} fontWeight={'bold'} fontSize={['.8rem','1.1rem']} noOfLines={'1'}>{data.name}</Text>
                                             </Flex>

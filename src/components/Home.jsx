@@ -39,7 +39,10 @@ const Home = () => {
   const [clickedItems, setClickedItems] = useState([]);
   const [randomImage, setRandomImage] = useState([])
 
-
+  const formatDate = (rawDate) => {
+    const options = { month: "short", day: "numeric", year: "numeric" };
+    return new Date(rawDate).toLocaleDateString("en-US", options);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,8 +50,11 @@ const Home = () => {
         const response = await axios.get(
           `${URL}games?page_size=9&page=${page}&key=${API_KEY}`
         );
+        const games = response.data.results.map((i) => ({
+          ...i,
+          releasedFormatted: formatDate(i.released),
+        }));
         document.title = "Game Nest Hub"
-        const games = response.data.results;
         if (page === 1) {
           setData(games);
 
@@ -150,7 +156,7 @@ const Home = () => {
           data.map((item, index) => (
             <Box
               w={"20rem"}
-              h={"22rem"}
+              h={"23rem"}
               borderRadius={".5rem"}
               gap={".7rem"}
               minw={"fit-content"}
@@ -179,6 +185,7 @@ const Home = () => {
                 w={"100%"}
                 p={"0rem 1rem 1rem 1rem"}
                 justifyContent={"space-between"}
+                gap={'.6rem'}
               >
                 <Link key={index} to={`/games/${item.slug}`}>
                   <Text
@@ -186,15 +193,16 @@ const Home = () => {
                     fontSize={"1.3rem"}
                     color={"#9A67FF"}
                     noOfLines={"1"}
+                    userSelect={'none'}
                   >
                     {item.name}
                   </Text>
                 </Link>
                 <VStack alignItems={"flex-start"} w={"100%"} gap={".1rem"}>
-                  <Text _selection={selection}>
-                    Released : {item.released}
+                  <Text fontWeight={'bold'} _selection={selection}>
+                    Released : {item.releasedFormatted}
                   </Text>
-                  <Text _selection={selection}>
+                  <Text fontWeight={'bold'} _selection={selection}>
                     Genre : {item.genres[0].name}{" "}
                   </Text>
                 </VStack>

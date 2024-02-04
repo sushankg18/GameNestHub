@@ -49,7 +49,6 @@ const Action = () => {
           ...i,
           releasedFormatted: formatDate(i.released),
         }));
-        console.log(games)
         if (page === 1) {
           setData(games);
         } else {
@@ -182,6 +181,7 @@ const Action = () => {
                     fontWeight={"bold"}
                     fontSize={"1.3rem"}
                     color={"#9A67FF"}
+                    userSelect={'none'}
                     noOfLines={"1"}
                   >
                     {item.name}
