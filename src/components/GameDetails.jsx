@@ -20,6 +20,11 @@ import Stores from "../AboutGameDetails/Stores";
 import DeveloperTeam from "../AboutGameDetails/DeveloperTeam";
 import GameSeries from "../AboutGameDetails/GameSeries";
 import { LuExternalLink } from "react-icons/lu";
+import { FaPlaystation } from "react-icons/fa";
+import { FaXbox, FaApple, FaWindows } from "react-icons/fa";
+import { GrAndroid } from "react-icons/gr";
+import { MdOutlinePhoneIphone } from "react-icons/md";
+import { BsNintendoSwitch } from "react-icons/bs";
 
 const GameDetails = () => {
   const [game, setGame] = useState([]);
@@ -101,8 +106,8 @@ const GameDetails = () => {
   return (
     <Box
       color={"white"}
-      w={['100%', "80%"]}
-      minH={['93vh',"90vh"]}
+      w={['100vw', "80%"]}
+      minH={['93vh', "90vh"]}
       position={"relative"}
       p={['1rem', "2rem 3rem"]}
     >
@@ -132,7 +137,7 @@ const GameDetails = () => {
               <Heading pb={['1rem', "2rem"]} fontFamily={"Titillium Web"} color={"#8C52FF"} fontSize={['x-large', "xxx-large"]}>
                 {item.name}
               </Heading>
-              <Flex flexDir={['column','row']} gap={'1rem'} h={"100%"} height={['fit-content', "20rem"]}>
+              <Flex flexDir={['column', 'row']} gap={'1rem'} h={"100%"} height={['fit-content', "20rem"]}>
                 <VStack w={"15%"} display={['none', 'block']} overflowY={"auto"} sx={scrollbarStyles} px={".3rem"} h={"100%"}>
                   {gameScreenshots.map((i, idx) => (
                     <Box key={idx} marginBottom={'1rem '} w={"100%"} onClick={() => openModal(i.image)}>
@@ -202,17 +207,30 @@ const GameDetails = () => {
                 </HStack>
                 {/* SCREENSHOTS FOR SMALL SCREEN ENDS*/}
 
-                <Box display={"flex"} flexDir={"column"} w={['100%', "35%"]} h={"100%"}>
+                <Box display={"flex"} flexDir={"column"} gap={'.7rem'} w={['100%', "35%"]} h={"100%"}>
                   <Text fontSize={"x-large"} fontWeight={"bold"}>
                     {item.name}
                   </Text>
-                  <Text> <span style={{ fontWeight: "bold" }}> Release Date</span> : {item.released} </Text>
-                  <Text> <span style={{ fontWeight: "bold" }}>Average Playtime </span>: {item.playtime} Hours</Text>
-                  <Text key={index}>
+                  <HStack fontSize={'1.1rem'} color={'white'}>
+                    {item.parent_platforms.map((i, index) => (
+                      <React.Fragment key={index}>
+                        {i.platform.id === 1 ? <FaWindows /> :
+                          i.platform.id === 2 ? <FaPlaystation /> :
+                            i.platform.id === 3 ? <FaXbox /> :
+                              i.platform.id === 4 ? <MdOutlinePhoneIphone /> :
+                                i.platform.id === 5 ? <FaApple /> :
+                                  i.platform.id === 8 && <GrAndroid />}
+                      </React.Fragment>
+                    ))}
+                  </HStack>
+                  <Text fontSize={'1.1rem'}> <span style={{ fontWeight: "bold" }}> Release Date</span> : {item.released} </Text>
+                  <Text fontSize={'1.1rem'}> <span style={{ fontWeight: "bold" }}>Average Playtime </span>: {item.playtime} Hours</Text>
+                  <Text fontSize={'1.1rem'} key={index}>
                     <span style={{ fontWeight: "bold" }}>Genre:</span> {item.genres.map((genre) => genre.name).join(", ")}
                   </Text>
+
                   <Link to={item.website} target="_blank">
-                    <Text display={'flex'} gap={'.3rem'} alignItems={'center'} >
+                    <Text fontSize={'1.1rem'} display={'flex'} gap={'.3rem'} alignItems={'center'} >
                       <span style={{ fontWeight: "bold" }}>Official Website</span>
                       <LuExternalLink />
                     </Text>
@@ -255,8 +273,8 @@ const GameDetails = () => {
             {/* DESCRIPTION-AREA ENDED*/}
 
             {/* STORES-AREA and OTHER INFORMATION */}
-            <Flex minH={"fit-content"} flexDir={['column','row']}>
-              <Box w={["100%",'60%']}>
+            <Flex minH={"fit-content"} flexDir={['column', 'row']}>
+              <Box w={["100%", '60%']}>
                 <Box w={"90%"}>
                   <Flex
                     w={"100%"}
@@ -329,9 +347,9 @@ const GameDetails = () => {
                   </Flex>
                 </Box>
               </Box>
-              <Box w={["100%",'40%']}>
+              <Box w={["100%", '40%']}>
                 <Center py={"1rem"}>
-                  <Heading  fontFamily={"Titillium Web"}fontSize={"x-large"} color={"#8C52FF"}>
+                  <Heading fontFamily={"Titillium Web"} fontSize={"x-large"} color={"#8C52FF"}>
                     Where to buy ?
                   </Heading>
                 </Center>
@@ -348,7 +366,7 @@ const GameDetails = () => {
               </Box>
             </Flex>
             {/* STORES-AREA and OTHER INFORMATION ENDED */}
-            <Stack w={["100%",'50%']} h={"fit-content"}>
+            <Stack w={["100%", '50%']} h={"fit-content"}>
               <Text fontSize={"large"} color={"#9A67FF"} fontWeight={"bold"}>
                 Tags
               </Text>
@@ -361,7 +379,7 @@ const GameDetails = () => {
               </Flex>
             </Stack>
 
-            <Stack w={['100%','50%']}>
+            <Stack w={['100%', '50%']}>
 
               <Requirements requirements={item.platforms[0].requirements} />
 
@@ -369,7 +387,7 @@ const GameDetails = () => {
             <Box>
               {developTeam.length > 0 && (
                 <>
-                  <Heading color={'#9A67FF'} fontSize={'x-large'}fontFamily={"Titillium Web"}>{item.name} Created by:</Heading>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'} fontFamily={"Titillium Web"}>{item.name} Created by:</Heading>
                   <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal} >
 
                     {developTeam.map((i, idx) => (
@@ -384,7 +402,7 @@ const GameDetails = () => {
             <Box>
               {gameSeries.length > 0 && (
                 <>
-                  <Heading color={'#9A67FF'} fontSize={'x-large'}fontFamily={"Titillium Web"}>Game of the Series :</Heading>
+                  <Heading color={'#9A67FF'} fontSize={'x-large'} fontFamily={"Titillium Web"}>Game of the Series :</Heading>
                   <HStack p={'1rem 0rem'} scrollBehavior={'smooth'} overflowX={'auto'} sx={scrollbarStylesHorizontal}>
                     {gameSeries.map((i, idx) => (
                       <GameSeries bgIMG={i.background_image} name={i.name} slug={i.slug} idx={idx} />
