@@ -24,7 +24,6 @@ import { FaPlaystation } from "react-icons/fa";
 import { FaXbox, FaApple, FaWindows } from "react-icons/fa";
 import { GrAndroid } from "react-icons/gr";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { BsNintendoSwitch } from "react-icons/bs";
 
 const GameDetails = () => {
   const [game, setGame] = useState([]);

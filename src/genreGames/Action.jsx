@@ -201,9 +201,6 @@ const Action = () => {
                       </Text>
                       <Text>{item.releasedFormatted}</Text>
                     </Flex>
-                    {/* <Text _selection={selection}>
-                      Genre : {item.genres[0].name}{" "}
-                    </Text> */}
                   </VStack>
 
                   <Text style={buttons} userSelect={"none"} fontSize={"1rem"}>

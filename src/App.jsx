@@ -13,20 +13,24 @@ import GameDetails from "./components/GameDetails";
 import Action from "./genreGames/Action";
 import Sidebar from "./components/Sidebar";
 import { Box, Flex } from "@chakra-ui/react";
+import MaybeShowSidebar from "./components/MaybeShowSidebar";
 function App() {
+
   return (
     <NoteState>
       <Router>
         <Header />
         <Flex>
-          <Sidebar />
+          <MaybeShowSidebar>
+            <Sidebar />
+          </MaybeShowSidebar>
           <Box
             position={'fixed'}
             width={'100vw'}
-            height={['93vh','90vh']}
-            top={['7vh','10vh']}
+            height={['93vh', '90vh']}
+            top={['7vh', '10vh']}
             bgColor={'#121212'}
-            zIndex={'-3'}          
+            zIndex={'-3'}
           />
           <Routes>
             <Route path="/" element={<Home />} />
