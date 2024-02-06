@@ -33,7 +33,7 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack  minH={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem','.6rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'transparent'}>
+        <HStack  H={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem','.6rem 2rem']} w={'100vw'} justifyContent={'space-between'} bgColor={'transparent'}>
             <HStack w={['100%','','','60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['3rem', '6rem']} borderRadius={'5px'} />

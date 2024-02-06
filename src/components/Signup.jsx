@@ -48,14 +48,14 @@ const Signup = () => {
                 bgSize="cover"
                 filter="blur(1px)"
             />
-            <VStack gap={'0'} px={'1rem'} fontFamily={'Titillium Web'} bgColor={'transparent'} color={'#9A67FF'} minW={'50%'} height={'80vh'} borderRadius={'1rem'}>
+            <VStack gap={'0'} px={'1rem'} fontFamily={'Titillium Web'} bgColor={'transparent'} color={'#9A67FF'} w={['100%','50%']} height={'80vh'} borderRadius={'1rem'}>
                 <VStack py={'.3rem'} gap={'0rem'} >
-                    <Heading>YOUR ADVENTURE BEGINS HERE</Heading>
+                    <Heading color={["white","#9A67FF"]} textAlign={'center'}>YOUR ADVENTURE BEGINS HERE</Heading>
                     {/* <Text fontWeight={'bold'} fontSize={'large'}>To Game Nest Hub</Text> */}
                 </VStack>
                 <HStack w={'100%'} alignItems={'center'} height={'100%'} >
                     <VStack w={'100%'} alignItems={'center'} color={'white'} justifyContent={'center'} gap={'1rem'} h={'100%'} >
-                        <Box flexDir={'column'} display={'flex'} gap={'1rem'} w={'55%'} h={'100%'} px={'.7rem'}>
+                        <Box flexDir={'column'} display={'flex'} gap={'1rem'}  w={['100%','55%']} h={'100%'} px={'.7rem'}>
                             <Center>
 
                                 <Heading py={'2rem'} >SIGN UP</Heading>

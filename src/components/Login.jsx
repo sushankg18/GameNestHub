@@ -49,11 +49,11 @@ const Login = () => {
                 bgSize="cover"
                 filter="blur(1px)" 
             />
-            <VStack px={'1rem'} fontFamily={'Titillium Web'} gap={'0'} bgColor={'transparent'} color={'#9A67FF'} w={'50%'} height={'80vh'} borderRadius={'1rem'}>
-                <Heading py={'.7rem'}>BACK TO YOUR JOURNEY</Heading>
+            <VStack px={'1rem'} fontFamily={'Titillium Web'} gap={'0'} bgColor={'transparent'} color={'#9A67FF'} w={['100%','50%']} height={'80vh'} borderRadius={'1rem'}>
+                <Heading py={'.7rem'} color={["white","#9A67FF"]} textAlign={'center'}>BACK TO YOUR JOURNEY</Heading>
                 <HStack w={'100%'} alignItems={'center'} height={'100%'}>
                     <VStack w={'100%'} alignItems={'center'} color={'white'} justifyContent={'center'} gap={'1rem'} h={'100%'} >
-                        <Box flexDir={'column'} display={'flex'} gap={'1rem'} w={'55%'} h={'100%'} px={'.7rem'}>
+                        <Box flexDir={'column'} display={'flex'} gap={'1rem'} w={['100%','55%']}  h={'100%'} px={'.7rem'}>
                             <Center>
 
                                 <Heading py={'2rem'}>Login</Heading>
