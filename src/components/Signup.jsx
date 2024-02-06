@@ -46,7 +46,7 @@ const Signup = () => {
                 zIndex={'-1'}
                 bgImage={`url(${signupBG})`}
                 bgSize="cover"
-                filter="blur(8px)"
+                filter="blur(1px)"
             />
             <VStack gap={'0'} px={'1rem'} fontFamily={'Titillium Web'} bgColor={'transparent'} color={'#9A67FF'} minW={'50%'} height={'80vh'} borderRadius={'1rem'}>
                 <VStack py={'.3rem'} gap={'0rem'} >
@@ -94,7 +94,7 @@ const Signup = () => {
                             <Stack alignSelf={'flex-start'} gap={'.1rem'}>
                                 <Link to={'/login'}>
                                     <HStack>
-                                        <Text color={'white'} textDecor={'underline .5px white'}>Already have an account ? login</Text>
+                                    <Text >Already have an Account? <span style={{color : "#9A67FF", marginLeft : ".4rem"}}> Login</span></Text>
                                     </HStack>
                                 </Link>
                             </Stack>

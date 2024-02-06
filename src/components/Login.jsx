@@ -37,17 +37,17 @@ const Login = () => {
     }
 
     return (
-        <Center h={['93vh', '90vh']} w={'100vw'} position="relative">
+        <Center h={['93vh', '90vh']} w={'100vw'}position="relative">
             <Box
                 position="fixed"
                 top="0"
                 left="0"
-                width="100%"
+                width="100vw"
                 height="100%"
                 zIndex={'-1'}
                 bgImage={`url(${signupBG})`}
                 bgSize="cover"
-                filter="blur(8px)" 
+                filter="blur(1px)" 
             />
             <VStack px={'1rem'} fontFamily={'Titillium Web'} gap={'0'} bgColor={'transparent'} color={'#9A67FF'} w={'50%'} height={'80vh'} borderRadius={'1rem'}>
                 <Heading py={'.7rem'}>BACK TO YOUR JOURNEY</Heading>
@@ -58,14 +58,14 @@ const Login = () => {
 
                                 <Heading py={'2rem'}>Login</Heading>
                             </Center>
-                            <InputGroup borderBottom={'1px solid blue'} w={'100%'}>
+                            <InputGroup borderBottom={'1px solid whitesmoke'} w={'100%'}>
                                 <InputLeftElement pointerEvents='none'>
                                     <FaUser color='gray.300' />
                                 </InputLeftElement>
                                 <Input type='email' placeholder='Username or Email ' onChange={(e) => { setEmail(e.target.value) }} value={email} border={'none'} py={'.5rem'} variant={'unstyled'} />
                             </InputGroup>
 
-                            <InputGroup borderBottom={'1px solid blue'} w={'100%'}>
+                            <InputGroup borderBottom={'1px solid whitesmoke'} w={'100%'}>
                                 <InputLeftElement pointerEvents='none'>
                                     <RiLockPasswordFill color='gray.300' />
                                 </InputLeftElement>
@@ -77,11 +77,11 @@ const Login = () => {
                             </InputGroup>
 
                             <Checkbox colorScheme='purple' alignSelf={'flex-start'}>Remember me?</Checkbox>
-                            <Button w={'100%'} onClick={submit} fontWeight={'bold'} border={'1px solid #9a67ff'} bgColor={'white'} color={'#9a67ff'} _hover={{ bgColor: "#9a67ff", color: "white", border: "none" }}>Login</Button>
+                            <Button w={'100%'} onClick={submit} fontWeight={'bold'} border={'1px solid transparent'} bgColor={'white'} color={'#9a67ff'} _hover={{ bgColor: "#9a67ff", color: "white", border: "none" }}>Login</Button>
                             <Stack alignSelf={'flex-start'} gap={'1rem'}>
                                 <Link to={'/signup'}>
                                     <HStack>
-                                        <Text textDecor={'underline .5px #9a67ff'}>Don't have an Account? Signup</Text>
+                                        <Text >Don't have an Account? <span style={{color : "#9A67FF", marginLeft : ".4rem"}}> Signup</span></Text>
                                     </HStack>
                                 </Link>
                                 <Link to={'/forgetpassword'}>

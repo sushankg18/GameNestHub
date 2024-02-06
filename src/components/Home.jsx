@@ -20,7 +20,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Sidebar from "./Sidebar";
-import SmallLoader from '../components/SmallLoader'
+import SmallLoader from "../components/SmallLoader";
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox, FaApple, FaWindows } from "react-icons/fa";
 import { GrAndroid } from "react-icons/gr";
@@ -34,10 +34,10 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [smLoader, setSMLoader] = useState(false)
+  const [smLoader, setSMLoader] = useState(false);
   const [error, setError] = useState(false);
-  const [clickedItems, setClickedItems] = useState([]);
-  const [randomImage, setRandomImage] = useState([])
+  const [randomImage, setRandomImage] = useState([]);
+  const [favorites, setFavorites] = useState({});
 
   const formatDate = (rawDate) => {
     const options = { month: "short", day: "numeric", year: "numeric" };
@@ -54,10 +54,9 @@ const Home = () => {
           ...i,
           releasedFormatted: formatDate(i.released),
         }));
-        document.title = "Game Nest Hub"
+        document.title = "Game Nest Hub";
         if (page === 1) {
           setData(games);
-
         } else {
           setData((prev) => [...prev, ...games]);
         }
@@ -75,51 +74,60 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get(`${URL}games?page_size=40&page=${page}&key=${API_KEY}`)
-        const RandomGame = data.data.results
-        const RandomData = RandomGame[Math.floor(Math.random() * RandomGame.length)];
-        setRandomImage(RandomData.background_image)
+        const data = await axios.get(
+          `${URL}games?page_size=40&page=${page}&key=${API_KEY}`
+        );
+        const RandomGame = data.data.results;
+        const RandomData =
+          RandomGame[Math.floor(Math.random() * RandomGame.length)];
+        setRandomImage(RandomData.background_image);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-
-    }
+    };
     fetchData();
-  }, [])
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setSMLoader(true)
-      setPage((prev) => prev + 1);
-    }
-  };
+  }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        setSMLoader(true);
+        setPage((prev) => prev + 1);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const addToFav = (gameId) => {
+    setFavorites((prev) => ({
+      ...prev,
+      [gameId]: !prev[gameId],
+    }));
+  };
+
   if (error) {
-    return (
-      <Error message={"Data went on vacation without leaving a note 😭. "} />
-    );
+    return <Error message={"Data went on vacation without leaving a note 😭. "} />;
   }
 
   return (
     <Box
-      w={['100%', "80%"]}
-      minH={['93vh', "90vh"]}
+      w={["100%", "80%"]}
+      minH={["93vh", "90vh"]}
       color={"white"}
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
-      position={'relative'}
+      position={"relative"}
     >
       <Box
         position={"fixed"}
         top={"0"}
-        left={'0'}
+        left={"0"}
         w="100%"
         h="100%"
         zIndex={"-1"}
@@ -134,9 +142,9 @@ const Home = () => {
       <Center>
         <Heading
           fontFamily={"Titillium Web"}
-          fontSize={['1.7rem', "2.5rem"]}
+          fontSize={["1.7rem", "2.5rem"]}
           userSelect={"none"}
-          p={['0rem', "1rem 4rem"]}
+          p={["0rem", "1rem 4rem"]}
         >
           <span style={{ color: "#9A67FF" }}> POPULAR </span>
         </Heading>
@@ -155,6 +163,7 @@ const Home = () => {
         ) : (
           data.map((item, index) => (
             <Box
+              key={index}
               w={"20rem"}
               h={"23rem"}
               borderRadius={".5rem"}
@@ -168,7 +177,7 @@ const Home = () => {
               overflow={"hidden"}
             >
               <Box h={"55%"} w={"100%"} overflow={"hidden"}>
-                <Link key={index} to={`/games/${item.slug}`}>
+                <Link to={`/games/${item.slug}`}>
                   <Image
                     w={"100%"}
                     height={"100%"}
@@ -185,50 +194,66 @@ const Home = () => {
                 w={"100%"}
                 p={"0rem 1rem 1rem 1rem"}
                 justifyContent={"space-between"}
-                gap={'.6rem'}
+                gap={".6rem"}
               >
-                <Link key={index} to={`/games/${item.slug}`}>
+                <Link to={`/games/${item.slug}`}>
                   <Text
                     fontWeight={"bold"}
                     fontSize={"1.3rem"}
                     color={"#9A67FF"}
                     noOfLines={"1"}
-                    userSelect={'none'}
+                    userSelect={"none"}
                   >
                     {item.name}
                   </Text>
                 </Link>
                 <VStack alignItems={"flex-start"} w={"100%"} gap={".1rem"}>
-                  <Text fontWeight={'bold'} _selection={selection}>
+                  <Text fontWeight={"bold"} _selection={selection}>
                     Released : {item.releasedFormatted}
                   </Text>
-                  <Text fontWeight={'bold'} _selection={selection}>
+                  <Text fontWeight={"bold"} _selection={selection}>
                     Genre : {item.genres[0].name}{" "}
                   </Text>
                 </VStack>
-                <HStack fontSize={'1rem'} color={'white'}>
+                <HStack fontSize={"1rem"} color={"white"}>
                   {item.parent_platforms.map((i, index) => (
                     <React.Fragment key={index}>
-                      {i.platform.id === 1 ? <FaWindows /> :
-                        i.platform.id === 2 ? <FaPlaystation /> :
-                          i.platform.id === 3 ? <FaXbox /> :
-                            i.platform.id === 4 ? <MdOutlinePhoneIphone /> :
-                              i.platform.id === 5 ? <FaApple /> :
-                                i.platform.id === 8 && <GrAndroid />}
+                      {i.platform.id === 1 ? (
+                        <FaWindows />
+                      ) : i.platform.id === 2 ? (
+                        <FaPlaystation />
+                      ) : i.platform.id === 3 ? (
+                        <FaXbox />
+                      ) : i.platform.id === 4 ? (
+                        <MdOutlinePhoneIphone />
+                      ) : i.platform.id === 5 ? (
+                        <FaApple />
+                      ) : i.platform.id === 8 && <GrAndroid />}
                     </React.Fragment>
                   ))}
                 </HStack>
-                <Text style={buttons} userSelect={"none"} fontSize={"1rem"}>
-                  Add to Wishlist <MdOutlineFavoriteBorder />
+                <Text
+                  style={buttons}
+                  onClick={() => addToFav(item.id)}
+                  userSelect={"none"}
+                  fontSize={"1rem"}
+                >
+                  {favorites[item.id] ? (
+                    <>
+                      added <MdOutlineFavorite />
+                    </>
+                  ) : (
+                    <>
+                      add to wishlist <MdOutlineFavoriteBorder />
+                    </>
+                  )}
                 </Text>
               </VStack>
             </Box>
           ))
         )}
       </Box>
-      {
-        smLoader ? <SmallLoader /> : null
-      }
+      {smLoader ? <SmallLoader /> : null}
     </Box>
   );
 };
