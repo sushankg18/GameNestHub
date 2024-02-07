@@ -4,7 +4,6 @@ const MaybeShowSidebar = ({children}) => {
     const location = useLocation()
     const [showSidebar, setShowSidebar] =useState(false)
     useEffect(()=>{
-        console.log("Current location: " , location)
         if(location.pathname === "/login" || location.pathname === "/signup"){
             setShowSidebar(false)
         }else{

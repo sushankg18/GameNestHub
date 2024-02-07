@@ -1,11 +1,16 @@
-import { Box, Heading, Stack, Button, Flex, Input, Image, Text, VStack,InputGroup,InputLeftAddon } from '@chakra-ui/react'
+import { Box, Heading, Stack, Button, Flex, Input, Image, Text, VStack, HStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import defaultProfile from "../assets/user.png"
+import { FaRegEdit } from "react-icons/fa";
 
-const UpdateProfile = () => {
+
+const UpdateProfile = ({ isOpen, onClose }) => {
+    console.log(isOpen)
+    const [IsOpen, setIsOpen] = useState(isOpen)
     const [profile, setProfile] = useState(defaultProfile);
     const [name, setName] = useState("Sushank guatam")
+    const [email, setEmail] = useState("sushank@gmail.com")
     const changeProfilePic = () => {
         const profileBtn = document.getElementById('profile-btn');
         if (profileBtn && profileBtn.files.length > 0) {
@@ -16,6 +21,10 @@ const UpdateProfile = () => {
     const removeProfile = () => {
         setProfile(defaultProfile)
     }
+
+    const handleClose = () => {
+        onClose(); // Call the onClose function passed from the parent component
+    };
     return (
         <Box
             position="fixed"
@@ -29,9 +38,9 @@ const UpdateProfile = () => {
             justifyContent="center"
             alignItems='center'
         >
-            <Flex w={'50%'} h={'80%'} gap={'1rem'}>
-                <Stack alignItems={'center'} bgColor={'rgb(45,45,45)'} w={'100%'}>
-                    <Heading>UPDATE PROFILE</Heading>
+            <Flex w={'50%'} h={'95%'} gap={'.4rem'}>
+                <Stack alignItems={'center'} p={'2rem'} bgColor={'#F3F8FC'} w={'100%'} color={'black'}>
+                    <Heading fontSize={'xx-large'}>Let's update your profile...</Heading>
                     <VStack gap={'1rem'}>
                         <Text>Change profile picture</Text>
                         <Box w={'8rem'} h={'8rem'} borderRadius={'50%'} overflow={'hidden'}>
@@ -40,27 +49,64 @@ const UpdateProfile = () => {
                         <Input display={'none'} type="file" accept="image/jpeg,image/png,image/jpg" id="profile-btn" onChange={changeProfilePic} />
                         <Flex gap={'1rem'}>
 
-                            <Button as={'label'} htmlFor="profile-btn">Change Profile</Button>
+                            <Button as={'label'} colorScheme={'purple'} cursor={'pointer'} htmlFor="profile-btn">Change Profile</Button>
                             {
                                 profile === defaultProfile ? (
                                     null
-                                ) : (<Button onClick={removeProfile}>Remove profile</Button>)
+                                ) : (<Button colorScheme={'purple'} onClick={removeProfile}>Remove profile</Button>)
                             }
                         </Flex>
                     </VStack>
-                    <VStack>
-                        <InputGroup>
-                            <InputLeftAddon bgColor={'transparent'}>Name</InputLeftAddon>
-                            <Input value={name} onChange={(e) => { setName(e.target.value) }} />
-                        </InputGroup>
-                        <InputGroup>
-                            <InputLeftAddon bgColor={'transparent'}>Email</InputLeftAddon>
-                            <Input value={name} onChange={(e) => { setName(e.target.value) }} />
-                        </InputGroup>
-                        
-                    </VStack>
+                    <HStack w={'100%'}  height={'fit-content'}>
+
+                        <VStack px={'2rem'} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={'50%'}>
+                            <Stack gap={'.4rem'}>
+                                <Text fontWeight={'bold'}>Edit name</Text>
+                                <Flex alignItems={'center'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} value={name} placeholder='Change name' onChange={(e) => { setName(e.target.value) }} />
+                                    <FaRegEdit />
+                                </Flex>
+                            </Stack>
+                            <Stack gap={'.4rem'}>
+                                <Text fontWeight={'bold'}>Change email</Text>
+                                <Flex alignItems={'center'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} type='email' placeholder='Change email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                                    <FaRegEdit />
+                                </Flex>
+
+                            </Stack>
+                        </VStack>
+
+                        <VStack px={'2rem'} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={'50%'}>
+                            <Stack gap={'.4rem'}>
+                                <Text fontWeight={'bold'}>Edit name</Text>
+                                <Flex alignItems={'center'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none" ,width :"15rem" }} placeholder='Enter old password' />
+                                </Flex>
+                            </Stack>
+                            <Stack gap={'.4rem'}>
+                                <Text fontWeight={'bold'}>Change email</Text>
+                                <Flex alignItems={'center'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none" ,width :"15rem" }} placeholder='Enter New password' />
+                                </Flex>
+
+                            </Stack>
+                            <Stack gap={'.4rem'}>
+                                <Text fontWeight={'bold'}>Change email</Text>
+                                <Flex alignItems={'center'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} placeholder='Confirm New password' />
+                                </Flex>
+                            </Stack>
+                            <Button  p={'.3rem 2rem'} colorScheme={'teal'} borderRadius={'.5rem'}>Change password</Button>
+                        </VStack>
+                    </HStack>
+
+                    <Flex gap={'1rem'} alignSelf={'flex-start'}>
+                        <Button w={'6rem'} colorScheme={'red'}cursor={'pointer'}>Cancel</Button>
+                        <Button minW={'6rem'} colorScheme='green'cursor={'pointer'}>Save changes</Button>
+                    </Flex>
                 </Stack>
-                <Flex alignItems={'center'} fontSize={'1.1rem'} alignSelf={'flex-start'} cursor={'pointer'}>Close <IoClose /></Flex>
+                <Flex alignItems={'center'} onClick={handleClose} fontSize={'1.5rem'} alignSelf={'flex-start'} cursor={'pointer'} color={'#fff'}> <IoClose /></Flex>
             </Flex>
         </Box>
     );

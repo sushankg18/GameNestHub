@@ -7,11 +7,16 @@ import { GiNightSleep } from "react-icons/gi";
 import UpdateProfile from './UpdateProfile';
 
 const UserProfile = () => {
+    const [isUpOpen, setIsUpOpen] = useState(false);
 
-    const [isUpOpen, setIsUpOpen] = useState(false)
-    const handleUpdateProfile = () =>{
+    const handleUpdateProfile = () => {
         setIsUpOpen(!isUpOpen);
-    }
+    };
+
+    const closeUpdateProfileModal = () => {
+        setIsUpOpen(false);
+    };
+    
     return (
         <Box display={'flex'}  flexDir={'column'} justifyContent={'center'} alignItems={'center'} w={['100%', "80%"]} minH={['93vh', "90vh"]} color={'white'} bgColor={'#121212'}>
             <Box
@@ -23,9 +28,7 @@ const UserProfile = () => {
                 zIndex={"-1"}
                 bgColor={'#121212'}
             />
-            {
-                isUpOpen && <UpdateProfile />
-            }
+              {isUpOpen && <UpdateProfile isOpen={isUpOpen} onClose={closeUpdateProfileModal} />}
             <VStack w={'100%'} height={'100%'} p={'1rem 2rem'} gap={'4rem'}>
                 <HStack w={'100%'} justifyContent={'space-between'} >
                     <HStack gap={'1rem'}>
