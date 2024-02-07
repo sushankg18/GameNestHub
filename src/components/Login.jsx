@@ -37,7 +37,7 @@ const Login = () => {
     }
 
     return (
-        <Center h={['93vh', '90vh']} w={'100vw'}position="relative">
+        <Center h={['93vh', '90vh']} overflowY={'hidden'} w={'100vw'}position="relative">
             <Box
                 position="fixed"
                 top="0"
@@ -76,7 +76,7 @@ const Login = () => {
                                 }
                             </InputGroup>
 
-                            <Checkbox colorScheme='purple' alignSelf={'flex-start'}>Remember me?</Checkbox>
+                            <Checkbox colorScheme='purple' size={'sm'} mt={'2rem'} alignSelf={'flex-start'}>Remember me?</Checkbox>
                             <Button w={'100%'} onClick={submit} fontWeight={'bold'} border={'1px solid transparent'} bgColor={'white'} color={'#9a67ff'} _hover={{ bgColor: "#9a67ff", color: "white", border: "none" }}>Login</Button>
                             <Stack alignSelf={'flex-start'} gap={'1rem'}>
                                 <Link to={'/signup'}>

@@ -30,7 +30,7 @@ function App() {
             height={['93vh', '90vh']}
             top={['7vh', '10vh']}
             bgColor={'#121212'}
-            zIndex={'-3'}
+            zIndex={'-2'}
           />
           <Routes>
             <Route path="/" element={<Home />} />

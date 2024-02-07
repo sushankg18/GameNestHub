@@ -36,7 +36,7 @@ const Signup = () => {
         }
     }
     return (
-        <Center h={['93vh', '90vh']} w={'100vw'} position="relative">
+        <Center h={['93vh', '90vh']} overflowY={'hidden'}w={'100vw'} position="relative">
             <Box
                 position="fixed"
                 top="0"
