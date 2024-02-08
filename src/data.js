@@ -265,7 +265,6 @@ const data = [
       bg_large:
         "https://www.desktopbackground.org/download/o/2010/08/12/63140_counter-strike-source-wallpapers-wallpaper_1920x1080_h.jpg",
     },
-    trailer :" ",
     screenshots: [
       "https://se7en.ws/wp-content/uploads/2023/03/cs2-de_dust2_screenshot-01.jpg",
       "https://se7en.ws/wp-content/uploads/2023/03/cs2-de_dust2_screenshot-02.jpg",

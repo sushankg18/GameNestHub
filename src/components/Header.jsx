@@ -6,7 +6,8 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    useDisclosure
+    useDisclosure,
+    VStack
 } from '@chakra-ui/react'
 import React, { useState, useEffect, useContext } from 'react'
 import Catalog from './Catalog'
@@ -25,15 +26,16 @@ import { BsFillGiftFill } from "react-icons/bs";
 import { LuLibrary } from "react-icons/lu";
 import { BsFillPeopleFill } from "react-icons/bs";
 import profile from '../assets/profile.jpeg';
-
+import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
+import data from '../data'
 
 const Header = () => {
     const { LoginStatus, logout } = useContext(NoteContext);
     const [searchTerm, setSearchTerm] = useState('')
     const [searchData, setSearchData] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-
+    const [dropdown, setDropdown] = useState(false)
+    console.log(data)
     const handleLogOut = () => {
         if (LoginStatus) {
             logout();
@@ -54,7 +56,7 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack H={['7vh', '10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem', '.6rem 2rem']} w={'100vw'} bgColor={'black'} justifyContent={'space-between'}>
+        <HStack H={['7vh', '10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem', '.6rem 2rem']} w={'100vw'} bgColor={'#2B2B2B'} justifyContent={'space-between'}>
             <HStack w={['100%', '', '', '60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['3rem', '6rem']} borderRadius={'5px'} />
@@ -95,11 +97,11 @@ const Header = () => {
                     <Box onClick={onOpen}>
                         <GiHamburgerMenu color='white' />
                     </Box>
-                    <Drawer placement={'top'} onClose={onClose} isOpen={isOpen}>
+                    <Drawer placement={'top'}  onClose={onClose} isOpen={isOpen}>
                         <DrawerOverlay />
-                        <DrawerContent>
+                        <DrawerContent maxH={'90%'}>
                             <DrawerCloseButton color={'white'} />
-                            <DrawerBody bgColor={'#2D2D2D'} py={'2rem'}>
+                            <DrawerBody sx={scrollbarStyles} bgColor={'#000'} py={'2rem'}>
                                 <Flex
                                     justifyContent={'space-between'}
                                     alignItems={'flex-start'}
@@ -156,6 +158,33 @@ const Header = () => {
                                         </Flex>
                                     </Flex>
                                 </Flex>
+                                <Flex flexDir={'column'} color={'white'} >
+                                    <HStack fontSize={'1.3rem'} justifyContent={'center'}>
+                                        <Flex alignItems={'center'}m={'1rem'} onClick={() => setDropdown(!dropdown)}>
+                                            Catalog
+                                            <MdOutlineKeyboardDoubleArrowDown fontSize={'1.3rem'} />
+                                        </Flex>
+                                    </HStack>
+                                    {
+                                        dropdown && (
+
+                                            <Flex alignItems={'flex-start'} flexDir={'column'} gap={'.8rem'}>
+                                                {
+                                                    data.map((item) => (
+                                                        <Link to={`/catalog/${item.title}`} onClick={onclose}>
+                                                            <Flex alignItems={'center'} gap={'.5rem'}>
+                                                                <Image src={item.images.poster} width={'1.7rem'} />
+                                                                <Text color={'#fff'}>
+                                                                    {item.title}
+                                                                </Text>
+                                                            </Flex>
+                                                        </Link>
+                                                    ))
+                                                }
+                                            </Flex>
+                                        )
+                                    }
+                                </Flex>
                             </DrawerBody>
                         </DrawerContent>
                     </Drawer>
@@ -176,5 +205,21 @@ const Header = () => {
     )
 
 }
-
+const scrollbarStyles = {
+    "&::-webkit-scrollbar": {
+      width: "0px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+      borderRadius: "10px",
+      cursor: "pointer",
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+    },
+    "&::webkit-scrollbar-thumb:hover": {
+      backgroundColor: "black",
+    },
+  };
+  
 export default Header

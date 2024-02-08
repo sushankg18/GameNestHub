@@ -11,17 +11,17 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
     const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
     return (
-        <Box minH={'90vh'} color={'white'}  overflow={'hidden'} position="relative">
+        <Box minH={'90vh'} color={'white'} overflow={'hidden'} position="relative">
             <Box
-              position={"fixed"}
-              top={"0"}
-              left={"0"}
-              zIndex={"-1"}
-              w="100%"
-              h="100%"
-              background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
-              backgroundSize="cover"
-              backgroundPosition="center"
+                position={"fixed"}
+                top={"0"}
+                left={"0"}
+                zIndex={"-1"}
+                w="100%"
+                h="100%"
+                background={`radial-gradient(ellipse at center, rgba(0,0,0,.7) 0%, rgba(0,0,0,0.9) 100%), url(${bgIMG})`}
+                backgroundSize="cover"
+                backgroundPosition="center"
             />
 
             <HStack flexDir={['column', '', '', 'row']} gap={'2rem'} justifyContent={'space-between'} padding={['.5rem', '', '', '1rem 2rem']}>
@@ -34,11 +34,16 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
                         <Text fontSize={['1rem', '', '', '1.1rem']} fontWeight={'bold'}>Size : {size}</Text>
                     </VStack>
                 </HStack>
-                <VStack>
-                    <Heading alignSelf={'flex-start'} fontSize={'1rem'}>Trailer : </Heading>
-                    <Box w={['', '', '', '28rem']} display={['block', '', '', 'block']} >
-                        <video width={'100%'} style={{ borderRadius: "10px" }} autoPlay muted loop src={trailer} />
-                    </Box>
+                <VStack>{
+                    trailer && (
+                        <>
+                            <Heading alignSelf={'flex-start'} fontSize={'1rem'}>Trailer : </Heading>
+                            <Box w={['', '', '', '28rem']} display={['block', '', '', 'block']} >
+                                <video width={'100%'} style={{ borderRadius: "10px" }} autoPlay muted loop src={trailer} />
+                            </Box>
+                        </>
+                    )
+                    }
                 </VStack>
             </HStack>
 
@@ -97,7 +102,7 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
 
             </Box>
 
-            <Box padding={['2rem .5rem', '', '', '1rem 2rem']} w={'50%'} >
+            <Box padding={['2rem .5rem', '', '', '1rem 2rem']} w={['100%', '50%']} >
 
                 <Heading fontSize={['1.3rem', '', '', '1.5rem']} color={'#8C52FF'}>DESCRIPTION :</Heading>
                 {desc && desc.length > 0 && (
@@ -129,8 +134,8 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
                     </Carousel>
                 </VStack>
 
-                <VStack w={'50%'} gap={'5rem'} >
-                    <Heading color={'#8C52FF'}>DOWNLOAD LINKS</Heading>
+                <VStack w={'100%'} gap={['1rem', '5rem']} >
+                    <Heading color={'#8C52FF'} fontSize={['1.3rem', '', '', '2rem']}>DOWNLOAD LINKS</Heading>
                     <VStack gap={'2rem'}>
                         <a href={gdrive} target='_blank'>
                             <Button style={downloadLinks} bgColor={'#E8E8E8'} _hover={{ bgColor: "rgb(210,210,210)" }}>
