@@ -27,20 +27,22 @@ const UpdateProfile = ({ isOpen, onClose }) => {
     };
     return (
         <Box
-            position="fixed"
+            position={["absolute", 'fixed']}
             top="0"
             left="0"
-            width="100%"
-            height="100%"
+            width="100vw"
+            height={['fit-content', "100vh"]}
             backgroundColor="rgba(0, 0, 0, 0.8)"
             zIndex="999"
             display="flex"
             justifyContent="center"
+            py={['1rem', ".6rem"]}
             alignItems='center'
+            flexGrow={1} overflowY="auto"
         >
-            <Flex w={'50%'} h={'95%'} gap={'.4rem'}>
-                <Stack alignItems={'center'} p={'2rem'} bgColor={'#F3F8FC'} w={'100%'} color={'black'}>
-                    <Heading fontSize={'xx-large'}>Let's update your profile...</Heading>
+            <Flex position={'relative'} w={['99%', '50%']}p={['.4rem', '2rem']} bgColor={'#F3F8FC'} h={['100%', '98%']}>
+                <Stack alignItems={'center'}  w={'100%'} color={'black'}>
+                    <Heading fontSize={['large', 'xx-large']}>Let's update your profile...</Heading>
                     <VStack gap={'1rem'}>
                         <Text>Change profile picture</Text>
                         <Box w={'8rem'} h={'8rem'} borderRadius={'50%'} overflow={'hidden'}>
@@ -57,56 +59,56 @@ const UpdateProfile = ({ isOpen, onClose }) => {
                             }
                         </Flex>
                     </VStack>
-                    <HStack w={'100%'}  height={'fit-content'}>
+                    <HStack flexDir={['column', 'row']} w={'100%'} height={'fit-content'}>
 
-                        <VStack px={'2rem'} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={'50%'}>
-                            <Stack gap={'.4rem'}>
+                        <VStack  px={['.3rem', '2rem']} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={['100%','50%']}>
+                            <Stack gap={'.4rem'} w={'100%'}>
                                 <Text fontWeight={'bold'}>Edit name</Text>
-                                <Flex alignItems={'center'}>
-                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} value={name} placeholder='Change name' onChange={(e) => { setName(e.target.value) }} />
-                                    <FaRegEdit />
+                                <Flex alignItems={'center'} gap={'.4rem'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none", width: "100%" }} value={name} placeholder='Change name' onChange={(e) => { setName(e.target.value) }} />
+                                    <FaRegEdit fontSize={'1.2rem'} />
                                 </Flex>
                             </Stack>
-                            <Stack gap={'.4rem'}>
+                            <Stack gap={'.4rem'} w={'100%'}>
                                 <Text fontWeight={'bold'}>Change email</Text>
-                                <Flex alignItems={'center'}>
-                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} type='email' placeholder='Change email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                                    <FaRegEdit />
+                                <Flex alignItems={'center'} gap={'.4rem'}>
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none", width: "100%" }} type='email' placeholder='Change email' value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                                    <FaRegEdit fontSize={'1.2rem'} />
                                 </Flex>
 
                             </Stack>
                         </VStack>
 
-                        <VStack px={'2rem'} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={'50%'}>
-                            <Stack gap={'.4rem'}>
+                        <VStack px={['.3rem', '2rem']} gap={'1.5rem'} alignItems={'flex-start'} h={'100%'} w={['100%', '50%']}>
+                            <Stack gap={'.4rem'} w={'100%'}>
                                 <Text fontWeight={'bold'}>Edit name</Text>
                                 <Flex alignItems={'center'}>
-                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none" ,width :"15rem" }} placeholder='Enter old password' />
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none", width: "100%" }} placeholder='Enter old password' />
                                 </Flex>
                             </Stack>
-                            <Stack gap={'.4rem'}>
+                            <Stack gap={'.4rem'} w={'100%'}>
                                 <Text fontWeight={'bold'}>Change email</Text>
                                 <Flex alignItems={'center'}>
-                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none" ,width :"15rem" }} placeholder='Enter New password' />
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none", width: "100%" }} placeholder='Enter New password' />
                                 </Flex>
 
                             </Stack>
-                            <Stack gap={'.4rem'}>
+                            <Stack gap={'.4rem'} w={'100%'}>
                                 <Text fontWeight={'bold'}>Change email</Text>
                                 <Flex alignItems={'center'}>
-                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none",width :"15rem" }} placeholder='Confirm New password' />
+                                    <input style={{ backgroundColor: 'white', color: "black", padding: '.4rem 1rem', outline: "none", width: "100%" }} placeholder='Confirm New password' />
                                 </Flex>
                             </Stack>
-                            <Button  p={'.3rem 2rem'} colorScheme={'teal'} borderRadius={'.5rem'}>Change password</Button>
+                            <Button p={'.3rem 2rem'} colorScheme={'teal'} borderRadius={'.5rem'}>Change password</Button>
                         </VStack>
                     </HStack>
 
-                    <Flex gap={'1rem'} alignSelf={'flex-start'}>
-                        <Button w={'6rem'} colorScheme={'red'}cursor={'pointer'}>Cancel</Button>
-                        <Button minW={'6rem'} colorScheme='green'cursor={'pointer'}>Save changes</Button>
+                    <Flex marginTop={['1rem','0']} gap={'1rem'} alignSelf={['flex-end','flex-start']}>
+                        <Button w={'6rem'} colorScheme={'red'} cursor={'pointer'}>Cancel</Button>
+                        <Button minW={'6rem'} colorScheme='green' cursor={'pointer'}>Save changes</Button>
                     </Flex>
                 </Stack>
-                <Flex alignItems={'center'} onClick={handleClose} fontSize={'1.5rem'} alignSelf={'flex-start'} cursor={'pointer'} color={'#fff'}> <IoClose /></Flex>
+                <Flex position={'absolute'} top={'1'} right={'1'} border={'1px solid red'} alignItems={'center'} onClick={handleClose} fontSize={'1.5rem'} alignSelf={'flex-start'} cursor={'pointer'} color={'red'}> <IoClose /></Flex>
             </Flex>
         </Box>
     );

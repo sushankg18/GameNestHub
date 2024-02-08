@@ -18,7 +18,7 @@ const UserProfile = () => {
     };
     
     return (
-        <Box display={'flex'}  flexDir={'column'} justifyContent={'center'} alignItems={'center'} w={['100%', "80%"]} minH={['93vh', "90vh"]} color={'white'} bgColor={'#121212'}>
+        <Box display={'flex'} overflowX={'hidden'}  flexDir={'column'} justifyContent={'center'} alignItems={'center'} w={['100%', "80%"]} minH={['93vh', "90vh"]} color={'white'} bgColor={'#121212'}>
             <Box
                 position={"fixed"}
                 top={"0"}
