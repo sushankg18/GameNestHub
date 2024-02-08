@@ -1,4 +1,13 @@
-import { Box, Button, Flex, HStack, Image, Text, } from '@chakra-ui/react'
+import {
+    Box, Button, Flex, HStack, Image, Text, Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    useDisclosure
+} from '@chakra-ui/react'
 import React, { useState, useEffect, useContext } from 'react'
 import Catalog from './Catalog'
 import Logo from '../assets/GameNestHub_Logo.png'
@@ -7,12 +16,24 @@ import { NoteContext } from '../Context/NoteState';
 import Login from './Login';
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoNotifications } from "react-icons/io5";
+import { IoIosSettings } from "react-icons/io";
+import { RiFeedbackFill } from "react-icons/ri";
+import { IoLogOutSharp } from "react-icons/io5";
+import { IoHomeSharp } from "react-icons/io5";
+import { BsFillGiftFill } from "react-icons/bs";
+import { LuLibrary } from "react-icons/lu";
+import { BsFillPeopleFill } from "react-icons/bs";
+import profile from '../assets/profile.jpeg';
 
 
 const Header = () => {
     const { LoginStatus, logout } = useContext(NoteContext);
     const [searchTerm, setSearchTerm] = useState('')
     const [searchData, setSearchData] = useState([])
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+
     const handleLogOut = () => {
         if (LoginStatus) {
             logout();
@@ -33,13 +54,13 @@ const Header = () => {
 
     }, [searchTerm])
     return (
-        <HStack  H={['7vh','10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem','.6rem 2rem']} w={'100vw'} bgColor={'black'} justifyContent={'space-between'}>
-            <HStack w={['100%','','','60%']} justifyContent={'space-between'} >
+        <HStack H={['7vh', '10vh']} position={'sticky'} zIndex={'99'} top={'0'} padding={['.7rem 1rem', '.6rem 2rem']} w={'100vw'} bgColor={'black'} justifyContent={'space-between'}>
+            <HStack w={['100%', '', '', '60%']} justifyContent={'space-between'} >
                 <Link to={'/'}>
                     <Image src={Logo} userSelect={'none'} cursor={'pointer'} width={['3rem', '6rem']} borderRadius={'5px'} />
                 </Link>
                 <Box position={'relative'}>
-                    <Box width={['14rem','','','30rem']} fontSize={['.8rem','1.1rem']} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={['1.5rem','2.3rem']}>
+                    <Box width={['11rem', '', '', '30rem']} fontSize={['.8rem', '1.1rem']} backgroundColor={'white'} p={'.2rem 1rem'} alignItems={'center'} display={'flex'} borderRadius={'.5rem'} overflow={'hidden'} height={['1.5rem', '2.3rem']}>
                         <FaSearch />
                         <input
                             onChange={(e) => { setSearchTerm(e.target.value); }}
@@ -49,19 +70,19 @@ const Header = () => {
                         />
                     </Box>
                     {
-                        searchTerm.length > 0 ? (<Box position={'absolute'} py={'1rem'} overflowY={'scroll'} display={'flex'} flexDir={'column'} gap={'1rem'} width={['14rem','30rem']} height={'fit-content'} borderRadius={'1rem'} top={'2.7rem'} bgColor={'black'} color={'white'}>
+                        searchTerm.length > 0 ? (<Box position={'absolute'} py={'1rem'} overflowY={'scroll'} display={'flex'} flexDir={'column'} gap={'1rem'} width={['14rem', '30rem']} height={'fit-content'} borderRadius={'1rem'} top={'2.7rem'} bgColor={'black'} color={'white'}>
                             {
                                 searchData.map((data, index) => {
                                     return (
-                                        <Link key={index} to={`/games/${data.slug}`} onClick={()=>{setSearchTerm('')}}>
-                                            <Flex gap={['1rem','2rem']} alignItems={'center'} p={['.2rem .5rem','.2rem 2rem']} borderBottom={'1px solid #18181C'}>
-                                                <Box w={['20%','5rem']} h={['1.5rem','3rem']}>{
+                                        <Link key={index} to={`/games/${data.slug}`} onClick={() => { setSearchTerm('') }}>
+                                            <Flex gap={['1rem', '2rem']} alignItems={'center'} p={['.2rem .5rem', '.2rem 2rem']} borderBottom={'1px solid #18181C'}>
+                                                <Box w={['20%', '5rem']} h={['1.5rem', '3rem']}>{
                                                     data.background_image ?
-                                                    <Image w={'100% '}objectFit={'cover'} h={'100%'} src={data.background_image} />
-                                                    : null
+                                                        <Image w={'100% '} objectFit={'cover'} h={'100%'} src={data.background_image} />
+                                                        : null
                                                 }
                                                 </Box>
-                                                <Text w={'80%'} fontWeight={'bold'} fontSize={['.8rem','1.1rem']} noOfLines={'1'}>{data.name}</Text>
+                                                <Text w={'80%'} fontWeight={'bold'} fontSize={['.8rem', '1.1rem']} noOfLines={'1'}>{data.name}</Text>
                                             </Flex>
                                         </Link>
                                     )
@@ -70,8 +91,74 @@ const Header = () => {
                         </Box>) : null
                     }
                 </Box>
-                <Box display={['block','none']}>
-                <GiHamburgerMenu color='white'/>
+                <Box display={['block', 'none']}>
+                    <Box onClick={onOpen}>
+                        <GiHamburgerMenu color='white' />
+                    </Box>
+                    <Drawer placement={'top'} onClose={onClose} isOpen={isOpen}>
+                        <DrawerOverlay />
+                        <DrawerContent>
+                            <DrawerCloseButton color={'white'} />
+                            <DrawerBody bgColor={'#2D2D2D'} py={'2rem'}>
+                                <Flex
+                                    justifyContent={'space-between'}
+                                    alignItems={'flex-start'}
+                                    gap={'3'}
+                                    fontWeight={'semibold'}
+                                    color={'#fff'}
+                                >
+                                    <Flex flexDir={'column'} gap={'.6rem'}>
+                                        <Link to={'/'}>
+                                            <Flex gap={'.3rem'}>
+                                                <IoHomeSharp fontSize={'1.3rem'} />
+                                                Home
+                                            </Flex>
+                                        </Link>
+                                        <Flex gap={'.3rem'}>
+                                            <BsFillGiftFill fontSize={'1.3rem'} />
+                                            Wishlist
+                                        </Flex>
+                                        <Flex gap={'.3rem'}>
+                                            <LuLibrary fontSize={'1.3rem'} />
+                                            My Library
+                                        </Flex>
+                                        <Flex gap={'.3rem'}>
+                                            <BsFillPeopleFill fontSize={'1.3rem'} />
+                                            People
+                                        </Flex>
+                                        <Text>Browse</Text>
+                                    </Flex>
+                                    <Flex flexDir={'column'} gap={'.6rem'} >
+                                        <Link to={'/userprofile'}>
+                                            <Flex gap={'.3rem'}>
+                                                <Image src={profile} width={'1.7rem'} borderRadius={'50%'} />
+                                                Sushank
+                                            </Flex>
+                                        </Link>
+                                        <Flex gap={'.3rem'}>
+                                            <IoLogOutSharp fontSize={'1.6rem'} />
+                                            Logout
+                                        </Flex>
+
+                                        <Flex gap={'.3rem'}>
+                                            <IoNotifications fontSize={'1.6rem'} />
+                                            Notifications
+                                        </Flex>
+
+                                        <Flex gap={'.3rem'}>
+                                            <IoIosSettings fontSize={'1.6rem'} />
+                                            Settings
+                                        </Flex>
+
+                                        <Flex gap={'.3rem'}>
+                                            <RiFeedbackFill fontSize={'1.6rem'} />
+                                            Feedback
+                                        </Flex>
+                                    </Flex>
+                                </Flex>
+                            </DrawerBody>
+                        </DrawerContent>
+                    </Drawer>
                 </Box>
             </HStack>
             <HStack w={'25%'} display={['none', '', '', 'flex']} justifyContent={'space-between'}>

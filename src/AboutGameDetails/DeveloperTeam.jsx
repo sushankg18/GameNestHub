@@ -24,7 +24,6 @@ const DeveloperTeam = ({ bgIMG, name, photo }) => {
         alignItems={"center"}
         justifyContent={'center'}
         gap={'1rem'}
-        mr={'1rem'}
       >
         <Box
           position={"absolute"}

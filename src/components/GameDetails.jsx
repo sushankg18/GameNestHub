@@ -498,7 +498,7 @@ const scrollbarStyles = {
 
 const scrollbarStylesHorizontal = {
   "&::-webkit-scrollbar": {
-    height: "6px",
+    height: "3px",
   },
   "&::-webkit-scrollbar-thumb": {
     backgroundColor: "#9A67FF",

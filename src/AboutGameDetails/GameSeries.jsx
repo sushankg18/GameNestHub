@@ -9,7 +9,6 @@ const GameSeries = ({ name, bgIMG, slug, idx }) => {
         <Box
           w={'fit-content'}
           h={'fit-content'}
-          mr={'1rem'}
           gap={'1rem'}
           display={'flex'}
           flexDir={'column'}
