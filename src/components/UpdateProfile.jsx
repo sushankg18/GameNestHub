@@ -104,7 +104,7 @@ const UpdateProfile = ({ isOpen, onClose }) => {
                     </HStack>
 
                     <Flex marginTop={['1rem','0']} gap={'1rem'} alignSelf={['flex-end','flex-start']}>
-                        <Button w={'6rem'} colorScheme={'red'} cursor={'pointer'}>Cancel</Button>
+                        <Button w={'6rem'} colorScheme={'red'}onClick={handleClose} cursor={'pointer'}>Cancel</Button>
                         <Button minW={'6rem'} colorScheme='green' cursor={'pointer'}>Save changes</Button>
                     </Flex>
                 </Stack>
