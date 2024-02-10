@@ -5,7 +5,6 @@ const NoteContext = createContext();
 
 const NoteState = (props) => {
   const [LoginStatus, setLoginStatus] = useState(false);
-
   useEffect(() => {
     const savedLoginStatus = localStorage.getItem("LoginStatus");
 
@@ -16,13 +15,11 @@ const NoteState = (props) => {
 
   const logout = () => {
     setLoginStatus(false);
-
     localStorage.removeItem('LoginStatus');
   };
 
   const setAuthenticatedUser = (user) => {
     setLoginStatus(true);
-
     localStorage.setItem('LoginStatus', 'true');
   };
 

@@ -14,6 +14,7 @@ import Action from "./genreGames/Action";
 import Sidebar from "./components/Sidebar";
 import { Box, Flex } from "@chakra-ui/react";
 import MaybeShowSidebar from "./components/MaybeShowSidebar";
+import GenreSection from "./genreGames/GenreSection";
 function App() {
 
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/forgetpassword" element={<ForgetPass />} />
             <Route path="/games/:id" element={<GameDetails />} />
             <Route path="/genre/:id" element={<Action />} />
+            <Route path='/genre' element={<GenreSection />} />
           </Routes>
         </Flex>
       </Router>

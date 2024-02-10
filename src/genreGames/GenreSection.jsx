@@ -1,4 +1,4 @@
-import { Box, Center, HStack, Heading, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, HStack, Heading, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 // import genreData from "./GenreSectionData";
@@ -13,68 +13,56 @@ const GenreSection = () => {
     const fetchData = async () => {
       setLoading(true)
       try {
-          const data = await axios.get(`${URL}genres?key=${API_KEY}`)
-          setGenre(data.data.results)         
+        const data = await axios.get(`${URL}genres?key=${API_KEY}`)
+        setGenre(data.data.results)
         setLoading(false)
-          
+
       } catch (error) {
         console.log(error)
         setError(true)
-      } finally{
+      } finally {
         setLoading(false)
       }
     }
     fetchData()
   }, [API_KEY]);
   return (
-    <Box w={'100%'} >
-      <Heading
-        fontSize={"1.5rem"}
-        px={"6%"}
-        fontFamily={"Titillium Web"}
-        _selection={selection}
-      >
-        Explore by Genre
-      </Heading>
-      <Center px={'3rem'}>
+    <Box w={'80%'} >
+      <Center>
+        <Heading
+          fontFamily={"Titillium Web"}
+          fontSize={["1.7rem", "2.5rem"]}
+          userSelect={"none"}
+          p={["0rem", "1rem 4rem"]}
+          _selection={selection}
+        >
+          <span style={{ color: "#9A67FF" }}> Explore by Genre </span>
+        </Heading>
+      </Center>
+      <Center >
         <Box
           w={"88vw"}
           h={"fit-content"}
           p={"1rem 0"}
-          overflowX={"scroll"}
-          scrollBehavior={"smooth"}
-          sx={{
-            "&::-webkit-scrollbar": {
-              height: "10px",
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "#9A67FF",
-              borderRadius: "10px",
-              cursor: "pointer",
-            },
-            "&::-webkit-scrollbar-track": {
-              backgroundColor: "transparent",
-            },
-            "&::webkit-scrollbar-thumb:hover": {
-              backgroundColor: "black",
-            },
-          }}
         >
-          <HStack w={"fit-content"} gap={"1.5rem"}>
-            {genre.map((i , index) => (
+          <Flex flexWrap={'wrap'} w={"fit-content"} gap={"1.5rem"}>
+            {genre.map((i, index) => (
               <Link to={`/genre/${i.slug}`}>
                 <Box
                   w={"17rem"}
                   position={"relative"}
                   h={"17rem"}
                   border={"1px solid #18181C"}
+                  display={'flex'}
+                  justifyContent={'center'}
+                  alignItems={'center'}
                   cursor={"pointer"}
-                  overflow={"hidden"}
                 >
                   <Box
                     position={"absolute"}
                     top={"0"}
                     w="100%"
+                    zIndex={'-1'}
                     h="100%"
                     background={`radial-gradient(ellipse at center, rgba(0,0,0,.2) 0%, rgba(0,0,0,0.9) 100%), url(${i.image_background})`}
                     backgroundSize="cover"
@@ -84,23 +72,20 @@ const GenreSection = () => {
                       transform: "scale(1.1)",
                     }}
                   />
-                  <Text
-                    zIndex={2}
-                    color="white"
-                    position="absolute"
-                    top="2rem"
-                    left="50%"
-                    transform="translate(-50%, -50%)"
+                  <Flex
+                    justifyContent={'center'}
+                    width={'100%'}
+                    color="#FFF"
+                    bgColor={'rgb(198, 205, 235, 0.3)'}
                     fontWeight={"bold"}
-                    fontSize={"1.6rem"}
-                    userSelect={"none"}
+                    fontSize={"1.7rem"}
                   >
                     {i.name}
-                  </Text>
+                  </Flex>
                 </Box>
               </Link>
             ))}
-          </HStack>
+          </Flex>
         </Box>
       </Center>
     </Box>

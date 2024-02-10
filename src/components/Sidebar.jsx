@@ -28,10 +28,11 @@ import { FaPlaystation } from "react-icons/fa";
 import { TfiAndroid } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import profile from '../assets/profile.jpeg';
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const Sidebar = () => {
   return (
-    <Box display={['none','block']} minW={"20%"} bgColor={'transparent'} position={"sticky"} top={"10vh"}
+    <Box display={['none', 'block']} minW={"20%"} bgColor={'transparent'} position={"sticky"} top={"10vh"}
       h={"90vh"}
       overflowY={"auto"}
       color={"white"}
@@ -57,17 +58,17 @@ const Sidebar = () => {
         <Text fontSize={"larger"} fontWeight={"bold"}>
           FOLLOWINGS
         </Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <CiGift /> Wishlist</Text>
+        {/* <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <CiGift /> Wishlist</Text>
         <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <BiLibrary /> My library</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <HiOutlineUsers /> People</Text>
+        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <HiOutlineUsers /> People</Text> */}
 
         <Text fontSize={"larger"} fontWeight={"bold"}>
           NEW RELEASE
         </Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <FaStar /> Last 30 days</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <BsFire /> This week</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <GiNextButton /> Next week</Text>
-        <Text fontSize={"larger"} fontWeight={"bold"}>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} > <FaStar /> Last 30 days</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} > <BsFire /> This week</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} > <GiNextButton /> Next week</Text>
+        {/* <Text fontSize={"larger"} fontWeight={"bold"}>
           BROWSE BY
         </Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} fontWeight={'bold'}>Platforms</Text>
@@ -75,23 +76,34 @@ const Sidebar = () => {
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaPlaystation /> Playstation 4</Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaXbox /> Xbox One</Text>
         <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <FaAppStoreIos /> Ios</Text>
-        <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <TfiAndroid /> Android</Text>
+        <Text display={'flex'} cursor={'pointer'} alignItems={'center'} gap={'.7rem'} fontSize={"larger"} > <TfiAndroid /> Android</Text> */}
 
         <Text fontSize={"larger"} fontWeight={"bold"}>
           BROWSE BY
         </Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <MdLocalGroceryStore />  Stores</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}> <FaFolderOpen /> Collections</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><BiSolidCategory />Genre</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><FaUser />Creators</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><FaHashtag />Tags</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}>< IoCodeSlash /> Developer</Text>
-        <Text fontSize={"larger"} display={'flex'} alignItems={'center'} gap={'.7rem'}><SiLeanpub />Publisher</Text>
-        <Text fontSize={"larger"}>Action</Text>
-        <Text fontSize={"larger"}>Strategy</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} > <MdLocalGroceryStore />  Stores</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} > <FaFolderOpen /> Collections</Text>
+        <Link to={'/genre'}>
+          <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} ><BiSolidCategory />Genre</Text>
+        </Link>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect}><FaUser />Creators</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} ><FaHashtag />Tags</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} >< IoCodeSlash /> Developer</Text>
+        <Text fontSize={"larger"} style={stylying} _hover={hoverEffect} ><SiLeanpub />Publisher</Text>
       </VStack>
     </Box>
   );
 };
 
+
+const stylying = {
+  display : 'flex',
+  alignItems : 'center',
+  gap : '.7rem',
+  cursor : 'pointer',
+}
+
+const hoverEffect = { 
+  color : "#8C52FF"
+}
 export default Sidebar;
