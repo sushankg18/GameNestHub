@@ -19,7 +19,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import SmallLoader from "../components/SmallLoader";
-const Action = () => {
+const GenreGames = () => {
   const URL = "https://api.rawg.io/api/";
   const API_KEY = "b529d03181f044c39b0a7a0722e82612";
   const { id } = useParams();
@@ -217,7 +217,7 @@ const Action = () => {
   );
 };
 
-export default Action;
+export default GenreGames;
 
 const selection = {
   bgColor: "#9A67FF",
