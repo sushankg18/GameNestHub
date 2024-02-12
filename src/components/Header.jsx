@@ -110,49 +110,49 @@ const Header = () => {
                                     color={'#fff'}
                                 >
                                     <Flex flexDir={'column'} gap={'.6rem'}>
-                                        <Link to={'/'}>
-                                            <Flex gap={'.3rem'}>
+                                        <Link to={'/'} >
+                                            <Flex gap={'.3rem'} onClick={onClose}>
                                                 <IoHomeSharp fontSize={'1.3rem'} />
                                                 Home
                                             </Flex>
                                         </Link>
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <BsFillGiftFill fontSize={'1.3rem'} />
                                             Wishlist
                                         </Flex>
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <LuLibrary fontSize={'1.3rem'} />
                                             My Library
                                         </Flex>
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <BsFillPeopleFill fontSize={'1.3rem'} />
                                             People
                                         </Flex>
-                                        <Text>Browse</Text>
+                                        <Text onClick={onClose}>Browse</Text>
                                     </Flex>
                                     <Flex flexDir={'column'} gap={'.6rem'} >
                                         <Link to={'/userprofile'}>
-                                            <Flex gap={'.3rem'}>
+                                            <Flex gap={'.3rem'} onClick={onClose}>
                                                 <Image src={profile} width={'1.7rem'} borderRadius={'50%'} />
                                                 Sushank
                                             </Flex>
                                         </Link>
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <IoLogOutSharp fontSize={'1.6rem'} />
                                             Logout
                                         </Flex>
 
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <IoNotifications fontSize={'1.6rem'} />
                                             Notifications
                                         </Flex>
 
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <IoIosSettings fontSize={'1.6rem'} />
                                             Settings
                                         </Flex>
 
-                                        <Flex gap={'.3rem'}>
+                                        <Flex gap={'.3rem'} onClick={onClose}>
                                             <RiFeedbackFill fontSize={'1.6rem'} />
                                             Feedback
                                         </Flex>
@@ -171,8 +171,8 @@ const Header = () => {
                                             <Flex alignItems={'flex-start'} flexDir={'column'} gap={'.8rem'}>
                                                 {
                                                     data.map((item) => (
-                                                        <Link to={`/catalog/${item.title}`} onClick={onclose}>
-                                                            <Flex alignItems={'center'} gap={'.5rem'}>
+                                                        <Link to={`/catalog/${item.title}`}>
+                                                            <Flex alignItems={'center'} gap={'.5rem'}onClick={onClose}>
                                                                 <Image src={item.images.poster} width={'1.7rem'} />
                                                                 <Text color={'#fff'}>
                                                                     {item.title}

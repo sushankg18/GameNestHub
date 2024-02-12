@@ -22,7 +22,7 @@ const NoteState = (props) => {
     setLoginStatus(true);
     localStorage.setItem('LoginStatus', 'true');
   };
-
+ 
   return (
     <NoteContext.Provider value={{ LoginStatus, setLoginStatus,  logout, setAuthenticatedUser }}>
       {props.children}
