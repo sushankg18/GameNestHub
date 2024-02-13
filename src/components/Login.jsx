@@ -1,5 +1,5 @@
 import { Box, Button, Center, HStack, Heading, Image, Input, VStack, InputGroup, InputLeftElement, Checkbox, Stack, Text } from '@chakra-ui/react';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import LoginImg from '../assets/loginPage.png';
 import signupBG from '../assets/temp.jpg';
 import { FaUser } from "react-icons/fa";
@@ -11,7 +11,7 @@ import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 
 const Login = () => {
-    const { setLoginStatus, setAuthenticatedUser } = useContext(NoteContext);
+    const { setLoginStatus, setAuthenticatedUser, setUserEmail, userEmail } = useContext(NoteContext);
     const Navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ const Login = () => {
                 alert('SIGNED IN SUCCESSFULLY✅');
                 Navigate('/userprofile');
                 setLoginStatus(true);
-                setAuthenticatedUser({ name: user.displayName });
+                setUserEmail(user.user.email);
             }
         } catch (error) {
             alert(error);

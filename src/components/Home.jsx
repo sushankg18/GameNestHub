@@ -9,23 +9,17 @@ import {
   Image,
   Text,
   Center,
-  Flex,
 } from "@chakra-ui/react";
 import Loader from "./Loader";
 import Error from "./Error";
 import { Link } from "react-router-dom";
-import shuffle from "lodash/shuffle";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import Sidebar from "./Sidebar";
 import SmallLoader from "../components/SmallLoader";
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox, FaApple, FaWindows } from "react-icons/fa";
 import { GrAndroid } from "react-icons/gr";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { BsNintendoSwitch } from "react-icons/bs";
 
 const Home = () => {
   const URL = "https://api.rawg.io/api/";
@@ -122,7 +116,6 @@ const Home = () => {
       color={"white"}
       fontFamily={"Titillium Web"}
       overflowX={"hidden"}
-      position={"relative"}
     >
       <Box
         position={"fixed"}

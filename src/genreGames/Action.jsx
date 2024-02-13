@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  HStack,
-  Button,
   Box,
   Heading,
   VStack,
@@ -14,9 +12,6 @@ import {
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { Link, useParams } from "react-router-dom";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import SmallLoader from "../components/SmallLoader";
 const GenreGames = () => {
@@ -27,7 +22,6 @@ const GenreGames = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [click, setClick] = useState([]);
   const [smLoader, setSMLoader] = useState(false);
   const [randomImage , setRandomImage] = useState([])
 

@@ -30,13 +30,12 @@ import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 import data from '../data'
 
 const Header = () => {
-    const { LoginStatus, logout } = useContext(NoteContext);
+    const { LoginStatus, logout , userEmail } = useContext(NoteContext);
     const [searchTerm, setSearchTerm] = useState('')
     const [searchData, setSearchData] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [dropdown, setDropdown] = useState(false)
-    console.log(data)
-    const handleLogOut = () => {
+     const handleLogOut = () => {
         if (LoginStatus) {
             logout();
         }
@@ -194,10 +193,10 @@ const Header = () => {
                 <Catalog />
                 <HStack  >
                     <Link to={LoginStatus ? "/userprofile" : '/login'}>
-                        <Button border={'none'} padding={'.4rem 1rem'} bgColor={'#fff'} color={'#9a67ff'} cursor={'pointer'} borderRadius={'5px'} fontWeight={'bold'} fontFamily={'Titillium Web'} fontSize={'1rem'} transition={'.2s all ease'} _hover={{ bgColor: "#9a67ff", color: "white" }}>{LoginStatus ? "sushank" : "Login"}</Button>
+                        <Button border={'none'} padding={'.4rem 1rem'} bgColor={'#fff'} color={'#9a67ff'} cursor={'pointer'} borderRadius={'5px'} fontWeight={'bold'} fontFamily={'Titillium Web'} fontSize={'1rem'} transition={'.2s all ease'} _hover={{ bgColor: "#9a67ff", color: "white" }}>{LoginStatus ? userEmail : "Login"}</Button>
                     </Link>
                     <Link to={LoginStatus ? "/" : '/signup'}>
-                        <Button border={'none'} padding={'.4rem 1rem'} bgColor={'#8C52FF'} color={'whitesmoke'} cursor={'pointer'} borderRadius={'5px'} fontWeight={'bold'} fontFamily={'Titillium Web'} fontSize={'1rem'} transition={'.2s all ease'} _hover={{ bgColor: "white", color: "#9a67ff" }} onClick={handleLogOut}>{LoginStatus ? "Log Out" : "Sign in"}</Button>
+                        <Button border={'none'} padding={'.4rem 1rem'} bgColor={'#8C52FF'} color={'whitesmoke'} cursor={'pointer'} borderRadius={'5px'} fontWeight={'bold'} fontFamily={'Titillium Web'} fontSize={'1rem'} transition={'.2s all ease'} _hover={{ bgColor: "white", color: "#9a67ff" }} onClick={handleLogOut}>{LoginStatus ? "Log Out" : "Sign up"}</Button>
                     </Link>
                 </HStack>
             </HStack>

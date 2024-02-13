@@ -4,7 +4,7 @@ import { BiSolidError } from "react-icons/bi";
 
 const Error = ({message}) => {
   return (
-    <Box bg="rgb(18,18,18)" color={'white'} w={'full'} minH={['93vh',"90vh"]} display={'flex'} gap={'.8rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
+    <Box bg="rgb(18,18,18)" color={'white'} w={['full','80%']} minH={['93vh',"90vh"]} display={'flex'} gap={'.8rem'} flexDir={'column'} justifyContent={'center'} alignItems={'center'}>
       <BiSolidError fontSize={'3rem'} />
       <VStack>
         <Heading fontSize={'1.8rem'} fontFamily={'Titillium Web'} >{message}</Heading>

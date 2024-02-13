@@ -5,6 +5,8 @@ const NoteContext = createContext();
 
 const NoteState = (props) => {
   const [LoginStatus, setLoginStatus] = useState(false);
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
   useEffect(() => {
     const savedLoginStatus = localStorage.getItem("LoginStatus");
 
@@ -15,6 +17,7 @@ const NoteState = (props) => {
 
   const logout = () => {
     setLoginStatus(false);
+    setUserEmail(null)
     localStorage.removeItem('LoginStatus');
   };
 
@@ -24,7 +27,7 @@ const NoteState = (props) => {
   };
  
   return (
-    <NoteContext.Provider value={{ LoginStatus, setLoginStatus,  logout, setAuthenticatedUser }}>
+    <NoteContext.Provider value={{ LoginStatus, setLoginStatus, userName, setUserName,userEmail, setUserEmail,  logout, setAuthenticatedUser }}>
       {props.children}
     </NoteContext.Provider>
   );

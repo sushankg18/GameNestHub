@@ -1,5 +1,5 @@
-import { Box, Flex, HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
-import React from "react";
+import { Box, Flex, HStack, Heading, Image, Text, VStack, Button } from "@chakra-ui/react";
+import React, { useContext } from "react";
 import { BiLibrary } from "react-icons/bi";
 import { CiGift } from "react-icons/ci";
 import { HiOutlineUsers } from "react-icons/hi2";
@@ -29,8 +29,12 @@ import { TfiAndroid } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import profile from '../assets/profile.jpeg';
 import { hover } from "@testing-library/user-event/dist/hover";
+import { NoteContext } from '../Context/NoteState';
 
 const Sidebar = () => {
+
+  const { LoginStatus } = useContext(NoteContext);
+
   return (
     <Box display={['none', 'block']} minW={"20%"} bgColor={'transparent'} position={"sticky"} top={"10vh"}
       h={"90vh"}
@@ -49,11 +53,19 @@ const Sidebar = () => {
           </Link>
         </Text>
         <Text fontSize={"larger"} fontWeight={"bold"}>
-          <Link to={'/userprofile'}>
-            <Flex gap={'.4rem'}>
-              <Image src={profile} borderRadius={'50%'} w={'2rem'} h={'2rem'} /> SUSHANK
-            </Flex>
-          </Link>
+          {
+            LoginStatus ? (
+              <Link to={'/userprofile'}>
+                <Flex gap={'.4rem'}>
+                  <Image src={profile} borderRadius={'50%'} w={'2rem'} h={'2rem'} /> SUSHANK
+                </Flex>
+              </Link>
+            )
+              : (
+                <Link to={'/login'}>
+                  <Button border={'none'} padding={'.4rem 1rem'} bgColor={'#fff'} color={'#9a67ff'} cursor={'pointer'} borderRadius={'5px'} fontWeight={'bold'} fontFamily={'Titillium Web'} fontSize={'1rem'} transition={'.2s all ease'} _hover={{ bgColor: "#9a67ff", color: "white" }}>Login</Button></Link>
+              )
+          }
         </Text>
         <Text fontSize={"larger"} fontWeight={"bold"}>
           FOLLOWINGS
@@ -97,13 +109,13 @@ const Sidebar = () => {
 
 
 const stylying = {
-  display : 'flex',
-  alignItems : 'center',
-  gap : '.7rem',
-  cursor : 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '.7rem',
+  cursor: 'pointer',
 }
 
-const hoverEffect = { 
-  color : "#8C52FF"
+const hoverEffect = {
+  color: "#8C52FF"
 }
 export default Sidebar;

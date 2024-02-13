@@ -1,16 +1,18 @@
 import { Box, Heading, Stack, Button, Flex, Input, Image, Text, VStack, HStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { IoClose } from "react-icons/io5";
 import defaultProfile from "../assets/user.png"
 import { FaRegEdit } from "react-icons/fa";
+import { NoteContext } from '../Context/NoteState';
 
 
 const UpdateProfile = ({ isOpen, onClose }) => {
-    console.log(isOpen)
+    const { setLoginStatus, setAuthenticatedUser, setUserEmail, userEmail } = useContext(NoteContext);
+
     const [IsOpen, setIsOpen] = useState(isOpen)
     const [profile, setProfile] = useState(defaultProfile);
     const [name, setName] = useState("Sushank guatam")
-    const [email, setEmail] = useState("sushank@gmail.com")
+    const [email, setEmail] = useState(userEmail)
     const changeProfilePic = () => {
         const profileBtn = document.getElementById('profile-btn');
         if (profileBtn && profileBtn.files.length > 0) {
