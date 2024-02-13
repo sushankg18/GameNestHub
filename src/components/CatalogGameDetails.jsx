@@ -1,15 +1,19 @@
 import { Box, Button, Flex, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React,{useContext, useEffect} from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import { IoMdCloudDownload } from "react-icons/io";
 import { FaGoogleDrive } from "react-icons/fa";
 import { SiUtorrent } from "react-icons/si";
 import { FaDownload } from "react-icons/fa6";
+import {NoteContext} from '../Context/NoteState'
+import { Link } from 'react-router-dom';
 
 const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screenshots, genre, developer, platform, multiplayer, version, size, desc, MiniReq, RecReq, gdrive, mega, directly, torrent }) => {
-    const overlayColor = `rgba(0, 0, 0, 0.8)`;
 
+    const { LoginStatus } = useContext(NoteContext);
+
+    const overlayColor = `rgba(0, 0, 0, 0.8)`;
     return (
         <Box minH={'90vh'} color={'white'} overflow={'hidden'} position="relative">
             <Box
@@ -137,41 +141,43 @@ const CatalogGameDetails = ({ title, poster, bgIMG, trailer, releaseDate, screen
                 <VStack w={'100%'} gap={['1rem', '5rem']} >
                     <Heading color={'#8C52FF'} fontSize={['1.3rem', '', '', '2rem']}>DOWNLOAD LINKS</Heading>
                     <VStack gap={'2rem'}>
-                        <a href={gdrive} target='_blank'>
+                        <Link to={
+                            LoginStatus ? gdrive : alert('login first')
+                        }>
                             <Button style={downloadLinks} bgColor={'#E8E8E8'} _hover={{ bgColor: "rgb(210,210,210)" }}>
                                 <Flex align={'center'} gap={'.7rem'}>
                                     <FaGoogleDrive fontSize={'1.2rem'} />
                                     Gdrive
                                 </Flex>
                             </Button>
-                        </a>
+                        </Link>
 
-                        <a href={torrent} target='_blank'>
+                        <Link to={LoginStatus ? torrent: console.log('login first')}>
                             <Button style={downloadLinks} bgColor={'#59BA41'} color={'white'} _hover={{ bgColor: "#1AA91C" }}>
                                 <Flex align={'center'} gap={'.7rem'}>
                                     <SiUtorrent fontSize={'1.2rem'} />
                                     Torrent
                                 </Flex>
                             </Button>
-                        </a>
+                        </Link>
 
-                        <a href={mega} target='_blank'>
+                        <Link to={LoginStatus ? mega: console.log('login first')}>
                             <Button style={downloadLinks} bgColor={'rgb(255,68,0)'} color={'white'} _hover={{ bgColor: "#D93A00" }}>
                                 <Flex align={'center'} gap={'.7rem'}>
                                     <IoMdCloudDownload fontSize={'1.3rem'} />
                                     Mega
                                 </Flex>
                             </Button>
-                        </a>
+                        </Link>
 
-                        <a href={directly} target='_blank'>
+                        <Link to={LoginStatus ? torrent: console.log('login first')}>
                             <Button style={downloadLinks} bgColor={"rgb(100,100,100)"} color={'white'} _hover={{ bgColor: "rgb(81,81,81)" }}>
                                 <Flex align={'center'} gap={'.7rem'}>
                                     <FaDownload fontSize={'1rem'} />
                                     Directly
                                 </Flex>
                             </Button>
-                        </a>
+                        </Link>
                     </VStack>
                 </VStack>
             </HStack>
