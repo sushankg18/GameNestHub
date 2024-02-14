@@ -10,7 +10,7 @@ const NoteState = (props) => {
   useEffect(() => {
     const savedLoginStatus = localStorage.getItem("LoginStatus");
 
-    if (savedLoginStatus ) {
+    if (savedLoginStatus) {
       setLoginStatus(true);
     }
   }, []);
@@ -19,15 +19,18 @@ const NoteState = (props) => {
     setLoginStatus(false);
     setUserEmail(null)
     localStorage.removeItem('LoginStatus');
+    localStorage.removeItem('userEmail')
+
   };
 
   const setAuthenticatedUser = (user) => {
     setLoginStatus(true);
     localStorage.setItem('LoginStatus', 'true');
+    localStorage.setItem('userEmail', user.user.email)
   };
- 
+
   return (
-    <NoteContext.Provider value={{ LoginStatus, setLoginStatus, userName, setUserName,userEmail, setUserEmail,  logout, setAuthenticatedUser }}>
+    <NoteContext.Provider value={{ LoginStatus, setLoginStatus, userName, setUserName, userEmail, setUserEmail, logout, setAuthenticatedUser }}>
       {props.children}
     </NoteContext.Provider>
   );
