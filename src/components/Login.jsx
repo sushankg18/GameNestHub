@@ -29,6 +29,7 @@ const Login = () => {
                 alert('SIGNED IN SUCCESSFULLY✅');
                 Navigate('/userprofile');
                 setLoginStatus(true);
+                setAuthenticatedUser(user)
                 setUserEmail(user.user.email);
             }
         } catch (error) {
