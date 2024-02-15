@@ -32,7 +32,6 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [randomImage, setRandomImage] = useState([]);
   const [favorites, setFavorites] = useState({});
-
   const formatDate = (rawDate) => {
     const options = { month: "short", day: "numeric", year: "numeric" };
     return new Date(rawDate).toLocaleDateString("en-US", options);

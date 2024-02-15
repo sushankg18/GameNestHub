@@ -189,7 +189,7 @@ const Header = () => {
                     </Drawer>
                 </Box>
             </HStack>
-            <HStack w={'25%'} display={['none', '', '', 'flex']} justifyContent={'space-between'}>
+            <HStack minW={'25%'} display={['none', '', '', 'flex']} justifyContent={'space-between'}>
                 <Catalog />
                 <HStack  >
                     <Link to={LoginStatus ? "/userprofile" : '/login'}>

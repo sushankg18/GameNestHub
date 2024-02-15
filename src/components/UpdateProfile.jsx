@@ -13,6 +13,7 @@ const UpdateProfile = ({ isOpen, onClose }) => {
     const [profile, setProfile] = useState(defaultProfile);
     const [name, setName] = useState("Sushank guatam")
     const [email, setEmail] = useState(userEmail)
+    console.log(userEmail)
     const changeProfilePic = () => {
         const profileBtn = document.getElementById('profile-btn');
         if (profileBtn && profileBtn.files.length > 0) {
@@ -25,7 +26,7 @@ const UpdateProfile = ({ isOpen, onClose }) => {
     }
 
     const handleClose = () => {
-        onClose(); // Call the onClose function passed from the parent component
+        onClose(); 
     };
     return (
         <Box
